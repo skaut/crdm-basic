@@ -1,0 +1,1 @@
+# crdm-spolky-zaklad
