@@ -1,0 +1,35 @@
+{
+	"name": "crdm_basic",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"build": "webpack --mode \"development\"",
+		"build:prod": "webpack --mode \"production\""
+	},
+	"author": "David Odehnal",
+	"devDependencies": {
+		"@babel/core": "^7.0.0-beta.47",
+		"@babel/preset-env": "^7.0.0-beta.47",
+		"babel-loader": "^8.0.0-beta.3",
+		"clean-webpack-plugin": "^0.1.19",
+		"copy-webpack-plugin": "^4.5.1",
+		"css-loader": "^0.28.11",
+		"glob": "^7.1.2",
+		"imagemin-webpack-plugin": "^2.1.5",
+		"mini-css-extract-plugin": "^0.4.0",
+		"node-sass": "^4.9.0",
+		"postcss": "^6.0.22",
+		"postcss-cssnext": "^3.1.0",
+		"postcss-import": "^11.1.0",
+		"postcss-loader": "^2.1.5",
+		"sass-loader": "^7.0.1",
+		"webpack": "^4.8.3",
+		"webpack-cli": "^2.1.3",
+		"webpack-livereload-plugin": "^2.1.1"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"IE 8-9"
+	]
+}

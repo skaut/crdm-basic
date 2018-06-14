@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./../js-dev/index.js"],"names":["module","hot","accept"],"mappings":";;;;;;;;;;;;AAAA;;;;AAEA;;AAEA,IAAI,IAAJ,EAAgB;AACZA,SAAOC,GAAP,CAAWC,MAAX;AACH,C","file":"main.89147a6d834331a50ffd.hot-update.js","sourcesContent":["import $ from 'jquery';\r\n\r\n\"use strict\";\r\n\r\nif (module.hot) {\r\n    module.hot.accept()\r\n}"],"sourceRoot":""}
