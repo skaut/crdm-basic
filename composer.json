@@ -1,0 +1,29 @@
+{
+	"name": "crdm/BasicTheme",
+	"type": "project",
+	"description": "CRDM - basic theme",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "David Odehnal",
+			"email": "info@davidodehnal.cz"
+		}
+	],
+	"config": {
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"notify-on-install": false,
+		"platform": {
+			"php": "7.0"
+		}
+	},
+	"require": {
+		"php": "^7.0"
+	},
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"Crdm\\": "app/"
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.git
+.idea
+.DS_Store
+*.log
+*.sql
+*.pid
+*.seed
+.htaccess
+.lock-wscript
+node_modules
+build/Release
+logs
+lib-cov
+coverage
