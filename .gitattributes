@@ -8,14 +8,14 @@ readme.txt     export-ignore
 composer.json  export-ignore
 composer.lock  export-ignore
 *.log          export-ignore
-*.s[ac]ss      export-ignore
-.*             export-ignore
+*.scss         export-ignore
 
 /assets/dev/     export-ignore
 /assets/css-dev/ export-ignore
 /assets/js-dev/  export-ignore
 /assets/img-dev/ export-ignore
 
+/vendor/aristath/kirki/.*                   export-ignore
 /vendor/aristath/kirki/docs/                export-ignore
 /vendor/aristath/kirki/tests/               export-ignore
 /vendor/aristath/kirki/build.sh             export-ignore
