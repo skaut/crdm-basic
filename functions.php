@@ -30,13 +30,15 @@ class CrdmBasicTheme {
 	}
 
 	protected function initHooks() {
-		add_action( 'admin_init', [ $this, 'checkVersions' ] );
+		add_action( 'admin_init', [ $this, 'checkCompatibility' ] );
 
 		add_action( 'after_switch_theme', [ $this, 'activation' ] );
 		add_action( 'switch_theme', [ $this, 'deactivation' ] );
 	}
 
 	protected function init() {
+		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki framework
+
 		( new Crdm\Setup() );
 		if ( is_admin() ) {
 			( new Crdm\Admin\Init() );
@@ -46,7 +48,7 @@ class CrdmBasicTheme {
 	}
 
 	protected function isCompatibleVersionOfWp() {
-		if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'], '4.9.6', '>=' ) ) {
+		if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'], '4.9.7', '>=' ) ) {
 			return true;
 		}
 
@@ -62,25 +64,14 @@ class CrdmBasicTheme {
 	}
 
 	public function activation() {
-		if ( ! $this->isCompatibleVersionOfWp() ) {
-			//wp_die( __( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.6 nebo vyšší!', 'crdm_basic' ) );
-		}
-
-		if ( ! $this->isCompatibleVersionOfPhp() ) {
-			//wp_die( __( 'Šablona ČRDM - základní vyžaduje verzi PHP 7.0 nebo vyšší!', 'crdm_basic' ) );
-		}
-
-		if ( ! get_option( 'crdm_basic_rewrite_rules_need_to_flush' ) ) {
-			add_option( 'crdm_basic_rewrite_rules_need_to_flush', true );
-		}
+		$this->checkCompatibility();
 	}
 
 	public function deactivation() {
-		delete_option( 'crdm_basic_rewrite_rules_need_to_flush' );
-		flush_rewrite_rules();
+
 	}
 
-	public function checkVersions() {
+	public function checkCompatibility() {
 		if ( ! $this->isCompatibleVersionOfWp() ) {
 			Helpers::showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.6 nebo vyšší!', 'crdm_basic' ), 'warning' );
 		}

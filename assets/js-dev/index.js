@@ -1,7 +1,13 @@
-import $ from 'jquery';
+import jQuery from 'jquery';
+import cssVars from './cssVars';
+import {browserSupportCssVariables} from './utils';
 
-"use strict";
+'use strict';
 
-if (module.hot) {
-    module.hot.accept()
+if (!browserSupportCssVariables()) {
+    cssVars(); // css variables polyfill for IE9+
 }
+
+(function ($) {
+
+})(jQuery);

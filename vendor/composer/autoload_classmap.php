@@ -7,7 +7,16 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Crdm\\Admin\\Init' => $baseDir . '/app/Admin/Admin.php',
-    'Crdm\\Customizer\\Init' => $baseDir . '/app/Customizer/Customizer.php',
+    'Crdm\\Admin\\PageSubtitle' => $baseDir . '/app/Admin/PageSubtitle.php',
+    'Crdm\\Customizer\\Background' => $baseDir . '/app/Customizer/Background.php',
+    'Crdm\\Customizer\\BorderRadius' => $baseDir . '/app/Customizer/BorderRadius.php',
+    'Crdm\\Customizer\\ColorVariant' => $baseDir . '/app/Customizer/ColorVariant.php',
+    'Crdm\\Customizer\\Content' => $baseDir . '/app/Customizer/Content.php',
+    'Crdm\\Customizer\\Footer' => $baseDir . '/app/Customizer/Footer.php',
+    'Crdm\\Customizer\\Init' => $baseDir . '/app/Customizer/Init.php',
+    'Crdm\\Customizer\\Menu' => $baseDir . '/app/Customizer/Menu.php',
+    'Crdm\\Customizer\\PageHeader' => $baseDir . '/app/Customizer/PageHeader.php',
+    'Crdm\\Customizer\\Sidebar' => $baseDir . '/app/Customizer/Sidebar.php',
     'Crdm\\Front\\Init' => $baseDir . '/app/Front/Front.php',
     'Crdm\\Setup' => $baseDir . '/app/Setup.php',
     'Crdm\\Utils\\Helpers' => $baseDir . '/app/Utils/Helpers.php',

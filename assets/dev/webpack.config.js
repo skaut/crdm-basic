@@ -1,18 +1,18 @@
 const path = require('path');
-const glob = require('glob');
-const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: 'production',
     entry: ['../js-dev/index.js', '../css-dev/main.scss'],
     output: {
         filename: 'app.js',
-        path: path.resolve(__dirname + './../', 'js')
+        path: path.resolve(__dirname + './../', 'js'),
+        publicPath: path.resolve(__dirname + './../'),
     },
     devtool: 'source-map',
     watch: true,
@@ -28,7 +28,8 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
-                        cacheDirectory: true
+                        cacheDirectory: true,
+                        sourceMap: true
                     }
                 }
             },
@@ -36,20 +37,26 @@ module.exports = {
                 test: /\.(css|s?[ac]ss)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false,
+                            sourceMap: true
+                        }
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
                             ident: 'postcss',
+                            sourceMap: true,
                             plugins: function (loader) {
                                 return [
                                     require('postcss-import')({root: loader.resourcePath}),
-                                    require('postcss-cssnext')({
-                                        browsers: [
-                                            "> 1%",
-                                            "last 2 versions",
-                                            "IE 8-9"
-                                        ]
+                                    require('postcss-preset-env')({
+                                        stage: 0,
+                                        autoprefixer: {
+                                            grid: true
+                                        }
                                     }),
                                     require('cssnano')({
                                         'safe': true,
@@ -59,7 +66,12 @@ module.exports = {
                             }
                         }
                     },
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
                 ]
             }
         ]
@@ -74,24 +86,30 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new MiniCssExtractPlugin({
-            filename: "../css/[name].css",
-            chunkFilename: "[id].css"
-        }),
         new CopyWebpackPlugin([{
             from: './../img-dev',
             to: './../img'
         }]),
-        new ImageminPlugin({
-            externalImages: {
-                context: path.resolve(__dirname + './../'),
-                sources: glob.sync('img/**')
-            }
+        new ImageminPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "../css/[name].css",
+            chunkFilename: "[id].css"
         }),
-        new LiveReloadPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        new LiveReloadPlugin()
     ],
     externals: {
         jquery: 'jQuery'
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    output: {
+                        comments: false
+                    }
+                },
+                sourceMap: true
+            })
+        ]
     }
 };
