@@ -4,7 +4,7 @@ namespace Crdm\Utils;
 
 class Helpers {
 
-	const CRDM_BASIC_OPTIONS_NAME = 'crdm_basic_theme_options';
+	const CRDM_BASIC_OPTIONS_NAME = 'crdm_basic_theme';
 
 	public static function normalizeUrl( string $url = '' ): string {
 		if ( $url === '' || $url === 'http://' || $url === 'https://' ) {
@@ -31,7 +31,7 @@ class Helpers {
 			if ( ! $hideNoticeOnPage || $hideNoticeOnPage != get_current_screen()->id ) {
 				$class = 'notice notice-' . $type . ' is-dismissible';
 				printf( '<div class="%1$s"><p>%2$s</p><button type="button" class="notice-dismiss">
-		<span class="screen-reader-text">' . __( 'Zavřít' ) . '</span>
+		<span class="screen-reader-text">' . __( 'Zavřít', 'crdm_basic' ) . '</span>
 	</button></div>', esc_attr( $class ), $message );
 			}
 		} );
