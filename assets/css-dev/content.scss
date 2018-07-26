@@ -1,0 +1,140 @@
+body {
+  font-family: 'PT Sans', sans-serif;
+  grid-column-gap: 50px;
+  grid-template-rows: 100px 1fr;
+}
+
+.site-main {
+
+  .entry-content, .entry-summary, .page-content {
+    line-height: 1.4;
+  }
+
+  h1 {
+    font-size: 2.3em;
+    font-weight: bold;
+    line-height: 1.15;
+    color: #037b8c;
+  }
+
+  h2 {
+    font-size: 2.2em;
+    font-weight: normal;
+    line-height: 1.2;
+    color: #037b8c;
+  }
+
+  h3 {
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 1.25;
+    color: #00011f;
+  }
+
+  h4 {
+    font-size: 1.8em;
+    font-weight: normal;
+    line-height: 1.25;
+    color: #037b8c;
+  }
+
+  h5 {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.3;
+    color: #00011f;
+  }
+
+  h6 {
+    font-size: 1.5em;
+    font-weight: normal;
+    line-height: 1.3;
+    color: #00011f;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #037b8c;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  hr {
+    background-color: var(--contentHrColor);
+  }
+
+  img.alignleft {
+    margin: 0.7em 1em 1em 0;
+  }
+
+  img.alignright {
+    margin: 0.7em 0 1em 1em;
+  }
+
+  ul li {
+    list-style-type: none;
+
+    li:before {
+      color: var(--listSecondaryColor);
+    }
+  }
+
+  ul li:before {
+    content: '\2022';
+    padding-right: 0.4em;
+    color: var(--listPrimaryColor);
+    font-size: 1.3em;
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: item;
+  }
+
+  ol li {
+    counter-increment: item;
+    position: relative;
+
+    li:before {
+      font-weight: normal;
+      color: var(--listSecondaryColor);
+    }
+  }
+
+  ol li:before {
+    content: counter(item) ".";
+    padding-right: 0.4em;
+    font-size: inherit;
+    font-weight: bold;
+    color: var(--listPrimaryColor);
+  }
+
+  table {
+
+    thead {
+      background-color: var(--theadBgColor);
+      color: var(--theadTextColor);
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: var(--oddRowBgColor);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--evenRowBgColor);
+    }
+
+    tbody td {
+      color: var(--rowTextColor);
+    }
+
+    tfoot {
+      background-color: var(--footRowBgColor);
+      color: var(--footRowTextColor);
+    }
+  }
+
+}

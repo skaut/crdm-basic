@@ -2,14 +2,12 @@
 
 namespace Crdm\Admin;
 
-use Crdm\Customizer;
-
 final class Init {
 
 	public function __construct() {
 		$this->initHooks();
 
-		( new Customizer\Init() );
+		( new PageSubtitle() );
 	}
 
 	private function initHooks() {

@@ -4,8 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit482d95d3b5963b85a85bb2e970ea1748
+class ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0
 {
+    public static $files = array (
+        'ff94b54cc49d91067b6c55e8792511c4' => __DIR__ . '/..' . '/aristath/kirki/kirki.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
@@ -22,7 +26,16 @@ class ComposerStaticInit482d95d3b5963b85a85bb2e970ea1748
 
     public static $classMap = array (
         'Crdm\\Admin\\Init' => __DIR__ . '/../..' . '/app/Admin/Admin.php',
-        'Crdm\\Customizer\\Init' => __DIR__ . '/../..' . '/app/Customizer/Customizer.php',
+        'Crdm\\Admin\\PageSubtitle' => __DIR__ . '/../..' . '/app/Admin/PageSubtitle.php',
+        'Crdm\\Customizer\\Background' => __DIR__ . '/../..' . '/app/Customizer/Background.php',
+        'Crdm\\Customizer\\BorderRadius' => __DIR__ . '/../..' . '/app/Customizer/BorderRadius.php',
+        'Crdm\\Customizer\\ColorVariant' => __DIR__ . '/../..' . '/app/Customizer/ColorVariant.php',
+        'Crdm\\Customizer\\Content' => __DIR__ . '/../..' . '/app/Customizer/Content.php',
+        'Crdm\\Customizer\\Footer' => __DIR__ . '/../..' . '/app/Customizer/Footer.php',
+        'Crdm\\Customizer\\Init' => __DIR__ . '/../..' . '/app/Customizer/Init.php',
+        'Crdm\\Customizer\\Menu' => __DIR__ . '/../..' . '/app/Customizer/Menu.php',
+        'Crdm\\Customizer\\PageHeader' => __DIR__ . '/../..' . '/app/Customizer/PageHeader.php',
+        'Crdm\\Customizer\\Sidebar' => __DIR__ . '/../..' . '/app/Customizer/Sidebar.php',
         'Crdm\\Front\\Init' => __DIR__ . '/../..' . '/app/Front/Front.php',
         'Crdm\\Setup' => __DIR__ . '/../..' . '/app/Setup.php',
         'Crdm\\Utils\\Helpers' => __DIR__ . '/../..' . '/app/Utils/Helpers.php',
@@ -31,9 +44,9 @@ class ComposerStaticInit482d95d3b5963b85a85bb2e970ea1748
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit482d95d3b5963b85a85bb2e970ea1748::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit482d95d3b5963b85a85bb2e970ea1748::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit482d95d3b5963b85a85bb2e970ea1748::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0::$classMap;
 
         }, null, ClassLoader::class);
     }

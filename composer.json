@@ -2,7 +2,7 @@
 	"name": "crdm/BasicTheme",
 	"type": "project",
 	"description": "CRDM - basic theme",
-	"license": "proprietary",
+	"license": "GPLv3",
 	"authors": [
 		{
 			"name": "David Odehnal",
@@ -18,7 +18,8 @@
 		}
 	},
 	"require": {
-		"php": "^7.0"
+		"php": "^7.0",
+		"aristath/kirki": "^3.0"
 	},
 	"minimum-stability": "stable",
 	"autoload": {
