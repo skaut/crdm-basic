@@ -7,15 +7,24 @@ README.md      export-ignore
 readme.txt     export-ignore
 composer.json  export-ignore
 composer.lock  export-ignore
-*.log          export-ignore
-*.scss         export-ignore
 
 /assets/dev/     export-ignore
 /assets/css-dev/ export-ignore
 /assets/js-dev/  export-ignore
 /assets/img-dev/ export-ignore
 
-/vendor/aristath/kirki/.*                   export-ignore
+/vendor/aristath/kirki/.codeclimate.yml     export-ignore
+/vendor/aristath/kirki/.coveralls.yml       export-ignore
+/vendor/aristath/kirki/.csslintrc           export-ignore
+/vendor/aristath/kirki/.editorconfig        export-ignore
+/vendor/aristath/kirki/.eslintrc.json       export-ignore
+/vendor/aristath/kirki/.gitignore           export-ignore
+/vendor/aristath/kirki/.jhintrc             export-ignore
+/vendor/aristath/kirki/.jscsrc              export-ignore
+/vendor/aristath/kirki/.jshintignore        export-ignore
+/vendor/aristath/kirki/.jshintrc            export-ignore
+/vendor/aristath/kirki/.simplecov           export-ignore
+/vendor/aristath/kirki/.travis.yml          export-ignore
 /vendor/aristath/kirki/docs/                export-ignore
 /vendor/aristath/kirki/tests/               export-ignore
 /vendor/aristath/kirki/build.sh             export-ignore
