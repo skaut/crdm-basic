@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0
+class ComposerStaticInitf051848332d541645f9ca009c5d5ae08
 {
     public static $files = array (
         'ff94b54cc49d91067b6c55e8792511c4' => __DIR__ . '/..' . '/aristath/kirki/kirki.php',
@@ -44,9 +44,9 @@ class ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit3360f7bcdd89b360958843fabc05fcc0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf051848332d541645f9ca009c5d5ae08::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf051848332d541645f9ca009c5d5ae08::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf051848332d541645f9ca009c5d5ae08::$classMap;
 
         }, null, ClassLoader::class);
     }
