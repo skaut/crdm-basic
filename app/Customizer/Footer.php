@@ -21,7 +21,7 @@ class Footer {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Patička', 'crdm_basic' ),
+			'title' => esc_attr__( 'Patička', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -30,7 +30,7 @@ class Footer {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'background',
 			'settings'  => 'footerBg',
-			'label'     => esc_attr__( 'Pozadí', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Pozadí', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'background-color'      => '#ffffff',
@@ -51,7 +51,7 @@ class Footer {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'footerTitlesFont',
-			'label'     => esc_attr__( 'Nadpisy (H2)', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Nadpisy (H2)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -73,7 +73,7 @@ class Footer {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'footerFont',
-			'label'     => esc_attr__( 'Běžný text', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Běžný text', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -94,7 +94,7 @@ class Footer {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'color',
 			'settings'  => 'footerLinksColor',
-			'label'     => esc_attr__( 'Barva odkazů', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Barva odkazů', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => '#037b8c',
 			'output'    => [

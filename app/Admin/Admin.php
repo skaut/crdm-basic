@@ -6,8 +6,6 @@ final class Init {
 
 	public function __construct() {
 		$this->initHooks();
-
-		( new PageSubtitle() );
 	}
 
 	private function initHooks() {

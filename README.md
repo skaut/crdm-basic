@@ -1,1 +1,1 @@
-# crdm-spolky-zaklad
+# crdm-basic

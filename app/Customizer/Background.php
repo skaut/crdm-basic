@@ -21,7 +21,7 @@ class Background {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Pozadí', 'crdm_basic' ),
+			'title' => esc_attr__( 'Pozadí', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -30,7 +30,7 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'     => 'background',
 			'settings' => 'webBg',
-			'label'    => esc_attr__( 'Pozadí webu', 'crdm_basic' ),
+			'label'    => esc_attr__( 'Pozadí webu', 'crdm-basic' ),
 			'section'  => $this->sectionId,
 			'default'  => [
 				'background-color'      => '#f7f3e2',
@@ -51,8 +51,8 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'background',
 			'settings'    => 'headerBg1',
-			'label'       => esc_attr__( 'Pozadí hlavičky 1', 'crdm_basic' ),
-			'description' => esc_attr__( 'Za lištou menu', 'crdm_basic' ),
+			'label'       => esc_attr__( 'Pozadí hlavičky 1', 'crdm-basic' ),
+			'description' => esc_attr__( 'Za lištou menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'transparent',
@@ -73,8 +73,8 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'background',
 			'settings'    => 'headerBg2',
-			'label'       => esc_attr__( 'Pozadí hlavičky 2', 'crdm_basic' ),
-			'description' => esc_attr__( 'V popředí lišty menu', 'crdm_basic' ),
+			'label'       => esc_attr__( 'Pozadí hlavičky 2', 'crdm-basic' ),
+			'description' => esc_attr__( 'V popředí lišty menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'transparent',
@@ -95,8 +95,8 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'background',
 			'settings'    => 'headerBg3',
-			'label'       => esc_attr__( 'Pozadí hlavičky 3', 'crdm_basic' ),
-			'description' => esc_attr__( 'Pod lištou menu', 'crdm_basic' ),
+			'label'       => esc_attr__( 'Pozadí hlavičky 3', 'crdm-basic' ),
+			'description' => esc_attr__( 'Pod lištou menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'transparent',

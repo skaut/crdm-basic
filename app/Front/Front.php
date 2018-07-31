@@ -102,15 +102,6 @@ final class Init {
 				<?php
 				do_action( 'crdm_basic_after_page_header_title' );
 				?>
-				<?php
-				$subtitle = get_post_meta( get_the_ID(), 'crdm_page_subtitle', true );
-				if ( $subtitle ) {
-					?>
-					<h2><?php echo apply_filters( 'the_title', $subtitle ); ?></h2>
-					<?php
-				}
-				do_action( 'crdm_basic_after_page_header_subtitle' );
-				?>
 			</div>
 		</div>
 		<?php

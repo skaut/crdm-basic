@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Crdm\\Admin\\Init' => $baseDir . '/app/Admin/Admin.php',
-    'Crdm\\Admin\\PageSubtitle' => $baseDir . '/app/Admin/PageSubtitle.php',
     'Crdm\\Customizer\\Background' => $baseDir . '/app/Customizer/Background.php',
     'Crdm\\Customizer\\BorderRadius' => $baseDir . '/app/Customizer/BorderRadius.php',
     'Crdm\\Customizer\\ColorVariant' => $baseDir . '/app/Customizer/ColorVariant.php',
