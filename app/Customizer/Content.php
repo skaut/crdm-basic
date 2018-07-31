@@ -29,7 +29,7 @@ class Content {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Obsah', 'crdm_basic' ),
+			'title' => esc_attr__( 'Obsah', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -38,7 +38,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'background',
 			'settings'  => 'contentBg',
-			'label'     => esc_attr__( 'Pozadí', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Pozadí', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'background-color'      => 'transparent',
@@ -59,7 +59,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'contentFont',
-			'label'     => esc_attr__( 'Běžný text', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Běžný text', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -80,7 +80,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'color',
 			'settings'  => 'contentLinksColor',
-			'label'     => esc_attr__( 'Barva odkazů', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Barva odkazů', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => '#037b8c',
 			'output'    => [
@@ -95,8 +95,8 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'typography',
 			'settings'    => 'contentH1Font',
-			'label'       => esc_attr__( 'Nadpis (H1)', 'crdm_basic' ),
-			'description' => esc_attr__( 'Barva bude použita i pro další prvky na stránce (seznamy, tabulky, ...)', 'crdm_basic' ),
+			'label'       => esc_attr__( 'Nadpis (H1)', 'crdm-basic' ),
+			'description' => esc_attr__( 'Barva bude použita i pro další prvky na stránce (seznamy, tabulky, ...)', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'font-family'    => 'PT Sans',
@@ -118,7 +118,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'contentH2Font',
-			'label'     => esc_attr__( 'Nadpis (H2)', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Nadpis (H2)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -140,7 +140,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'contentH3Font',
-			'label'     => esc_attr__( 'Nadpis (H3)', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Nadpis (H3)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -162,7 +162,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'contentH4Font',
-			'label'     => esc_attr__( 'Nadpis (H4)', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Nadpis (H4)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -184,7 +184,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'contentH5Font',
-			'label'     => esc_attr__( 'Nadpis (H5)', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Nadpis (H5)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -206,7 +206,7 @@ class Content {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'contentH6Font',
-			'label'     => esc_attr__( 'Nadpis (H6)', 'crdm_basic' ),
+			'label'     => esc_attr__( 'Nadpis (H6)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',

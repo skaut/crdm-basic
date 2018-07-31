@@ -27,7 +27,7 @@ class Init {
 
 	protected function initPanel() {
 		Kirki::add_panel( self::CONFIG_ID . '_theme', [
-			'title' => esc_attr__( 'Nastavení šablony', 'crdm_basic' )
+			'title' => esc_attr__( 'Nastavení šablony', 'crdm-basic' )
 		] );
 	}
 

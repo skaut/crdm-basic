@@ -26,7 +26,6 @@ class ComposerStaticInitf051848332d541645f9ca009c5d5ae08
 
     public static $classMap = array (
         'Crdm\\Admin\\Init' => __DIR__ . '/../..' . '/app/Admin/Admin.php',
-        'Crdm\\Admin\\PageSubtitle' => __DIR__ . '/../..' . '/app/Admin/PageSubtitle.php',
         'Crdm\\Customizer\\Background' => __DIR__ . '/../..' . '/app/Customizer/Background.php',
         'Crdm\\Customizer\\BorderRadius' => __DIR__ . '/../..' . '/app/Customizer/BorderRadius.php',
         'Crdm\\Customizer\\ColorVariant' => __DIR__ . '/../..' . '/app/Customizer/ColorVariant.php',

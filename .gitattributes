@@ -10,8 +10,6 @@ composer.json   export-ignore
 composer.lock   export-ignore
 
 /assets/dev/     export-ignore
-/assets/css-dev/ export-ignore
-/assets/js-dev/  export-ignore
 /assets/img-dev/ export-ignore
 
 /vendor/aristath/kirki/.gitignore export-ignore

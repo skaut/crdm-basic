@@ -21,7 +21,7 @@ class BorderRadius {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Zaoblení', 'crdm_basic' ),
+			'title' => esc_attr__( 'Zaoblení', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -30,8 +30,8 @@ class BorderRadius {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'dimension',
 			'settings'    => 'borderRadius',
-			'label'       => esc_attr__( 'Zaoblení prvků', 'crdm_basic' ),
-			'description' => esc_attr__( 'Zadejte včetně jednotky, např.: 10px', 'crdm_basic' ),
+			'label'       => esc_attr__( 'Zaoblení prvků', 'crdm-basic' ),
+			'description' => esc_attr__( 'Zadejte včetně jednotky, např.: 10px', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => '0px',
 			'css_vars'    => [

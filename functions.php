@@ -1,7 +1,5 @@
 <?php
 
-use Crdm\Utils\Helpers;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -15,9 +13,7 @@ define( 'CRDM_BASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_director
 class CrdmBasicTheme {
 
 	public function __construct() {
-		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-
-		$this->initHooks();
+		add_action( 'after_switch_theme', [ $this, 'switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp' ] );
 
 		// if incompatible version of WP / PHP => don´t init
 		if ( ! $this->isCompatibleVersionOfWp() ||
@@ -29,15 +25,9 @@ class CrdmBasicTheme {
 		$this->init();
 	}
 
-	protected function initHooks() {
-		add_action( 'admin_init', [ $this, 'checkCompatibility' ] );
-
-		add_action( 'after_switch_theme', [ $this, 'activation' ] );
-		add_action( 'switch_theme', [ $this, 'deactivation' ] );
-	}
-
 	protected function init() {
-		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki framework
+		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki library
 
 		( new Crdm\Setup() );
 		if ( is_admin() ) {
@@ -63,23 +53,38 @@ class CrdmBasicTheme {
 		return false;
 	}
 
-	public function activation() {
-		$this->checkCompatibility();
-	}
+	public function switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp() {
+		if ( ! $this->isCompatibleVersionOfPhp() || ! $this->isCompatibleVersionOfWp() ) {
 
-	public function deactivation() {
+			if ( ! $this->isCompatibleVersionOfWp() ) {
+				add_action( 'admin_notices', function () {
+					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.6 nebo vyšší!', 'crdm-basic' ), 'warning' );
+				} );
+			}
 
-	}
+			if ( ! $this->isCompatibleVersionOfPhp() ) {
+				add_action( 'admin_notices', function () {
+					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi PHP 7.0 nebo vyšší!', 'crdm-basic' ), 'warning' );
+				} );
+			}
 
-	public function checkCompatibility() {
-		if ( ! $this->isCompatibleVersionOfWp() ) {
-			Helpers::showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.6 nebo vyšší!', 'crdm_basic' ), 'warning' );
+			// Switch back to previous theme
+			switch_theme( get_option( 'theme_switched' ) );
+
+			return false;
+
 		}
 
-		if ( ! $this->isCompatibleVersionOfPhp() ) {
-			Helpers::showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi PHP 7.0 nebo vyšší!', 'crdm_basic' ), 'warning' );
-		}
+		return true;
 	}
+
+	public function showAdminNotice( $message, $type = 'warning' ) {
+		$class = 'notice notice-' . $type . ' is-dismissible';
+		printf( '<div class="%1$s"><p>%2$s</p><button type="button" class="notice-dismiss">
+		<span class="screen-reader-text">' . __( 'Zavřít', 'crdm-basic' ) . '</span>
+	</button></div>', esc_attr( $class ), $message );
+	}
+
 }
 
 global $crdmBasicTheme;
