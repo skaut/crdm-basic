@@ -58,7 +58,7 @@ class CrdmBasicTheme {
 
 			if ( ! $this->isCompatibleVersionOfWp() ) {
 				add_action( 'admin_notices', function () {
-					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.6 nebo vyšší!', 'crdm-basic' ), 'warning' );
+					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.7 nebo vyšší!', 'crdm-basic' ), 'warning' );
 				} );
 			}
 
