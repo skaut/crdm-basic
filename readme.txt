@@ -1,4 +1,4 @@
-﻿=== ČRDM - Basic ===
+﻿=== CRDM - Basic ===
 Contributors: davidulus, skaut, kalich5
 Requires at least: 4.9.7
 Tested up to: 5.0
@@ -54,5 +54,5 @@ https://github.com/jhildenbiddle/get-css-data
 
 == Changelog ==
 
-= 0.1 =
+= 0.1.1 =
 * beta verze
