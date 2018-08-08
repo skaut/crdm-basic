@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CRDM_BASIC_APP_PATH', realpath( get_stylesheet_directory() ) . DIRECTORY_SEPARATOR );
-define( 'CRDM_BASIC_APP_VERSION', '0.1.1' );
+define( 'CRDM_BASIC_APP_VERSION', '0.2' );
 define( 'CRDM_BASIC_TEMPLATE_URL', trailingslashit( get_stylesheet_directory_uri() ) );
 define( 'CRDM_BASIC_PARENT_TEMPLATE_PATH', realpath( get_template_directory() ) . DIRECTORY_SEPARATOR );
 define( 'CRDM_BASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_directory_uri() ) );
@@ -38,7 +38,7 @@ class CrdmBasicTheme {
 	}
 
 	protected function isCompatibleVersionOfWp() {
-		if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'], '4.9.7', '>=' ) ) {
+		if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'], '4.9.8', '>=' ) ) {
 			return true;
 		}
 
@@ -58,7 +58,7 @@ class CrdmBasicTheme {
 
 			if ( ! $this->isCompatibleVersionOfWp() ) {
 				add_action( 'admin_notices', function () {
-					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.7 nebo vyšší!', 'crdm-basic' ), 'warning' );
+					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.8 nebo vyšší!', 'crdm-basic' ), 'warning' );
 				} );
 			}
 
