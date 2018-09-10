@@ -1,3 +1,4 @@
+import './../css-dev/main.scss';
 import jQuery from 'jquery';
 import cssVars from './cssVars';
 import {browserSupportCssVariables} from './utils';
