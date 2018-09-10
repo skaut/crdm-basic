@@ -40,7 +40,7 @@ final class Init {
 		}
 
 		wp_enqueue_style( 'crdm-main',
-			CRDM_BASIC_TEMPLATE_URL . 'assets/css/main.css',
+			CRDM_BASIC_TEMPLATE_URL . 'assets/css/app.css',
 			[ 'generate-style' ],
 			CRDM_BASIC_APP_VERSION
 		);

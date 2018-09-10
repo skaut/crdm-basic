@@ -5,12 +5,42 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const md5File = require('md5-file');
+
+LiveReloadPlugin.prototype.done = function done(stats) {
+    this.fileHashes = this.fileHashes || {}
+
+    const fileHashes = {}
+    for (let file of Object.keys(stats.compilation.assets)) {
+        fileHashes[file] = md5File.sync(stats.compilation.assets[file].existsAt)
+    }
+
+    const toInclude = Object.keys(fileHashes).filter((file) => {
+        if (this.ignore && file.match(this.ignore)) {
+            return false
+        }
+        return !(file in this.fileHashes) || this.fileHashes[file] !== fileHashes[file]
+    })
+
+    if (this.isRunning && toInclude.length) {
+        this.fileHashes = fileHashes
+        console.log('Live Reload: Reloading ' + toInclude.join(', '))
+        setTimeout(
+            function onTimeout() {
+                this.server.notifyClients(toInclude)
+            }.bind(this)
+        )
+    }
+}
 
 module.exports = {
     mode: 'production',
-    entry: ['../js-dev/index.js', '../css-dev/main.scss'],
+    entry: {
+        app: '../js-dev/index.js',
+        admin: '../js-dev/admin/admin.js',
+    },
     output: {
-        filename: 'app.js',
+        filename: '[name].js',
         path: path.resolve(__dirname + './../', 'js'),
         publicPath: path.resolve(__dirname + './../'),
     },
@@ -74,7 +104,7 @@ module.exports = {
                     }
                 ]
             }
-        ]
+        ],
     },
     plugins: [
         new CleanWebpackPlugin([
@@ -92,8 +122,7 @@ module.exports = {
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
-            filename: "../css/[name].css",
-            chunkFilename: "[id].css"
+            filename: '../css/[name].css'
         }),
         new LiveReloadPlugin()
     ],
