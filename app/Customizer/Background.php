@@ -55,7 +55,7 @@ class Background {
 			'description' => esc_attr__( 'Za lištou menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
-				'background-color'      => 'transparent',
+				'background-color'      => 'rgba(255, 255, 255, 0)',
 				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/undermenu_sun_@2x.png',
 				'background-repeat'     => 'no-repeat',
 				'background-position'   => 'right top',
@@ -77,7 +77,7 @@ class Background {
 			'description' => esc_attr__( 'V popředí lišty menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
-				'background-color'      => 'transparent',
+				'background-color'      => 'rgba(255, 255, 255, 0)',
 				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/teepee_2@x.png',
 				'background-repeat'     => 'no-repeat',
 				'background-position'   => 'right bottom',
@@ -99,7 +99,7 @@ class Background {
 			'description' => esc_attr__( 'Pod lištou menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
-				'background-color'      => 'transparent',
+				'background-color'      => 'rgba(255, 255, 255, 0)',
 				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/trava_2@x.png',
 				'background-repeat'     => 'repeat-x',
 				'background-position'   => 'left bottom',

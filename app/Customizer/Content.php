@@ -41,7 +41,7 @@ class Content {
 			'label'     => esc_attr__( 'Pozadí', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
-				'background-color'      => 'transparent',
+				'background-color'      => 'rgba(255, 255, 255, 0)',
 				'background-image'      => '',
 				'background-repeat'     => 'repeat',
 				'background-position'   => 'left top',
