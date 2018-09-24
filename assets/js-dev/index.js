@@ -5,9 +5,9 @@ import {browserSupportCssVariables} from './utils';
 
 'use strict';
 
-if (!browserSupportCssVariables()) {
+/*if (!browserSupportCssVariables()) {
     cssVars(); // css variables polyfill for IE9+
-}
+}*/
 
 (function ($) {
 
