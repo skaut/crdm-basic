@@ -1,7 +1,7 @@
 ﻿=== CRDM - Basic ===
 Contributors: davidulus, skaut, kalich5
 Requires at least: 4.9.8
-Tested up to: 5.0
+Tested up to: 5.1
 Requires PHP: 7.0
 Version: 0.2.1
 License: GPLv3 or later
