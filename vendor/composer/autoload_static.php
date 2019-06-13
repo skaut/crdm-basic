@@ -6,10 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitf051848332d541645f9ca009c5d5ae08
 {
-    public static $files = array (
-        'ff94b54cc49d91067b6c55e8792511c4' => __DIR__ . '/..' . '/aristath/kirki/kirki.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
