@@ -45,7 +45,7 @@ jobs:
             npm run build:prod
       - run:
           name: "Check artifacts commited to repo"
-          command: "[ -z \"$(git status --porcelain)\" ]"
+          command: "[ -z \"$(git status --porcelain)\" ] || (c=$?; git status; (exit $c))"
   check_composer_artifacts:
     <<: *php_env
     steps:
@@ -55,4 +55,4 @@ jobs:
           command: composer install -n --prefer-dist
       - run:
           name: "Check artifacts commited to repo"
-          command: "[ -z \"$(git status --porcelain)\" ]"
+          command: "[ -z \"$(git status --porcelain)\" ] || (c=$?; git status; (exit $c))"
