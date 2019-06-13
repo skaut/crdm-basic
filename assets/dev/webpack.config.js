@@ -45,7 +45,6 @@ module.exports = {
         publicPath: path.resolve(__dirname + './../'),
     },
     devtool: 'source-map',
-    watch: true,
     watchOptions: {
         ignored: '/node_modules/'
     },
