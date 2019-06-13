@@ -109,6 +109,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ['**/*', path.resolve(__dirname + './../css'), path.resolve(__dirname + './../img')],
+            dangerouslyAllowCleanPatternsOutsideProject: true,
             verbose: true,
             dry: false
         }),
