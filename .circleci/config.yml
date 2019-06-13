@@ -16,15 +16,17 @@ job-references:
 
   restore_npm: &restore_npm
     keys:
-      - node-v1-{{ checksum "package.json" }}
+      - node-v1-{{ checksum "assets/dev/package.json" }}
       - node-v1-
 
   install_npm: &install_npm
     name: "Install NPM dependencies"
-    command: npm ci
+    command: |
+      cd assets/dev
+      npm ci
 
   save_npm: &save_npm
-    key: node-v1-{{ checksum "package.json" }}
+    key: node-v1-{{ checksum "assets/dev/package.json" }}
     paths:
        node_modules
 
