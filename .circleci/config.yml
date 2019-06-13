@@ -51,5 +51,8 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Install Composer dependencies"
+          command: composer install -n --prefer-dist
+      - run:
           name: "Check artifacts commited to repo"
           command: "[ -z \"$(git status --porcelain)\" ]"
