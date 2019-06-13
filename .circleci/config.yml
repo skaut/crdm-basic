@@ -3,11 +3,17 @@ workflows:
   main:
     jobs:
       - build
+      - check_composer_artifacts
 
 job-references:
   node_env: &node_env
     docker:
       - image: circleci/node:latest
+
+  php_env: &php_env
+    docker:
+      - image: circleci/php:latest
+
   restore_npm: &restore_npm
     keys:
       - node-v1-{{ checksum "package.json" }}
@@ -35,6 +41,13 @@ jobs:
           command: |
             cd assets/dev
             npm run build:prod
+      - run:
+          name: "Check artifacts commited to repo"
+          command: "[ -z \"$(git status --porcelain)\" ]"
+  check_composer_artifacts:
+    <<: *php_env
+    steps:
+      - checkout
       - run:
           name: "Check artifacts commited to repo"
           command: "[ -z \"$(git status --porcelain)\" ]"
