@@ -13,6 +13,8 @@ logs
 lib-cov
 coverage
 
+vendor/composer/LICENSE
+
 /vendor/aristath/kirki/^\.
 /vendor/aristath/kirki/docs/
 /vendor/aristath/kirki/tests/

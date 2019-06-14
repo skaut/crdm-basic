@@ -1,0 +1,75 @@
+version: 2.1
+workflows:
+  main:
+    jobs:
+      - build
+      - check_npm_artefacts:
+          requires:
+            - build
+      - check_composer_artefacts
+
+job-references:
+  node_env: &node_env
+    docker:
+      - image: circleci/node:latest
+
+  php_env: &php_env
+    docker:
+      - image: circleci/php:latest
+
+  restore_npm: &restore_npm
+    keys:
+      - node-v1-{{ checksum "assets/dev/package.json" }}
+      - node-v1-
+
+  install_npm: &install_npm
+    name: "Install NPM dependencies"
+    command: |
+      cd assets/dev
+      npm ci
+
+  save_npm: &save_npm
+    key: node-v1-{{ checksum "assets/dev/package.json" }}
+    paths:
+       node_modules
+
+jobs:
+  build:
+    <<: *node_env
+    steps:
+      - checkout
+      - restore_cache: *restore_npm
+      - run: *install_npm
+      - save_cache: *save_npm
+      - run:
+          name: "Build"
+          command: |
+            cd assets/dev
+            npm run build:prod
+      - persist_to_workspace:
+          root: assets
+          paths:
+            - css
+            - js
+            - img
+
+  check_npm_artefacts:
+    <<: *node_env
+    steps:
+      - checkout
+      - attach_workspace:
+          at: assets
+      - run:
+          name: "Check artefacts commited to repo"
+          command: "[ -z \"$(git status --porcelain)\" ] || (c=$?; git status; (exit $c))"
+
+  check_composer_artefacts:
+    <<: *php_env
+    steps:
+      - checkout
+      - run:
+          name: "Install Composer dependencies"
+          command: composer install -n --prefer-dist
+      - run:
+          name: "Check artefacts commited to repo"
+          command: "[ -z \"$(git status --porcelain)\" ] || (c=$?; git status; (exit $c))"
