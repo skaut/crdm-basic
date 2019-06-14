@@ -4,8 +4,8 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -35,11 +35,11 @@ class Kirki_Control_FontAwesome extends Kirki_Control_Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7' );
+		wp_enqueue_style( 'kirki-fontawesome-font', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.0.7' );
 
 		ob_start();
 		$json_path = wp_normalize_path( Kirki::$path . '/assets/vendor/fontawesome/fontawesome.json' );
-		include $json_path;
+		include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		$font_awesome_json = ob_get_clean();
 
 		wp_localize_script( 'kirki-script', 'fontAwesomeJSON', $font_awesome_json );
