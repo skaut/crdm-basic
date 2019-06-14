@@ -1,5 +1,5 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const LiveReloadPlugin = require('webpack-livereload-plugin');
@@ -107,12 +107,9 @@ module.exports = {
         ],
     },
     plugins: [
-        new CleanWebpackPlugin([
-            'js',
-            'css',
-            'img'
-        ], {
-            root: path.resolve(__dirname + './../'),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ['**/*', path.resolve(__dirname + './../css'), path.resolve(__dirname + './../img')],
+            dangerouslyAllowCleanPatternsOutsideProject: true,
             verbose: true,
             dry: false
         }),

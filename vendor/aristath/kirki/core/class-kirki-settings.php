@@ -4,9 +4,9 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Aristeides Stathopoulos
- * @copyright   Copyright (c) 2017, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @author      Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
@@ -49,6 +49,7 @@ class Kirki_Settings {
 
 		// Set the setting_types.
 		$this->set_setting_types();
+
 		// Add the settings.
 		$this->add_settings( $args );
 
@@ -108,13 +109,17 @@ class Kirki_Settings {
 	final private function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
 
 		$this->wp_customize->add_setting(
-			new $classname( $this->wp_customize, $setting, array(
-				'default'           => $default,
-				'type'              => $type,
-				'capability'        => $capability,
-				'transport'         => $transport,
-				'sanitize_callback' => $sanitize_callback,
-			) )
+			new $classname(
+				$this->wp_customize,
+				$setting,
+				array(
+					'default'           => $default,
+					'type'              => $type,
+					'capability'        => $capability,
+					'transport'         => $transport,
+					'sanitize_callback' => $sanitize_callback,
+				)
+			)
 		);
 
 	}
@@ -129,7 +134,8 @@ class Kirki_Settings {
 
 		// Apply the kirki_setting_types filter.
 		$this->setting_types = apply_filters(
-			'kirki_setting_types', array(
+			'kirki_setting_types',
+			array(
 				'default'     => 'WP_Customize_Setting',
 				'repeater'    => 'Kirki_Settings_Repeater_Setting',
 				'user_meta'   => 'Kirki_Setting_User_Meta',
