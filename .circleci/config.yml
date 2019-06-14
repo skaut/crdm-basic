@@ -3,6 +3,9 @@ workflows:
   main:
     jobs:
       - build
+      - check_npm_artifacts:
+          requires:
+            - build
       - check_composer_artifacts
 
 job-references:
@@ -43,9 +46,23 @@ jobs:
           command: |
             cd assets/dev
             npm run build:prod
+      - persist_to_workspace:
+          root: assets
+          paths:
+            - css
+            - js
+            - img
+
+  check_npm_artifacts:
+    <<: *node_env
+    steps:
+      - checkout
+      - attach_workspace:
+          at: assets
       - run:
           name: "Check artifacts commited to repo"
           command: "[ -z \"$(git status --porcelain)\" ] || (c=$?; git status; (exit $c))"
+
   check_composer_artifacts:
     <<: *php_env
     steps:
