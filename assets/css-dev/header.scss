@@ -1,6 +1,11 @@
 .crdm_header {
   padding-bottom: 61px;
   position: relative;
+
+  .site-header {
+    background-color: transparent;
+    height: 130px;
+  }
 }
 
 .crdm_header__bg_1 {
@@ -22,7 +27,7 @@
 
   &-content {
     position: absolute;
-    bottom: -61px;
+    bottom: -50px;
     right: 36px;
     width: 340px;
     height: 205px;
@@ -37,7 +42,7 @@
 
 .crdm_header__bg_3 {
   position: absolute;
-  bottom: 0;
+  bottom: 13px;
   left: 0;
   right: 0;
   width: 100%;
