@@ -1,9 +1,9 @@
 ﻿=== CRDM - Basic ===
-Contributors: davidulus, skaut, kalich5
+Contributors: skaut, davidulus, kalich5, marekdedic
 Requires at least: 4.9.8
 Tested up to: 5.1
 Requires PHP: 7.0
-Version: 0.2.1
+Version: 0.2.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: two-columns, three-columns, one-column, right-sidebar, left-sidebar, footer-widgets, blog, e-commerce, flexible-header, full-width-template, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, rtl-language-support, featured-images, theme-options, child-theme
@@ -53,6 +53,9 @@ https://github.com/jhildenbiddle/get-css-data
 (c) 2018 John Hildenbiddle <http://hildenbiddle.com>
 
 == Changelog ==
+
+= 0.2.2 =
+* Fixed issues caused by updates to WordPress and GeneratePress
 
 = 0.2 =
 * Kompatibilita s pluginem Simple Calendar - nastylování widgetů; refaktoring
