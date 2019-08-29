@@ -49,8 +49,9 @@
 		"webpack-livereload-plugin": "^2.2.0"
 	},
 	"scripts": {
+		"build": "npm run build:prod",
 		"build:dev": "webpack --mode \"development\" --watch",
-		"build": "webpack --mode \"production\""
+		"build:prod": "webpack --mode \"production\""
 	},
 	"browserslist": [
 		">1%",
