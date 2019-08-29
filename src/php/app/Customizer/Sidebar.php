@@ -21,7 +21,7 @@ class Sidebar {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Postranní panely', 'crdm-basic' ),
+			'title' => esc_attr__( 'Sidebars', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -30,7 +30,7 @@ class Sidebar {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'background',
 			'settings'  => 'sidebarBg',
-			'label'     => esc_attr__( 'Pozadí', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Background', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'background-color'      => '#ffffff',
@@ -51,7 +51,7 @@ class Sidebar {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'color',
 			'settings'  => 'sidebarBoxshadowColor',
-			'label'     => esc_attr__( 'Barva stínu boxu', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Box shadow color', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => 'rgba(240, 240, 240, 0.75)',
 			'output'    => [
@@ -67,7 +67,7 @@ class Sidebar {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'sidebarTitlesFont',
-			'label'     => esc_attr__( 'Nadpisy (H2)', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -89,7 +89,7 @@ class Sidebar {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'sidebarFont',
-			'label'     => esc_attr__( 'Běžný text', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Body', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'PT Sans',
@@ -110,7 +110,7 @@ class Sidebar {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'color',
 			'settings'  => 'sidebarLinksColor',
-			'label'     => esc_attr__( 'Barva odkazů', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => '#037b8c',
 			'output'    => [

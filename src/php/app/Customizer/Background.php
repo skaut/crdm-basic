@@ -21,7 +21,7 @@ class Background {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Pozadí', 'crdm-basic' ),
+			'title' => esc_attr__( 'Background', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -30,7 +30,7 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'     => 'background',
 			'settings' => 'webBg',
-			'label'    => esc_attr__( 'Pozadí webu', 'crdm-basic' ),
+			'label'    => esc_attr__( 'Webpage background', 'crdm-basic' ),
 			'section'  => $this->sectionId,
 			'default'  => [
 				'background-color'      => '#f7f3e2',
@@ -51,8 +51,8 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'background',
 			'settings'    => 'headerBg1',
-			'label'       => esc_attr__( 'Pozadí hlavičky 1', 'crdm-basic' ),
-			'description' => esc_attr__( 'Za lištou menu', 'crdm-basic' ),
+			'label'       => esc_attr__( 'Header background image', 'crdm-basic' ),
+			'description' => esc_attr__( 'Behind the menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'rgba(255, 255, 255, 0)',
@@ -73,8 +73,8 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'background',
 			'settings'    => 'headerBg2',
-			'label'       => esc_attr__( 'Pozadí hlavičky 2', 'crdm-basic' ),
-			'description' => esc_attr__( 'V popředí lišty menu', 'crdm-basic' ),
+			'label'       => esc_attr__( 'Header foreground image', 'crdm-basic' ),
+			'description' => esc_attr__( 'In front of the menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'rgba(255, 255, 255, 0)',
@@ -95,8 +95,8 @@ class Background {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'background',
 			'settings'    => 'headerBg3',
-			'label'       => esc_attr__( 'Pozadí hlavičky 3', 'crdm-basic' ),
-			'description' => esc_attr__( 'Pod lištou menu', 'crdm-basic' ),
+			'label'       => esc_attr__( 'Header bottom image', 'crdm-basic' ),
+			'description' => esc_attr__( 'Under the menu', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'rgba(255, 255, 255, 0)',
