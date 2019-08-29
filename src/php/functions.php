@@ -58,13 +58,13 @@ class CrdmBasicTheme {
 
 			if ( ! $this->isCompatibleVersionOfWp() ) {
 				add_action( 'admin_notices', function () {
-					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi WordPress 4.9.8 nebo vyšší!', 'crdm-basic' ), 'warning' );
+					$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires WordPress 4.9.8 or newer!', 'crdm-basic' ), 'warning' );
 				} );
 			}
 
 			if ( ! $this->isCompatibleVersionOfPhp() ) {
 				add_action( 'admin_notices', function () {
-					$this->showAdminNotice( esc_html__( 'Šablona ČRDM - základní vyžaduje verzi PHP 7.0 nebo vyšší!', 'crdm-basic' ), 'warning' );
+					$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires PHP 7.0 or newer!', 'crdm-basic' ), 'warning' );
 				} );
 			}
 
@@ -81,7 +81,7 @@ class CrdmBasicTheme {
 	public function showAdminNotice( $message, $type = 'warning' ) {
 		$class = 'notice notice-' . $type . ' is-dismissible';
 		printf( '<div class="%1$s"><p>%2$s</p><button type="button" class="notice-dismiss">
-		<span class="screen-reader-text">' . __( 'Zavřít', 'crdm-basic' ) . '</span>
+		<span class="screen-reader-text">' . esc_html__( 'Close', 'crdm-basic' ) . '</span>
 	</button></div>', esc_attr( $class ), $message );
 	}
 
