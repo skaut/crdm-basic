@@ -1,4 +1,4 @@
-import './../../css-dev/admin/admin.scss';
+import '../../css/admin/admin.scss';
 import jQuery from 'jquery';
 //import * from './utils';
 
