@@ -1,12 +1,30 @@
 {
-	"name": "crdm_basic",
-	"version": "1.0.0",
-	"private": true,
-	"scripts": {
-		"build:dev": "webpack --mode \"development\" --watch",
-		"build": "webpack --mode \"production\""
+	"name": "crdm-basic",
+	"version": "0.3.0",
+	"description": "A playful WordPress theme made for children's organizations",
+	"keywords": [
+		"wordpress",
+		"skaut",
+		"crdm",
+		"theme",
+		"children"
+	],
+	"homepage": "https://wordpress.org/themes/crdm-basic/",
+	"bugs": {
+		"url": "https://github.com/skaut/crdm-basic/issues"
 	},
+	"license": "GPL-3.0-or-later",
 	"author": "David Odehnal",
+	"contributors": [
+		{
+			"name": "Marek Dědič",
+			"email": "developer@dedic.eu"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skaut/crdm-basic.git"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
 		"@babel/preset-env": "^7.5.5",
@@ -29,6 +47,10 @@
 		"webpack": "^4.39.3",
 		"webpack-cli": "^3.3.7",
 		"webpack-livereload-plugin": "^2.2.0"
+	},
+	"scripts": {
+		"build:dev": "webpack --mode \"development\" --watch",
+		"build": "webpack --mode \"production\""
 	},
 	"browserslist": [
 		">1%",
