@@ -36,12 +36,12 @@ LiveReloadPlugin.prototype.done = function done(stats) {
 module.exports = {
     mode: 'production',
     entry: {
-        app: '../js-dev/index.js',
-        admin: '../js-dev/admin/admin.js',
+        app: './src/js/index.js',
+        admin: './src/js/admin/admin.js',
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname + './../', 'js')
+        path: path.resolve(__dirname, 'dist/assets/js')
     },
     devtool: 'source-map',
     watchOptions: {
@@ -106,13 +106,10 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['**/*', path.resolve(__dirname + './../css'), path.resolve(__dirname + './../img')],
-            dangerouslyAllowCleanPatternsOutsideProject: true,
-            verbose: true,
-            dry: false
+            verbose: true
         }),
         new CopyWebpackPlugin([{
-            from: './../img-dev',
+            from: './src/img',
             to: './../img'
         }]),
         new ImageminPlugin(),
