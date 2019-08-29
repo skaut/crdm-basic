@@ -21,7 +21,7 @@ class ColorVariant {
 
 	protected function initSection() {
 		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Barevná varianta', 'crdm-basic' ),
+			'title' => esc_attr__( 'Preset', 'crdm-basic' ),
 			'panel' => $this->panelId
 		] );
 	}
@@ -30,8 +30,8 @@ class ColorVariant {
 		Kirki::add_field( $this->configId, [
 			'type'        => 'radio-image',
 			'settings'    => 'radio_image_setting',
-			'label'       => esc_attr__( 'Vyberte barevnou variantu', 'crdm-basic' ),
-			'description' => esc_attr__( 'POZOR! Po uložení budou stávající nastavení šablony upraveny.', 'crdm-basic' ),
+			'label'       => esc_attr__( 'Choose a preset', 'crdm-basic' ),
+			'description' => esc_attr__( 'CAUTION! Current theme settings will be overriden upon saving.', 'crdm-basic' ),
 			'section'     => $this->sectionId,
 			'default'     => 'light',
 			'choices'     => [

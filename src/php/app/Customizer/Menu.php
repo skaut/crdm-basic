@@ -30,7 +30,7 @@ class Menu {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'background',
 			'settings'  => 'menuBg',
-			'label'     => esc_attr__( 'Pozadí lišty', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Menu background', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'background-color'      => '#037b8c',
@@ -51,7 +51,7 @@ class Menu {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'menuFont',
-			'label'     => esc_attr__( 'Položky menu', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Menu items', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'Patrick Hand',
@@ -78,7 +78,7 @@ class Menu {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'color',
 			'settings'  => 'menuSeparatorColor',
-			'label'     => esc_attr__( 'Barva oddělovače položek menu', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Menu item separator color', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => '#3b969f',
 			'output'    => [
@@ -93,7 +93,7 @@ class Menu {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'background',
 			'settings'  => 'submenuBg',
-			'label'     => esc_attr__( 'Pozadí vysouvacího menu', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Dropdown menu background', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'background-color'      => '#65c3d4',
@@ -114,7 +114,7 @@ class Menu {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'typography',
 			'settings'  => 'submenuFont',
-			'label'     => esc_attr__( 'Položky submenu', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Dropdown menu items', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => [
 				'font-family'    => 'Patrick Hand',
@@ -136,7 +136,7 @@ class Menu {
 		Kirki::add_field( $this->configId, [
 			'type'      => 'color',
 			'settings'  => 'submenuSeparatorColor',
-			'label'     => esc_attr__( 'Barva oddělovače položek submenu', 'crdm-basic' ),
+			'label'     => esc_attr__( 'Dropdown menu item separator color', 'crdm-basic' ),
 			'section'   => $this->sectionId,
 			'default'   => '#ffffff',
 			'output'    => [
