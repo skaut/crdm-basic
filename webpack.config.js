@@ -114,6 +114,9 @@ module.exports = {
         },{
             from: './src/php',
             to: './../../'
+        },{
+            from: './src/assets',
+            to: './../../'
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
