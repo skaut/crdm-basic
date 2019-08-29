@@ -111,6 +111,9 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: './src/img',
             to: './../img'
+        },{
+            from: './src/php',
+            to: './../../'
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
