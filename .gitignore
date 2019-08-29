@@ -1,26 +1,9 @@
-vendor/composer/LICENSE
-
-/vendor/aristath/kirki/^\.
-/vendor/aristath/kirki/docs/
-/vendor/aristath/kirki/tests/
-/vendor/aristath/kirki/build.sh
-/vendor/aristath/kirki/CODE_OF_CONDUCT.md
-/vendor/aristath/kirki/composer.json
-/vendor/aristath/kirki/example.php
-/vendor/aristath/kirki/Gruntfile.js
-/vendor/aristath/kirki/package.json
-/vendor/aristath/kirki/phpcs.ruleset.xml
-/vendor/aristath/kirki/phpunit.xml
-/vendor/aristath/kirki/phpunit.xml.dist
-/vendor/aristath/kirki/README.md
-/vendor/aristath/kirki/readme.txt
-
 # Created by https://www.gitignore.io/api/vim,node,composer
 # Edit at https://www.gitignore.io/?templates=vim,node,composer
 
 ### Composer ###
 composer.phar
-#/vendor/ # TODO: Uncomment
+/vendor/
 
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
