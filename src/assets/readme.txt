@@ -9,14 +9,18 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: two-columns, three-columns, one-column, right-sidebar, left-sidebar, footer-widgets, blog, e-commerce, flexible-header, full-width-template, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, rtl-language-support, featured-images, theme-options, child-theme
 
 == Description ==
-ČRDM - základní šablona
+A playful WordPress theme made for children's organizations
+
+Made by Junák - český skaut for ČRDM.
 
 == Installation ==
+1. Download and install the theme from the theme page in your WordPress installation or from [GitHub](https://github.com/skaut/crdm-basic/releases)
+2. Activate the theme
 
 == Frequently Asked Questions ==
 
 == License ==
-ČRDM - Basic WordPress Theme, Copyright 2018 Junák – český skaut, z. s. is distributed under the terms of the GNU GPL.
+CRDM - Basic WordPress Theme, Copyright 2019 Junák – český skaut, z. s. is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,24 +37,24 @@ along with this program.  If not, see https://www.gnu.org/copyleft/gpl.html.
 
 = GeneratePress =
 GPLv2 or later
-https://cs.wordpress.org/themes/generatepress/
+https://wordpress.org/themes/generatepress/
 
 = Kirki library =
 MIT
 https://wordpress.org/plugins/kirki/
 
 = Images =
-Copyright 2018 Junák – český skaut, z. s. distributed under the terms of the GNU GPL.
+Copyright 2019 Junák – český skaut, z. s. distributed under the terms of the GNU GPLv3 or later.
 
 = css-vars-ponyfill =
 MIT
 https://github.com/jhildenbiddle/css-vars-ponyfill
-(c) 2018 John Hildenbiddle <http://hildenbiddle.com>
+Copyright (c) John Hildenbiddle <http://hildenbiddle.com>
 
 = get-css-data =
 MIT
 https://github.com/jhildenbiddle/get-css-data
-(c) 2018 John Hildenbiddle <http://hildenbiddle.com>
+Copyright (c) John Hildenbiddle <http://hildenbiddle.com>
 
 == Changelog ==
 
@@ -61,7 +65,7 @@ https://github.com/jhildenbiddle/get-css-data
 * Fixed issues caused by updates to WordPress and GeneratePress
 
 = 0.2 =
-* Kompatibilita s pluginem Simple Calendar - nastylování widgetů; refaktoring
+* Compatibility with the Simple Calendar plugin - widget styling, refactoring
 
 = 0.1.1 =
-* beta verze
+* First beta
