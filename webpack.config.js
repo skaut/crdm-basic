@@ -117,6 +117,9 @@ module.exports = {
         },{
             from: './src/assets',
             to: './../../'
+        },{
+            from: './vendor',
+            to: './../../vendor'
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
