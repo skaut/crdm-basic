@@ -15,7 +15,7 @@ job-references:
     command: composer install -n --prefer-dist
 
   save_composer: &save_composer
-    key: v1-dependencies-{{ checksum "coposer.json" }}
+    key: v1-dependencies-{{ checksum "composer.json" }}
     paths:
       - node_modules
 
