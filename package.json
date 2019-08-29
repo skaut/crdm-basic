@@ -29,5 +29,11 @@
 		"webpack": "^4.39.3",
 		"webpack-cli": "^3.3.7",
 		"webpack-livereload-plugin": "^2.2.0"
-	}
+	},
+	"browserslist": [
+		">1%",
+		"last 2 versions",
+		"safari >= 8",
+		"ie 11"
+	]
 }
