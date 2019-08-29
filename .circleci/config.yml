@@ -17,7 +17,7 @@ job-references:
   save_composer: &save_composer
     key: v1-dependencies-{{ checksum "composer.json" }}
     paths:
-      - node_modules
+      - vendor
 
   restore_npm: &restore_npm
     keys:
