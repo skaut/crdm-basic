@@ -122,7 +122,14 @@ module.exports = {
             to: './../../'
         },{
             from: './vendor',
-            to: './../../vendor'
+            to: './../../vendor',
+            ignore: ['**/\.*', '**/\.*/**/*'],
+            transform(content, path) {
+                if (path.match(/\.(?:php|md)$/)) {
+                    return content.toString().replace(/_(_|e|x|ex|n|nx)\((.*?), ?'kirki' ?\)/g, '_$1($2, \'crdm-basic\' )')
+                }
+                return content;
+            }
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
