@@ -112,8 +112,11 @@ module.exports = {
             from: './src/img',
             to: './../img'
         },{
-            from: './src/php',
+            from: './src/php/functions.php',
             to: './../../'
+        },{
+            from: './src/php/app',
+            to: './../../src/php/app'
         },{
             from: './src/assets',
             to: './../../'
