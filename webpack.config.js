@@ -122,7 +122,8 @@ module.exports = {
             to: './../../'
         },{
             from: './vendor',
-            to: './../../vendor'
+            to: './../../vendor',
+            ignore: ['**/\.*', '**/\.*/**/*']
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
