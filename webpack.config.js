@@ -108,7 +108,7 @@ module.exports = {
             verbose: true
         }),
         new CopyWebpackPlugin([{
-            from: './src/img',
+            from: './src/png',
             to: './../img'
         },{
             from: './src/php/functions.php',
