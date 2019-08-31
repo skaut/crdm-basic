@@ -114,8 +114,8 @@ module.exports = {
             from: './src/php/functions.php',
             to: './../../'
         },{
-            from: './src/php/app',
-            to: './../../src/php/app'
+            from: './src/php/Crdm',
+            to: './../../src/php/Crdm'
         },{
             from: './src/assets',
             to: './../../'
