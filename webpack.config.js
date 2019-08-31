@@ -40,7 +40,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist/assets/js')
+        path: path.resolve(__dirname, 'dist/frontend')
     },
     devtool: 'source-map',
     watchOptions: {
@@ -108,20 +108,23 @@ module.exports = {
             verbose: true
         }),
         new CopyWebpackPlugin([{
-            from: './src/png',
-            to: './../img'
+            from: './src/png/frontend',
+            to: './'
+        },{
+            from: './src/png/admin',
+            to: './../admin'
         },{
             from: './src/php/functions.php',
-            to: './../../'
+            to: './../'
         },{
             from: './src/php/Crdm',
-            to: './../../src/php/Crdm'
+            to: './../src/php/Crdm'
         },{
             from: './src/assets',
-            to: './../../'
+            to: './../'
         },{
             from: './vendor',
-            to: './../../vendor',
+            to: './../vendor',
             ignore: ['**/\.*', '**/\.*/**/*'],
             transform(content, path) {
                 if (path.match(/\.(?:php|md)$/)) {
@@ -132,7 +135,7 @@ module.exports = {
         }]),
         new ImageminPlugin(),
         new MiniCssExtractPlugin({
-            filename: '../css/[name].css'
+            filename: '[name].css'
         }),
         new LiveReloadPlugin()
     ],
