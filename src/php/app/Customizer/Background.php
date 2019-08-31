@@ -34,7 +34,7 @@ class Background {
 			'section'  => $this->sectionId,
 			'default'  => [
 				'background-color'      => '#f7f3e2',
-				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/bck_@2x.png',
+				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_background.png',
 				'background-repeat'     => 'repeat',
 				'background-position'   => 'left top',
 				'background-size'       => '300px auto',
@@ -56,7 +56,7 @@ class Background {
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'rgba(255, 255, 255, 0)',
-				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/undermenu_sun_@2x.png',
+				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_header_background.png',
 				'background-repeat'     => 'no-repeat',
 				'background-position'   => 'right top',
 				'background-size'       => '376px auto',
@@ -78,7 +78,7 @@ class Background {
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'rgba(255, 255, 255, 0)',
-				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/teepee_2@x.png',
+				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_header_foreground.png',
 				'background-repeat'     => 'no-repeat',
 				'background-position'   => 'right bottom',
 				'background-size'       => '100% auto',
@@ -100,7 +100,7 @@ class Background {
 			'section'     => $this->sectionId,
 			'default'     => [
 				'background-color'      => 'rgba(255, 255, 255, 0)',
-				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/trava_2@x.png',
+				'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_grass.png',
 				'background-repeat'     => 'repeat-x',
 				'background-position'   => 'left bottom',
 				'background-size'       => 'auto 100%',
