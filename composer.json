@@ -32,7 +32,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Crdm\\": "src/php/app"
+			"Crdm\\": "src/php/Crdm/"
 		}
 	},
 	"config": {
