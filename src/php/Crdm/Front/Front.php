@@ -40,7 +40,7 @@ final class Init {
 		}
 
 		wp_enqueue_style( 'crdm-main',
-			CRDM_BASIC_TEMPLATE_URL . 'assets/css/app.css',
+			CRDM_BASIC_TEMPLATE_URL . 'frontend/app.css',
 			[ 'generate-style' ],
 			CRDM_BASIC_APP_VERSION
 		);
@@ -48,7 +48,7 @@ final class Init {
 
 	public function loadAllScripts() {
 		wp_enqueue_script( 'crdm-main',
-			CRDM_BASIC_TEMPLATE_URL . 'assets/js/app.js',
+			CRDM_BASIC_TEMPLATE_URL . 'frontend/app.js',
 			[ 'jquery' ],
 			CRDM_BASIC_APP_VERSION,
 			true

@@ -35,19 +35,19 @@ class ColorVariant {
 			'section'     => $this->sectionId,
 			'default'     => 'light',
 			'choices'     => [
-				'light' => CRDM_BASIC_TEMPLATE_URL . 'assets/img/admin/light.png',
-				'dark'  => CRDM_BASIC_TEMPLATE_URL . 'assets/img/admin/dark.png'
+				'light' => CRDM_BASIC_TEMPLATE_URL . 'admin/light.png',
+				'dark'  => CRDM_BASIC_TEMPLATE_URL . 'admin/dark.png'
 			],
 			'preset'      => [
 				'light' => [
 					'settings' => [
 						'webBg'                 => [
 							'background-color' => 'rgba(255, 255, 255, 0)',
-							'background-image' => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_background.png'
+							'background-image' => CRDM_BASIC_TEMPLATE_URL . 'frontend/light_background.png'
 						],
 						'headerBg1'             => [
 							'background-color'      => 'rgba(255, 255, 255, 0)',
-							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_header_background.png',
+							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
 							'background-repeat'     => 'no-repeat',
 							'background-position'   => 'right top',
 							'background-size'       => '376px auto',
@@ -55,7 +55,7 @@ class ColorVariant {
 						],
 						'headerBg2'             => [
 							'background-color'      => 'rgba(255, 255, 255, 0)',
-							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_header_foreground.png',
+							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
 							'background-repeat'     => 'no-repeat',
 							'background-position'   => 'right bottom',
 							'background-size'       => '100% auto',
@@ -63,7 +63,7 @@ class ColorVariant {
 						],
 						'headerBg3'             => [
 							'background-color'      => 'rgba(255, 255, 255, 0)',
-							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/light_grass.png',
+							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'frontend/light_grass.png',
 							'background-repeat'     => 'repeat-x',
 							'background-position'   => 'left bottom',
 							'background-size'       => 'auto 100%',
@@ -133,7 +133,7 @@ class ColorVariant {
 						],
 						'headerBg2'             => [
 							'background-color'      => 'rgba(255, 255, 255, 0)',
-							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/dark_header_foreground.png',
+							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'frontend/dark_header_foreground.png',
 							'background-repeat'     => 'no-repeat',
 							'background-position'   => 'right bottom',
 							'background-size'       => '87% auto',
@@ -141,7 +141,7 @@ class ColorVariant {
 						],
 						'headerBg3'             => [
 							'background-color'      => 'rgba(255, 255, 255, 0)',
-							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'assets/img/frontend/dark_pavement.png',
+							'background-image'      => CRDM_BASIC_TEMPLATE_URL . 'frontend/dark_pavement.png',
 							'background-repeat'     => 'repeat-x',
 							'background-position'   => 'left bottom',
 							'background-size'       => '24px 10px',
