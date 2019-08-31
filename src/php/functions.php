@@ -30,9 +30,7 @@ class CrdmBasicTheme {
 		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki library
 
 		( new Crdm\Setup() );
-		if ( is_admin() ) {
-			( new Crdm\Admin\Init() );
-		} else {
+		if ( !is_admin() ) {
 			( new Crdm\Front\Init() );
 		}
 	}
