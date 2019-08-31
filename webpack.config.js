@@ -36,7 +36,7 @@ LiveReloadPlugin.prototype.done = function done(stats) {
 module.exports = {
     mode: 'production',
     entry: {
-        app: './src/js/index.js'
+        app: './src/js/frontend/index.js'
     },
     output: {
         filename: '[name].js',
