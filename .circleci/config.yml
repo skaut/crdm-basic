@@ -3,6 +3,9 @@ workflows:
   main:
     jobs:
       - build
+      - lint:
+          requires:
+            - build
 
 job-references:
   restore_composer: &restore_composer
@@ -51,3 +54,27 @@ jobs:
       - run:
           name: "Build"
           command: npm run build:prod
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - "*"
+  lint:
+    docker:
+      - image: circleci/php:7.3-node
+    steps:
+      - checkout
+
+      - restore_cache: *restore_composer
+      - run: *install_composer
+      - save_cache: *save_composer
+
+      - restore_cache: *restore_npm
+      - run: *install_npm
+      - save_cache: *save_npm
+
+      - attach_workspace:
+          at: dist
+
+      - run:
+          name: "Lint"
+          command: npm run lint
