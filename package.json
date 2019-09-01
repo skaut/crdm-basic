@@ -33,6 +33,9 @@
 		"copy-webpack-plugin": "^5.0.4",
 		"css-loader": "^3.2.0",
 		"cssnano": "^4.1.10",
+		"eslint": "^6.3.0",
+		"eslint-config-wordpress": "^2.0.0",
+		"eslint-plugin-compat": "^3.3.0",
 		"glob": "^7.1.4",
 		"imagemin-webpack-plugin": "^2.4.2",
 		"md5-file": "^4.0.0",
@@ -52,10 +55,11 @@
 		"build": "npm run build:prod",
 		"build:dev": "webpack --mode \"development\" --watch",
 		"build:prod": "webpack --mode \"production\"",
-		"lint": "npm run lint:phpcs; npm run lint:phpmd; npm run lint:phan",
+		"lint": "npm run lint:phpcs; npm run lint:phpmd; npm run lint:phan; npm run lint:eslint",
 		"lint:phpcs": "vendor/bin/phpcs",
 		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
-		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan"
+		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
+		"lint:eslint": "eslint src/**/*.js"
 	},
 	"browserslist": [
 		">1%",
