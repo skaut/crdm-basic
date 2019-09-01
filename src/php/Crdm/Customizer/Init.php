@@ -9,16 +9,16 @@ class Init {
 	const CONFIG_ID = 'crdm_basic';
 
 	public function __construct() {
-		$this->initKirkiAndControls();
+		$this->init_kirki_and_controls();
 	}
 
-	protected function initKirkiAndControls() {
-		$this->initKirki();
-		$this->initPanel();
-		$this->initSectionsAndControls();
+	protected function init_kirki_and_controls() {
+		$this->init_kirki();
+		$this->init_panel();
+		$this->init_sections_and_controls();
 	}
 
-	protected function initKirki() {
+	protected function init_kirki() {
 		Kirki::add_config(
 			self::CONFIG_ID,
 			[
@@ -28,7 +28,7 @@ class Init {
 		);
 	}
 
-	protected function initPanel() {
+	protected function init_panel() {
 		Kirki::add_panel(
 			self::CONFIG_ID . '_theme',
 			[
@@ -37,7 +37,7 @@ class Init {
 		);
 	}
 
-	protected function initSectionsAndControls() {
+	protected function init_sections_and_controls() {
 		( new ColorVariant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Background( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new BorderRadius( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );

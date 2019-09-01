@@ -5,15 +5,15 @@ namespace Crdm\Front;
 final class Init {
 
 	public function __construct() {
-		$this->initHooks();
+		$this->init_hooks();
 	}
 
-	private function initHooks() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'loadAllStyles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'loadAllScripts' ] );
+	private function init_hooks() {
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_all_styles' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'load_all_scripts' ] );
 
-		add_action( 'generate_before_header', [ $this, 'bgsBeforeHeader' ] );
-		add_action( 'generate_after_header', [ $this, 'bgsAfterHeader' ] );
+		add_action( 'generate_before_header', [ $this, 'before_header' ] );
+		add_action( 'generate_after_header', [ $this, 'after_header' ] );
 
 		add_action(
 			'generate_after_header',
@@ -23,7 +23,7 @@ final class Init {
 			},
 			1
 		);
-		add_action( 'generate_after_header', [ $this, 'customPageHeaderImage' ], 25 );
+		add_action( 'generate_after_header', [ $this, 'custom_page_header_image' ], 25 );
 
 		add_filter(
 			'generate_show_title',
@@ -48,7 +48,7 @@ final class Init {
 		);
 	}
 
-	public function loadAllStyles() {
+	public function load_all_styles() {
 		if ( is_rtl() ) {
 			wp_enqueue_style( 'generatepress-rtl', CRDM_BASIC_PARENT_TEMPLATE_URL . 'rtl.css' );
 		}
@@ -61,7 +61,7 @@ final class Init {
 		);
 	}
 
-	public function loadAllScripts() {
+	public function load_all_scripts() {
 		wp_enqueue_script(
 			'crdm-main',
 			CRDM_BASIC_TEMPLATE_URL . 'frontend/index.js',
@@ -71,13 +71,13 @@ final class Init {
 		);
 	}
 
-	public function bgsBeforeHeader() {
+	public function before_header() {
 		?>
 		<div class="crdm_header">
 		<?php
 	}
 
-	public function bgsAfterHeader() {
+	public function after_header() {
 		?>
 		<div class="crdm_header__bg_1 grid-container grid-parent"></div>
 		<div class="crdm_header__bg_2-container grid-container grid-parent">
@@ -88,7 +88,7 @@ final class Init {
 		<?php
 	}
 
-	public function customPageHeaderImage() {
+	public function custom_page_header_image() {
 		if ( function_exists( 'generate_page_header' ) ) {
 			return;
 		}
@@ -105,6 +105,7 @@ final class Init {
 		<div class="page-header-image crdm_page-header grid-container grid-parent">
 			<?php
 			the_post_thumbnail(
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 				apply_filters( 'generate_page_header_default_size', 'full' ),
 				[
 					'itemprop' => 'image',

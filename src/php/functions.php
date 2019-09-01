@@ -16,9 +16,7 @@ class CrdmBasicTheme {
 		add_action( 'after_switch_theme', [ $this, 'switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp' ] );
 
 		// if incompatible version of WP / PHP => don´t init
-		if ( ! $this->isCompatibleVersionOfWp() ||
-			 ! $this->isCompatibleVersionOfPhp()
-		) {
+		if ( ! $this->is_compatible_version_of_wp() || ! $this->is_compatible_version_of_php() ) {
 			return;
 		}
 
@@ -35,7 +33,7 @@ class CrdmBasicTheme {
 		}
 	}
 
-	protected function isCompatibleVersionOfWp() {
+	protected function is_compatible_version_of_wp() {
 		if ( isset( $GLOBALS['wp_version'] ) && version_compare( $GLOBALS['wp_version'], '4.9.8', '>=' ) ) {
 			return true;
 		}
@@ -43,7 +41,7 @@ class CrdmBasicTheme {
 		return false;
 	}
 
-	protected function isCompatibleVersionOfPhp() {
+	protected function is_compatible_version_of_php() {
 		if ( version_compare( PHP_VERSION, '7.0', '>=' ) ) {
 			return true;
 		}
@@ -52,8 +50,8 @@ class CrdmBasicTheme {
 	}
 
 	public function switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp() {
-		if ( ! $this->isCompatibleVersionOfPhp() || ! $this->isCompatibleVersionOfWp() ) {
-			if ( ! $this->isCompatibleVersionOfWp() ) {
+		if ( ! $this->is_compatible_version_of_php() || ! $this->is_compatible_version_of_wp() ) {
+			if ( ! $this->is_compatible_version_of_wp() ) {
 				add_action(
 					'admin_notices',
 					function () {
@@ -62,7 +60,7 @@ class CrdmBasicTheme {
 				);
 			}
 
-			if ( ! $this->isCompatibleVersionOfPhp() ) {
+			if ( ! $this->is_compatible_version_of_php() ) {
 				add_action(
 					'admin_notices',
 					function () {
