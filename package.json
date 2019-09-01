@@ -51,7 +51,9 @@
 	"scripts": {
 		"build": "npm run build:prod",
 		"build:dev": "webpack --mode \"development\" --watch",
-		"build:prod": "webpack --mode \"production\""
+		"build:prod": "webpack --mode \"production\"",
+		"lint": "npm run lint:phpcs",
+		"lint:phpcs": "vendor/bin/phpcs"
 	},
 	"browserslist": [
 		">1%",
