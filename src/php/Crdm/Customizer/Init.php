@@ -19,16 +19,22 @@ class Init {
 	}
 
 	protected function initKirki() {
-		Kirki::add_config( self::CONFIG_ID, [
-			'capability'  => 'edit_theme_options',
-			'option_type' => 'theme_mod'
-		] );
+		Kirki::add_config(
+			self::CONFIG_ID,
+			[
+				'capability'  => 'edit_theme_options',
+				'option_type' => 'theme_mod',
+			]
+		);
 	}
 
 	protected function initPanel() {
-		Kirki::add_panel( self::CONFIG_ID . '_theme', [
-			'title' => esc_attr__( 'Child theme options', 'crdm-basic' )
-		] );
+		Kirki::add_panel(
+			self::CONFIG_ID . '_theme',
+			[
+				'title' => esc_attr__( 'Child theme options', 'crdm-basic' ),
+			]
+		);
 	}
 
 	protected function initSectionsAndControls() {

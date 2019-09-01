@@ -7,8 +7,8 @@ use Kirki_Color;
 
 class Content {
 
-	protected $configId = '';
-	protected $panelId = '';
+	protected $configId  = '';
+	protected $panelId   = '';
 	protected $sectionId = '';
 
 	public function __construct( string $configId, string $panelId ) {
@@ -28,202 +28,232 @@ class Content {
 	}
 
 	protected function initSection() {
-		Kirki::add_section( $this->sectionId, [
-			'title' => esc_attr__( 'Content', 'crdm-basic' ),
-			'panel' => $this->panelId
-		] );
+		Kirki::add_section(
+			$this->sectionId,
+			[
+				'title' => esc_attr__( 'Content', 'crdm-basic' ),
+				'panel' => $this->panelId,
+			]
+		);
 	}
 
 	protected function initControls() {
-		Kirki::add_field( $this->configId, [
-			'type'      => 'background',
-			'settings'  => 'contentBg',
-			'label'     => esc_attr__( 'Background', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'background-color'      => 'rgba(255, 255, 255, 0)',
-				'background-image'      => '',
-				'background-repeat'     => 'repeat',
-				'background-position'   => 'left top',
-				'background-size'       => 'auto',
-				'background-attachment' => 'scroll'
-			],
-			'output'    => [
-				[
-					'element' => '#page'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'background',
+				'settings'  => 'contentBg',
+				'label'     => esc_attr__( 'Background', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'background-color'      => 'rgba(255, 255, 255, 0)',
+					'background-image'      => '',
+					'background-repeat'     => 'repeat',
+					'background-position'   => 'left top',
+					'background-size'       => 'auto',
+					'background-attachment' => 'scroll',
+				],
+				'output'    => [
+					[
+						'element' => '#page',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'typography',
-			'settings'  => 'contentFont',
-			'label'     => esc_attr__( 'Body', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'font-family'    => 'PT Sans',
-				'variant'        => 'regular',
-				'font-size'      => '17px',
-				'line-height'    => '1.4',
-				'letter-spacing' => 'inherit',
-				'color'          => '#3f3f3f',
-			],
-			'output'    => [
-				[
-					'element' => 'body .site-main',
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'typography',
+				'settings'  => 'contentFont',
+				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'font-family'    => 'PT Sans',
+					'variant'        => 'regular',
+					'font-size'      => '17px',
+					'line-height'    => '1.4',
+					'letter-spacing' => 'inherit',
+					'color'          => '#3f3f3f',
+				],
+				'output'    => [
+					[
+						'element' => 'body .site-main',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'color',
-			'settings'  => 'contentLinksColor',
-			'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => '#037b8c',
-			'output'    => [
-				[
-					'element'  => 'body .site-main a, body .site-main a:visited, body .site-main a:hover',
-					'property' => 'color'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'color',
+				'settings'  => 'contentLinksColor',
+				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => '#037b8c',
+				'output'    => [
+					[
+						'element'  => 'body .site-main a, body .site-main a:visited, body .site-main a:hover',
+						'property' => 'color',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'        => 'typography',
-			'settings'    => 'contentH1Font',
-			'label'       => esc_attr__( 'Heading 1 (H1)', 'crdm-basic' ),
-			'description' => esc_attr__( 'The color will be used for other elements (lists, tables etc.) as well.', 'crdm-basic' ),
-			'section'     => $this->sectionId,
-			'default'     => [
-				'font-family'    => 'PT Sans',
-				'variant'        => '700',
-				'font-size'      => '2.3em',
-				'line-height'    => '1.15',
-				'letter-spacing' => 'inherit',
-				'color'          => '#037b8c',
-				'text-transform' => 'none'
-			],
-			'output'      => [
-				[
-					'element' => 'body .site-main h1',
-				]
-			],
-			'transport'   => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'        => 'typography',
+				'settings'    => 'contentH1Font',
+				'label'       => esc_attr__( 'Heading 1 (H1)', 'crdm-basic' ),
+				'description' => esc_attr__( 'The color will be used for other elements (lists, tables etc.) as well.', 'crdm-basic' ),
+				'section'     => $this->sectionId,
+				'default'     => [
+					'font-family'    => 'PT Sans',
+					'variant'        => '700',
+					'font-size'      => '2.3em',
+					'line-height'    => '1.15',
+					'letter-spacing' => 'inherit',
+					'color'          => '#037b8c',
+					'text-transform' => 'none',
+				],
+				'output'      => [
+					[
+						'element' => 'body .site-main h1',
+					],
+				],
+				'transport'   => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'typography',
-			'settings'  => 'contentH2Font',
-			'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'font-family'    => 'PT Sans',
-				'variant'        => 'regular',
-				'font-size'      => '2.2em',
-				'line-height'    => '1.2',
-				'letter-spacing' => 'inherit',
-				'color'          => '#037b8c',
-				'text-transform' => 'none'
-			],
-			'output'    => [
-				[
-					'element' => 'body .site-main h2'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'typography',
+				'settings'  => 'contentH2Font',
+				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'font-family'    => 'PT Sans',
+					'variant'        => 'regular',
+					'font-size'      => '2.2em',
+					'line-height'    => '1.2',
+					'letter-spacing' => 'inherit',
+					'color'          => '#037b8c',
+					'text-transform' => 'none',
+				],
+				'output'    => [
+					[
+						'element' => 'body .site-main h2',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'typography',
-			'settings'  => 'contentH3Font',
-			'label'     => esc_attr__( 'Heading 3 (H3)', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'font-family'    => 'PT Sans',
-				'variant'        => '700',
-				'font-size'      => '1.8em',
-				'line-height'    => '1.25',
-				'letter-spacing' => 'inherit',
-				'color'          => '#00011f',
-				'text-transform' => 'none'
-			],
-			'output'    => [
-				[
-					'element' => 'body .site-main h3'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'typography',
+				'settings'  => 'contentH3Font',
+				'label'     => esc_attr__( 'Heading 3 (H3)', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'font-family'    => 'PT Sans',
+					'variant'        => '700',
+					'font-size'      => '1.8em',
+					'line-height'    => '1.25',
+					'letter-spacing' => 'inherit',
+					'color'          => '#00011f',
+					'text-transform' => 'none',
+				],
+				'output'    => [
+					[
+						'element' => 'body .site-main h3',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'typography',
-			'settings'  => 'contentH4Font',
-			'label'     => esc_attr__( 'Heading 4 (H4)', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'font-family'    => 'PT Sans',
-				'variant'        => 'regular',
-				'font-size'      => '1.8em',
-				'line-height'    => '1.25',
-				'letter-spacing' => 'inherit',
-				'color'          => '#037b8c',
-				'text-transform' => 'none'
-			],
-			'output'    => [
-				[
-					'element' => 'body .site-main h4'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'typography',
+				'settings'  => 'contentH4Font',
+				'label'     => esc_attr__( 'Heading 4 (H4)', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'font-family'    => 'PT Sans',
+					'variant'        => 'regular',
+					'font-size'      => '1.8em',
+					'line-height'    => '1.25',
+					'letter-spacing' => 'inherit',
+					'color'          => '#037b8c',
+					'text-transform' => 'none',
+				],
+				'output'    => [
+					[
+						'element' => 'body .site-main h4',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'typography',
-			'settings'  => 'contentH5Font',
-			'label'     => esc_attr__( 'Heading 5 (H5)', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'font-family'    => 'PT Sans',
-				'variant'        => '700',
-				'font-size'      => '1.5em',
-				'line-height'    => '1.3',
-				'letter-spacing' => 'inherit',
-				'color'          => '#00011f',
-				'text-transform' => 'none'
-			],
-			'output'    => [
-				[
-					'element' => 'body .site-main h5'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'typography',
+				'settings'  => 'contentH5Font',
+				'label'     => esc_attr__( 'Heading 5 (H5)', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'font-family'    => 'PT Sans',
+					'variant'        => '700',
+					'font-size'      => '1.5em',
+					'line-height'    => '1.3',
+					'letter-spacing' => 'inherit',
+					'color'          => '#00011f',
+					'text-transform' => 'none',
+				],
+				'output'    => [
+					[
+						'element' => 'body .site-main h5',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 
-		Kirki::add_field( $this->configId, [
-			'type'      => 'typography',
-			'settings'  => 'contentH6Font',
-			'label'     => esc_attr__( 'Heading 6 (H6)', 'crdm-basic' ),
-			'section'   => $this->sectionId,
-			'default'   => [
-				'font-family'    => 'PT Sans',
-				'variant'        => 'regular',
-				'font-size'      => '1.5em',
-				'line-height'    => '1.3',
-				'letter-spacing' => 'inherit',
-				'color'          => '#00011f',
-				'text-transform' => 'none'
-			],
-			'output'    => [
-				[
-					'element' => 'body .site-main h6'
-				]
-			],
-			'transport' => 'auto'
-		] );
+		Kirki::add_field(
+			$this->configId,
+			[
+				'type'      => 'typography',
+				'settings'  => 'contentH6Font',
+				'label'     => esc_attr__( 'Heading 6 (H6)', 'crdm-basic' ),
+				'section'   => $this->sectionId,
+				'default'   => [
+					'font-family'    => 'PT Sans',
+					'variant'        => 'regular',
+					'font-size'      => '1.5em',
+					'line-height'    => '1.3',
+					'letter-spacing' => 'inherit',
+					'color'          => '#00011f',
+					'text-transform' => 'none',
+				],
+				'output'    => [
+					[
+						'element' => 'body .site-main h6',
+					],
+				],
+				'transport' => 'auto',
+			]
+		);
 	}
 
 	public function resolveAndPrintListCssVariables() {
