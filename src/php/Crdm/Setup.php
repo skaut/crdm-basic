@@ -11,7 +11,6 @@ final class Setup {
 	}
 
 	private function initHooks() {
-
 	}
 
 }

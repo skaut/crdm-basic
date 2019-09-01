@@ -17,7 +17,7 @@ class CrdmBasicTheme {
 
 		// if incompatible version of WP / PHP => don´t init
 		if ( ! $this->isCompatibleVersionOfWp() ||
-		     ! $this->isCompatibleVersionOfPhp()
+			 ! $this->isCompatibleVersionOfPhp()
 		) {
 			return;
 		}
@@ -30,7 +30,7 @@ class CrdmBasicTheme {
 		require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki library
 
 		( new Crdm\Setup() );
-		if ( !is_admin() ) {
+		if ( ! is_admin() ) {
 			( new Crdm\Front\Init() );
 		}
 	}
@@ -53,24 +53,28 @@ class CrdmBasicTheme {
 
 	public function switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp() {
 		if ( ! $this->isCompatibleVersionOfPhp() || ! $this->isCompatibleVersionOfWp() ) {
-
 			if ( ! $this->isCompatibleVersionOfWp() ) {
-				add_action( 'admin_notices', function () {
-					$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires WordPress 4.9.8 or newer!', 'crdm-basic' ), 'warning' );
-				} );
+				add_action(
+					'admin_notices',
+					function () {
+						$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires WordPress 4.9.8 or newer!', 'crdm-basic' ), 'warning' );
+					}
+				);
 			}
 
 			if ( ! $this->isCompatibleVersionOfPhp() ) {
-				add_action( 'admin_notices', function () {
-					$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires PHP 7.0 or newer!', 'crdm-basic' ), 'warning' );
-				} );
+				add_action(
+					'admin_notices',
+					function () {
+						$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires PHP 7.0 or newer!', 'crdm-basic' ), 'warning' );
+					}
+				);
 			}
 
 			// Switch back to previous theme
 			switch_theme( get_option( 'theme_switched' ) );
 
 			return false;
-
 		}
 
 		return true;
@@ -78,9 +82,13 @@ class CrdmBasicTheme {
 
 	public function showAdminNotice( $message, $type = 'warning' ) {
 		$class = 'notice notice-' . $type . ' is-dismissible';
-		printf( '<div class="%1$s"><p>%2$s</p><button type="button" class="notice-dismiss">
+		printf(
+			'<div class="%1$s"><p>%2$s</p><button type="button" class="notice-dismiss">
 		<span class="screen-reader-text">' . esc_html__( 'Close', 'crdm-basic' ) . '</span>
-	</button></div>', esc_attr( $class ), $message );
+	</button></div>',
+			esc_attr( $class ),
+			$message
+		);
 	}
 
 }
