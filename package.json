@@ -52,9 +52,10 @@
 		"build": "npm run build:prod",
 		"build:dev": "webpack --mode \"development\" --watch",
 		"build:prod": "webpack --mode \"production\"",
-		"lint": "npm run lint:phpcs; npm run lint:phpmd",
+		"lint": "npm run lint:phpcs; npm run lint:phpmd; npm run lint:phan",
 		"lint:phpcs": "vendor/bin/phpcs",
-		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml"
+		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
+		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan"
 	},
 	"browserslist": [
 		">1%",
