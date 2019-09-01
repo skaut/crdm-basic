@@ -76,5 +76,10 @@ jobs:
           at: dist
 
       - run:
+          name: "Install php-ast"
+          command: |
+            sudo pecl install ast
+            echo 'extension=ast.so' | sudo tee /usr/local/etc/php/php.ini > /dev/null
+      - run:
           name: "Lint"
           command: npm run lint
