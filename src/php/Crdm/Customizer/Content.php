@@ -7,44 +7,44 @@ use Kirki_Color;
 
 class Content {
 
-	protected $configId  = '';
-	protected $panelId   = '';
-	protected $sectionId = '';
+	protected $config_id  = '';
+	protected $panel_id   = '';
+	protected $section_id = '';
 
-	public function __construct( string $configId, string $panelId ) {
-		$this->configId  = $configId;
-		$this->panelId   = $panelId;
-		$this->sectionId = $panelId . '_content';
+	public function __construct( string $config_id, string $panel_id ) {
+		$this->config_id  = $config_id;
+		$this->panel_id   = $panel_id;
+		$this->section_id = $panel_id . '_content';
 
-		$this->initHooks();
-		$this->initSection();
-		$this->initControls();
+		$this->init_hooks();
+		$this->init_section();
+		$this->init_controls();
 	}
 
-	protected function initHooks() {
+	protected function init_hooks() {
 		add_action( 'wp_head', [ $this, 'resolveAndPrintListCssVariables' ], 0 );
 		add_action( 'wp_head', [ $this, 'resolveAndPrintTableCssVariables' ], 0 );
 		add_action( 'wp_head', [ $this, 'resolveAndPrintSeparatorCssVariables' ], 0 );
 	}
 
-	protected function initSection() {
+	protected function init_section() {
 		Kirki::add_section(
-			$this->sectionId,
+			$this->section_id,
 			[
 				'title' => esc_attr__( 'Content', 'crdm-basic' ),
-				'panel' => $this->panelId,
+				'panel' => $this->panel_id,
 			]
 		);
 	}
 
-	protected function initControls() {
+	protected function init_controls() {
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'background',
 				'settings'  => 'contentBg',
 				'label'     => esc_attr__( 'Background', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'background-color'      => 'rgba(255, 255, 255, 0)',
 					'background-image'      => '',
@@ -63,12 +63,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'contentFont',
 				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
@@ -87,12 +87,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'color',
 				'settings'  => 'contentLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => '#037b8c',
 				'output'    => [
 					[
@@ -105,13 +105,13 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'        => 'typography',
 				'settings'    => 'contentH1Font',
 				'label'       => esc_attr__( 'Heading 1 (H1)', 'crdm-basic' ),
 				'description' => esc_attr__( 'The color will be used for other elements (lists, tables etc.) as well.', 'crdm-basic' ),
-				'section'     => $this->sectionId,
+				'section'     => $this->section_id,
 				'default'     => [
 					'font-family'    => 'PT Sans',
 					'variant'        => '700',
@@ -131,12 +131,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'contentH2Font',
 				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
@@ -156,12 +156,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'contentH3Font',
 				'label'     => esc_attr__( 'Heading 3 (H3)', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => '700',
@@ -181,12 +181,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'contentH4Font',
 				'label'     => esc_attr__( 'Heading 4 (H4)', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
@@ -206,12 +206,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'contentH5Font',
 				'label'     => esc_attr__( 'Heading 5 (H5)', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => '700',
@@ -231,12 +231,12 @@ class Content {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'contentH6Font',
 				'label'     => esc_attr__( 'Heading 6 (H6)', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',

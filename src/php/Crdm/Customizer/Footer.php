@@ -6,37 +6,37 @@ use Kirki;
 
 class Footer {
 
-	protected $configId  = '';
-	protected $panelId   = '';
-	protected $sectionId = '';
+	protected $config_id  = '';
+	protected $panel_id   = '';
+	protected $section_id = '';
 
-	public function __construct( string $configId, string $panelId ) {
-		$this->configId  = $configId;
-		$this->panelId   = $panelId;
-		$this->sectionId = $panelId . '_footer';
+	public function __construct( string $config_id, string $panel_id ) {
+		$this->config_id  = $config_id;
+		$this->panel_id   = $panel_id;
+		$this->section_id = $panel_id . '_footer';
 
-		$this->initSection();
-		$this->initControls();
+		$this->init_section();
+		$this->init_controls();
 	}
 
-	protected function initSection() {
+	protected function init_section() {
 		Kirki::add_section(
-			$this->sectionId,
+			$this->section_id,
 			[
 				'title' => esc_attr__( 'Footer', 'crdm-basic' ),
-				'panel' => $this->panelId,
+				'panel' => $this->panel_id,
 			]
 		);
 	}
 
-	protected function initControls() {
+	protected function init_controls() {
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'background',
 				'settings'  => 'footerBg',
 				'label'     => esc_attr__( 'Background', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'background-color'      => '#ffffff',
 					'background-image'      => '',
@@ -55,12 +55,12 @@ class Footer {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'footerTitlesFont',
 				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
@@ -80,12 +80,12 @@ class Footer {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'typography',
 				'settings'  => 'footerFont',
 				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => [
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
@@ -104,12 +104,12 @@ class Footer {
 		);
 
 		Kirki::add_field(
-			$this->configId,
+			$this->config_id,
 			[
 				'type'      => 'color',
 				'settings'  => 'footerLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
-				'section'   => $this->sectionId,
+				'section'   => $this->section_id,
 				'default'   => '#037b8c',
 				'output'    => [
 					[

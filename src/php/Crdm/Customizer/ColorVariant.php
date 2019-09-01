@@ -15,11 +15,11 @@ class ColorVariant {
 		$this->panel_id   = $panel_id;
 		$this->section_id = $panel_id . '_colorVariant';
 
-		$this->initSection();
-		$this->initControls();
+		$this->init_section();
+		$this->init_controls();
 	}
 
-	protected function initSection() {
+	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
 			[
@@ -29,7 +29,7 @@ class ColorVariant {
 		);
 	}
 
-	protected function initControls() {
+	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
 			[
