@@ -1,6 +1,6 @@
 <?php declare( strict_types=1 );
 
-namespace Crdm;
+namespace CrdmBasic;
 
 final class Setup {
 

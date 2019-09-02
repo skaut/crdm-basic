@@ -6,11 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CRDM_BASIC_APP_PATH', realpath( get_stylesheet_directory() ) . DIRECTORY_SEPARATOR );
-define( 'CRDM_BASIC_APP_VERSION', '0.2.1' );
-define( 'CRDM_BASIC_TEMPLATE_URL', trailingslashit( get_stylesheet_directory_uri() ) );
-define( 'CRDM_BASIC_PARENT_TEMPLATE_PATH', realpath( get_template_directory() ) . DIRECTORY_SEPARATOR );
-define( 'CRDM_BASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_directory_uri() ) );
+define( 'CRDMBASIC_APP_PATH', realpath( get_stylesheet_directory() ) . DIRECTORY_SEPARATOR );
+define( 'CRDMBASIC_APP_VERSION', '0.2.1' );
+define( 'CRDMBASIC_TEMPLATE_URL', trailingslashit( get_stylesheet_directory_uri() ) );
+define( 'CRDMBASIC_PARENT_TEMPLATE_PATH', realpath( get_template_directory() ) . DIRECTORY_SEPARATOR );
+define( 'CRDMBASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_directory_uri() ) );
 
 function init() {
 	add_action( 'after_switch_theme', [ '\\CrdmBasic', 'switch_to_previous_theme_if_incompatible_version_of_wp_or_php' ] );
@@ -24,12 +24,12 @@ function init() {
 }
 
 function load() {
-	require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-	require CRDM_BASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki library
+	require CRDMBASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+	require CRDMBASIC_APP_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'aristath' . DIRECTORY_SEPARATOR . 'kirki' . DIRECTORY_SEPARATOR . 'kirki.php'; // init Kirki library
 
-	( new \Crdm\Setup() );
+	( new Setup() );
 	if ( ! is_admin() ) {
-		( new \Crdm\Front\Init() );
+		( new Front\Init() );
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php declare( strict_types=1 );
 
-namespace Crdm\Customizer;
+namespace CrdmBasic\Customizer;
 
 use Kirki;
 use Kirki_Color;
