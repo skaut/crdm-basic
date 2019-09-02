@@ -1,16 +1,51 @@
-<?php declare( strict_types=1 );
+<?php
+/**
+ * Contains the Content class
+ *
+ * @package crdm-basic
+ */
+
+declare( strict_types=1 );
 
 namespace CrdmBasic\Customizer;
 
 use Kirki;
 use Kirki_Color;
 
+/**
+ * Content configuration
+ *
+ * This class sets up all the customizer options for configuring the look of the content of the webpage.
+ */
 class Content {
 
-	protected $config_id  = '';
-	protected $panel_id   = '';
+	/**
+	 * The ID of the configuration set ("crdm-basic").
+	 *
+	 * @var string $config_id
+	 */
+	protected $config_id = '';
+	/**
+	 * The ID of the panel in which this option is displayed.
+	 *
+	 * @var string $panel_id
+	 */
+	protected $panel_id = '';
+	/**
+	 * The ID of the section in which this option is displayed.
+	 *
+	 * @var string $section_id
+	 */
 	protected $section_id = '';
 
+	/**
+	 * Content class constructor
+	 *
+	 * Adds all the hooks, the section and its controls to the customizer.
+	 *
+	 * @param string $config_id The ID of the configuration set ("crdm-basic").
+	 * @param string $panel_id The ID of the panel in which this option is displayed.
+	 */
 	public function __construct( string $config_id, string $panel_id ) {
 		$this->config_id  = $config_id;
 		$this->panel_id   = $panel_id;
@@ -21,12 +56,22 @@ class Content {
 		$this->init_controls();
 	}
 
+	/**
+	 * Initializes the hooks
+	 *
+	 * Adds all the hooks for the content CSS variables.
+	 */
 	protected function init_hooks() {
 		add_action( 'wp_head', [ $this, 'resolve_and_print_list_css_variables' ], 0 );
 		add_action( 'wp_head', [ $this, 'resolve_and_print_table_css_variables' ], 0 );
 		add_action( 'wp_head', [ $this, 'resolve_and_print_separator_css_variables' ], 0 );
 	}
 
+	/**
+	 * Initializes the section
+	 *
+	 * Adds the section to the customizer.
+	 */
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
@@ -37,6 +82,11 @@ class Content {
 		);
 	}
 
+	/**
+	 * Initializes the controls
+	 *
+	 * Adds all the controls to the section
+	 */
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
@@ -256,6 +306,11 @@ class Content {
 		);
 	}
 
+	/**
+	 * Prints list styles
+	 *
+	 * Computes and prints all the CSS variables used to style lists.
+	 */
 	public function resolve_and_print_list_css_variables() {
 		$h1_font              = get_theme_mod( 'contentH1Font' );
 		$list_primary_color   = '#037b8c';
@@ -274,6 +329,11 @@ class Content {
 		<?php
 	}
 
+	/**
+	 * Prints table styles
+	 *
+	 * Computes and prints all the CSS variables used to style tables.
+	 */
 	public function resolve_and_print_table_css_variables() {
 		$h1_font             = get_theme_mod( 'contentH1Font' );
 		$thead_bg_color      = '#65c3d4';
@@ -328,6 +388,11 @@ class Content {
 		<?php
 	}
 
+	/**
+	 * Prints separator styles
+	 *
+	 * Computes and prints all the CSS variables used to style separators.
+	 */
 	public function resolve_and_print_separator_css_variables() {
 		$h1_font          = get_theme_mod( 'contentH1Font' );
 		$content_hr_color = '#037b8c';
