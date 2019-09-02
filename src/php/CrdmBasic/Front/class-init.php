@@ -1,6 +1,6 @@
 <?php declare( strict_types=1 );
 
-namespace Crdm\Front;
+namespace CrdmBasic\Front;
 
 final class Init {
 
@@ -50,23 +50,23 @@ final class Init {
 
 	public function load_all_styles() {
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'generatepress-rtl', CRDM_BASIC_PARENT_TEMPLATE_URL . 'rtl.css', [], CRDM_BASIC_APP_VERSION );
+			wp_enqueue_style( 'generatepress-rtl', CRDMBASIC_PARENT_TEMPLATE_URL . 'rtl.css', [], CRDMBASIC_APP_VERSION );
 		}
 
 		wp_enqueue_style(
 			'crdm-main',
-			CRDM_BASIC_TEMPLATE_URL . 'frontend/index.css',
+			CRDMBASIC_TEMPLATE_URL . 'frontend/index.css',
 			[ 'generate-style' ],
-			CRDM_BASIC_APP_VERSION
+			CRDMBASIC_APP_VERSION
 		);
 	}
 
 	public function load_all_scripts() {
 		wp_enqueue_script(
 			'crdm-main',
-			CRDM_BASIC_TEMPLATE_URL . 'frontend/index.js',
+			CRDMBASIC_TEMPLATE_URL . 'frontend/index.js',
 			[ 'jquery' ],
-			CRDM_BASIC_APP_VERSION,
+			CRDMBASIC_APP_VERSION,
 			true
 		);
 	}
@@ -115,11 +115,11 @@ final class Init {
 			?>
 			<div class="crdm_page-header_captions">
 				<?php
-				do_action( 'crdm_basic_before_page_header_title' );
+				do_action( 'crdmbasic_before_page_header_title' );
 				?>
 				<h1><?php the_title(); ?></h1>
 				<?php
-				do_action( 'crdm_basic_after_page_header_title' );
+				do_action( 'crdmbasic_after_page_header_title' );
 				?>
 			</div>
 		</div>

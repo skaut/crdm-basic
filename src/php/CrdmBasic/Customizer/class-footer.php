@@ -1,10 +1,10 @@
 <?php declare( strict_types=1 );
 
-namespace Crdm\Customizer;
+namespace CrdmBasic\Customizer;
 
 use Kirki;
 
-class Sidebar {
+class Footer {
 
 	protected $config_id  = '';
 	protected $panel_id   = '';
@@ -13,7 +13,7 @@ class Sidebar {
 	public function __construct( string $config_id, string $panel_id ) {
 		$this->config_id  = $config_id;
 		$this->panel_id   = $panel_id;
-		$this->section_id = $panel_id . '_sidebar';
+		$this->section_id = $panel_id . '_footer';
 
 		$this->init_section();
 		$this->init_controls();
@@ -23,7 +23,7 @@ class Sidebar {
 		Kirki::add_section(
 			$this->section_id,
 			[
-				'title' => esc_attr__( 'Sidebars', 'crdm-basic' ),
+				'title' => esc_attr__( 'Footer', 'crdm-basic' ),
 				'panel' => $this->panel_id,
 			]
 		);
@@ -34,7 +34,7 @@ class Sidebar {
 			$this->config_id,
 			[
 				'type'      => 'background',
-				'settings'  => 'sidebarBg',
+				'settings'  => 'footerBg',
 				'label'     => esc_attr__( 'Background', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => [
@@ -47,26 +47,7 @@ class Sidebar {
 				],
 				'output'    => [
 					[
-						'element' => '.sidebar .widget',
-					],
-				],
-				'transport' => 'auto',
-			]
-		);
-
-		Kirki::add_field(
-			$this->config_id,
-			[
-				'type'      => 'color',
-				'settings'  => 'sidebarBoxshadowColor',
-				'label'     => esc_attr__( 'Box shadow color', 'crdm-basic' ),
-				'section'   => $this->section_id,
-				'default'   => 'rgba(240, 240, 240, 0.75)',
-				'output'    => [
-					[
-						'element'       => '.sidebar .widget',
-						'property'      => 'box-shadow',
-						'value_pattern' => '0 -5px 0 0 $, 0 5px 0 0 $',
+						'element' => '.footer-widgets',
 					],
 				],
 				'transport' => 'auto',
@@ -77,7 +58,7 @@ class Sidebar {
 			$this->config_id,
 			[
 				'type'      => 'typography',
-				'settings'  => 'sidebarTitlesFont',
+				'settings'  => 'footerTitlesFont',
 				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => [
@@ -86,12 +67,12 @@ class Sidebar {
 					'font-size'      => '20px',
 					'line-height'    => '1.5',
 					'letter-spacing' => 'inherit',
-					'color'          => '#000000',
+					'color'          => '#4e4e4d',
 					'text-transform' => 'none',
 				],
 				'output'    => [
 					[
-						'element' => '.sidebar .widget .widget-title',
+						'element' => '.footer-widgets .widget-title',
 					],
 				],
 				'transport' => 'auto',
@@ -102,7 +83,7 @@ class Sidebar {
 			$this->config_id,
 			[
 				'type'      => 'typography',
-				'settings'  => 'sidebarFont',
+				'settings'  => 'footerFont',
 				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => [
@@ -111,11 +92,11 @@ class Sidebar {
 					'font-size'      => '17px',
 					'line-height'    => '1.5',
 					'letter-spacing' => 'inherit',
-					'color'          => '#3a3a3a',
+					'color'          => '#9e9d9b',
 				],
 				'output'    => [
 					[
-						'element' => '.sidebar .widget',
+						'element' => '.footer-widgets',
 					],
 				],
 				'transport' => 'auto',
@@ -126,17 +107,13 @@ class Sidebar {
 			$this->config_id,
 			[
 				'type'      => 'color',
-				'settings'  => 'sidebarLinksColor',
+				'settings'  => 'footerLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => '#037b8c',
 				'output'    => [
 					[
-						'element'  => '.sidebar .widget a, .sidebar .widget a:visited, .sidebar .widget a:hover',
-						'property' => 'color',
-					],
-					[
-						'element'  => '.simcal-calendar-head .simcal-nav .simcal-nav-button',
+						'element'  => '.footer-widgets a, .footer-widgets a:visited, .footer-widgets a:hover',
 						'property' => 'color',
 					],
 				],
