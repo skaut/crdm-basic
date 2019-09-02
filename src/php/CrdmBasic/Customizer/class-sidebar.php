@@ -1,15 +1,50 @@
-<?php declare( strict_types=1 );
+<?php
+/**
+ * Contains the Sidebar class
+ *
+ * @package crdm-basic
+ */
+
+declare( strict_types=1 );
 
 namespace CrdmBasic\Customizer;
 
 use Kirki;
 
+/**
+ * Sidebar configuration
+ *
+ * This class sets up all the customizer options for configuring the sidebar.
+ */
 class Sidebar {
 
-	protected $config_id  = '';
-	protected $panel_id   = '';
+	/**
+	 * The ID of the configuration set ("crdm-basic").
+	 *
+	 * @var string $config_id
+	 */
+	protected $config_id = '';
+	/**
+	 * The ID of the panel in which this option is displayed.
+	 *
+	 * @var string $panel_id
+	 */
+	protected $panel_id = '';
+	/**
+	 * The ID of the section in which this option is displayed.
+	 *
+	 * @var string $section_id
+	 */
 	protected $section_id = '';
 
+	/**
+	 * Sidebar class constructor
+	 *
+	 * Adds the section and its controls to the customizer.
+	 *
+	 * @param string $config_id The ID of the configuration set ("crdm-basic").
+	 * @param string $panel_id The ID of the panel in which this option is displayed.
+	 */
 	public function __construct( string $config_id, string $panel_id ) {
 		$this->config_id  = $config_id;
 		$this->panel_id   = $panel_id;
@@ -19,6 +54,11 @@ class Sidebar {
 		$this->init_controls();
 	}
 
+	/**
+	 * Initializes the section
+	 *
+	 * Adds the section to the customizer.
+	 */
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
@@ -29,6 +69,11 @@ class Sidebar {
 		);
 	}
 
+	/**
+	 * Initializes the controls
+	 *
+	 * Adds all the controls to the section
+	 */
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
