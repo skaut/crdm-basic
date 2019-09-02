@@ -50,7 +50,7 @@ final class Init {
 
 	public function load_all_styles() {
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'generatepress-rtl', CRDM_BASIC_PARENT_TEMPLATE_URL . 'rtl.css' );
+			wp_enqueue_style( 'generatepress-rtl', CRDM_BASIC_PARENT_TEMPLATE_URL . 'rtl.css', [], CRDM_BASIC_APP_VERSION );
 		}
 
 		wp_enqueue_style(
