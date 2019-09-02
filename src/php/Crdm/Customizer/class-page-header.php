@@ -4,7 +4,7 @@ namespace Crdm\Customizer;
 
 use Kirki;
 
-class PageHeader {
+class Page_Header {
 
 	protected $config_id  = '';
 	protected $panel_id   = '';

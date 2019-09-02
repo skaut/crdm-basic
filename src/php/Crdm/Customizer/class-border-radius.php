@@ -4,7 +4,7 @@ namespace Crdm\Customizer;
 
 use Kirki;
 
-class BorderRadius {
+class Border_Radius {
 
 	protected $config_id  = '';
 	protected $panel_id   = '';

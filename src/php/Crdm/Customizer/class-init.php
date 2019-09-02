@@ -38,12 +38,12 @@ class Init {
 	}
 
 	protected function init_sections_and_controls() {
-		( new ColorVariant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
+		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Background( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
-		( new BorderRadius( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
+		( new Border_Radius( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Menu( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Sidebar( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
-		( new PageHeader( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
+		( new Page_Header( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Content( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Footer( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 	}

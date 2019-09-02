@@ -4,7 +4,7 @@ namespace Crdm\Customizer;
 
 use Kirki;
 
-class ColorVariant {
+class Color_Variant {
 
 	protected $config_id  = '';
 	protected $panel_id   = '';
