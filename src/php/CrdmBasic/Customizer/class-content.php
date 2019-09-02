@@ -330,49 +330,93 @@ class Content {
 	}
 
 	/**
+	 * Gets background color
+	 *
+	 * Gets the theme background color.
+	 *
+	 * @return array {
+	 *     All fields are mandatory.
+	 *
+	 *     @type string $background-color The theme background color.
+	 * }
+	 */
+	private static function get_bg_color() {
+		$bg_color = get_theme_mod( 'contentBg' );
+		if ( empty( $bg_color ) || ! isset( $bg_color['background-color'] ) || substr( $bg_color['background-color'], 0, 1 ) !== '#' ) {
+			return get_theme_mod( 'webBg' );
+		}
+		return $bg_color;
+	}
+
+	/**
+	 * Checks whether the web is dark
+	 *
+	 * Checks whether the background is overall dark.
+	 *
+	 * @param array $bg_color {
+	 *     All fields are mandatory.
+	 *
+	 *     @type string $background-color The theme background color.
+	 * }
+	 *
+	 * @return bool True if the web is dark.
+	 */
+	private static function is_web_dark( array $bg_color ) {
+		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
+			return 125 > Kirki_Color::get_brightness( $bg_color['background-color'] );
+		}
+		return false;
+	}
+
+	/**
+	 * Gets the background color for `<thead>`
+	 *
+	 * Computes the background color from the text color.
+	 *
+	 * @param array $h1_font {
+	 *     All fields are mandatory.
+	 *
+	 *     @type string color Heading 1 text color.
+	 * }
+	 * @param bool  $web_is_dark Whether the web is overall dark.
+	 */
+	private static function get_thead_bg_color( array $h1_font, bool $web_is_dark ) {
+		if ( ! empty( $h1_font ) && isset( $h1_font['color'] ) ) {
+			return Kirki_Color::adjust_brightness( $h1_font['color'], $web_is_dark ? -70 : 70 );
+		}
+		return '#65c3d4';
+	}
+
+	/**
+	 * Gets the odd row background color
+	 *
+	 * Computes the background color for odd rows of a table.
+	 *
+	 * @return string The background color as CSS hex code.
+	 */
+	private static function get_odd_row_bg_color() {
+		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
+			return ( Kirki_Color::brightness_difference( $bg_color['background-color'], '#ffffff' ) < 10 ) ? '#eeeeee' : '#ffffff';
+		}
+		return '#ffffff';
+	}
+
+	/**
 	 * Prints table styles
 	 *
 	 * Computes and prints all the CSS variables used to style tables.
 	 */
 	public function resolve_and_print_table_css_variables() {
 		$h1_font             = get_theme_mod( 'contentH1Font' );
-		$thead_bg_color      = '#65c3d4';
-		$thead_text_color    = '#ffffff';
-		$odd_row_bg_color    = '#ffffff';
-		$even_row_bg_color   = '#f6f6f6';
-		$foot_row_bg_color   = '#dddddd';
+		$bg_color            = self::get_bg_color();
+		$web_is_dark         = self::is_web_dark( $bg_color );
+		$thead_bg_color      = self::get_thead_bg_color( $h1_font, $web_is_dark );
+		$thead_text_color    = ( 100 < Kirki_Color::get_brightness( $thead_bg_color ) ) ? '#ffffff' : '#222222';
+		$odd_row_bg_color    = self::get_odd_row_bg_color();
+		$even_row_bg_color   = Kirki_Color::adjust_brightness( $odd_row_bg_color, - 10 );
+		$foot_row_bg_color   = Kirki_Color::adjust_brightness( $even_row_bg_color, - 25 );
 		$row_text_color      = '#3f3f3f';
 		$foot_row_text_color = '#3f3f3f';
-
-		$bg_color = get_theme_mod( 'contentBg' );
-		if ( empty( $bg_color ) || ! isset( $bg_color['background-color'] ) || substr( $bg_color['background-color'], 0, 1 ) !== '#' ) {
-			$bg_color = get_theme_mod( 'webBg' );
-		}
-		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
-			$web_is_dark = ( 125 > Kirki_Color::get_brightness( $bg_color['background-color'] ) ) ? true : false;
-		} else {
-			$web_is_dark = false;
-		}
-
-		if ( ! empty( $h1_font ) && isset( $h1_font['color'] ) ) {
-			$steps = 70;
-			if ( $web_is_dark ) {
-				$steps *= - 1;
-			}
-			$thead_bg_color   = Kirki_Color::adjust_brightness( $h1_font['color'], $steps );
-			$thead_text_color = ( 100 < Kirki_Color::get_brightness( $thead_bg_color ) ) ? '#ffffff' : '#222222';
-		}
-
-		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
-			$odd_row_bg_color    = ( Kirki_Color::brightness_difference( $bg_color['background-color'], '#ffffff' ) < 10 ) ? '#eeeeee' : '#ffffff';
-			$even_row_bg_color   = Kirki_Color::adjust_brightness( $odd_row_bg_color, - 10 );
-			$foot_row_bg_color   = Kirki_Color::adjust_brightness( $even_row_bg_color, - 25 );
-			$foot_row_text_color = ( 125 < Kirki_Color::get_brightness( $foot_row_text_color ) ) ? '#eeeeee' : $foot_row_text_color;
-
-			if ( '#cccccc' === $odd_row_bg_color ) {
-				$row_text_color = '#ffffff';
-			}
-		}
 		?>
 		<style id="crdm_basic-css-vars-table">
 			:root {
