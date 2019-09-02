@@ -41,7 +41,7 @@ final class Init {
 			'generate_show_title',
 			function ( $show ) {
 				// Hide default main title if the page has featured image.
-				if ( is_page() && has_post_thumbnail() ) {
+				if ( is_page() === true && has_post_thumbnail() === true ) {
 					return false;
 				}
 

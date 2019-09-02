@@ -107,7 +107,7 @@ function switch_to_previous_theme_if_incompatible_version_of_wp_or_php() {
 		}
 
 		// Switches back to previous theme.
-		switch_theme( get_option( 'theme_switched' ) );
+		switch_theme( get_option( 'theme_switched', '' ) );
 
 		return false;
 	}

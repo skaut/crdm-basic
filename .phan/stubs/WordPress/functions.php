@@ -8,7 +8,7 @@
 function add_action( $a, $b, $c = '' ) {
 }
 
-function add_filter( $a, $b ) {
+function add_filter( $a, $b, $c ) {
 }
 
 function apply_filters( $a, $b ) {
@@ -62,7 +62,7 @@ function get_template_directory_uri() {
 }
 
 function get_theme_mod( $a ) {
-	return '';
+	return [];
 }
 
 function has_post_thumbnail() {
@@ -73,7 +73,7 @@ function is_admin() {
 	return false;
 }
 
-function is_page( $a ) {
+function is_page() {
 	return false;
 }
 
@@ -81,30 +81,30 @@ function is_rtl() {
 	return false;
 }
 
-function remove_action( $a, $b ) {
+function remove_action( $a, $b, $c = '' ) {
 	return false;
 }
 
 function switch_theme( $a ) {
 }
 
-function the_post_thumbnail() {
+function the_post_thumbnail( $a, $b ) {
 }
 
 function the_title() {
 }
 
-function the_title_attribute() {
+function the_title_attribute( $a ) {
 }
 
 function trailingslashit( $a ) {
 	return '';
 }
 
-function wp_enqueue_script( $a ) {
+function wp_enqueue_script( $a, $b, $c, $d, $e ) {
 }
 
-function wp_enqueue_style( $a ) {
+function wp_enqueue_style( $a, $b, $c, $d ) {
 }
 
 function wp_rand( $a, $b ) {
