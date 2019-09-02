@@ -22,9 +22,9 @@ class Content {
 	}
 
 	protected function init_hooks() {
-		add_action( 'wp_head', [ $this, 'resolveAndPrintListCssVariables' ], 0 );
-		add_action( 'wp_head', [ $this, 'resolveAndPrintTableCssVariables' ], 0 );
-		add_action( 'wp_head', [ $this, 'resolveAndPrintSeparatorCssVariables' ], 0 );
+		add_action( 'wp_head', [ $this, 'resolve_and_print_list_css_variables' ], 0 );
+		add_action( 'wp_head', [ $this, 'resolve_and_print_table_css_variables' ], 0 );
+		add_action( 'wp_head', [ $this, 'resolve_and_print_separator_css_variables' ], 0 );
 	}
 
 	protected function init_section() {
@@ -256,88 +256,88 @@ class Content {
 		);
 	}
 
-	public function resolveAndPrintListCssVariables() {
-		$h1Font             = get_theme_mod( 'contentH1Font' );
-		$listPrimaryColor   = '#037b8c';
-		$listSecondaryColor = '#65c3d4';
-		if ( ! empty( $h1Font ) && isset( $h1Font['color'] ) ) {
-			$listPrimaryColor   = $h1Font['color'];
-			$listSecondaryColor = Kirki_Color::adjust_brightness( $listPrimaryColor, 62 );
+	public function resolve_and_print_list_css_variables() {
+		$h1_font              = get_theme_mod( 'contentH1Font' );
+		$list_primary_color   = '#037b8c';
+		$list_secondary_color = '#65c3d4';
+		if ( ! empty( $h1_font ) && isset( $h1_font['color'] ) ) {
+			$list_primary_color   = $h1_font['color'];
+			$list_secondary_color = Kirki_Color::adjust_brightness( $list_primary_color, 62 );
 		}
 		?>
 		<style id="crdm_basic-css-vars-list">
 			:root {
-				--listPrimaryColor: <?php echo esc_html( $listPrimaryColor ); ?>;
-				--listSecondaryColor: <?php echo esc_html( $listSecondaryColor ); ?>;
+				--listPrimaryColor: <?php echo esc_html( $list_primary_color ); ?>;
+				--listSecondaryColor: <?php echo esc_html( $list_secondary_color ); ?>;
 			}
 		</style>
 		<?php
 	}
 
-	public function resolveAndPrintTableCssVariables() {
-		$h1Font           = get_theme_mod( 'contentH1Font' );
-		$theadBgColor     = '#65c3d4';
-		$theadTextColor   = '#ffffff';
-		$oddRowBgColor    = '#ffffff';
-		$evenRowBgColor   = '#f6f6f6';
-		$footRowBgColor   = '#dddddd';
-		$rowTextColor     = '#3f3f3f';
-		$footRowTextColor = '#3f3f3f';
+	public function resolve_and_print_table_css_variables() {
+		$h1_font             = get_theme_mod( 'contentH1Font' );
+		$thead_bg_color      = '#65c3d4';
+		$thead_text_color    = '#ffffff';
+		$odd_row_bg_color    = '#ffffff';
+		$even_row_bg_color   = '#f6f6f6';
+		$foot_row_bg_color   = '#dddddd';
+		$row_text_color      = '#3f3f3f';
+		$foot_row_text_color = '#3f3f3f';
 
-		$bgColor = get_theme_mod( 'contentBg' );
-		if ( empty( $bgColor ) || ! isset( $bgColor['background-color'] ) || substr( $bgColor['background-color'], 0, 1 ) != '#' ) {
-			$bgColor = get_theme_mod( 'webBg' );
+		$bg_color = get_theme_mod( 'contentBg' );
+		if ( empty( $bg_color ) || ! isset( $bg_color['background-color'] ) || substr( $bg_color['background-color'], 0, 1 ) !== '#' ) {
+			$bg_color = get_theme_mod( 'webBg' );
 		}
-		if ( ! empty( $bgColor ) && isset( $bgColor['background-color'] ) && substr( $bgColor['background-color'], 0, 1 ) === '#' ) {
-			$webIsDark = ( 125 > Kirki_Color::get_brightness( $bgColor['background-color'] ) ) ? true : false;
+		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
+			$web_is_dark = ( 125 > Kirki_Color::get_brightness( $bg_color['background-color'] ) ) ? true : false;
 		} else {
-			$webIsDark = false;
+			$web_is_dark = false;
 		}
 
-		if ( ! empty( $h1Font ) && isset( $h1Font['color'] ) ) {
+		if ( ! empty( $h1_font ) && isset( $h1_font['color'] ) ) {
 			$steps = 70;
-			if ( $webIsDark ) {
+			if ( $web_is_dark ) {
 				$steps *= - 1;
 			}
-			$theadBgColor   = Kirki_Color::adjust_brightness( $h1Font['color'], $steps );
-			$theadTextColor = ( 100 < Kirki_Color::get_brightness( $theadBgColor ) ) ? '#ffffff' : '#222222';
+			$thead_bg_color   = Kirki_Color::adjust_brightness( $h1_font['color'], $steps );
+			$thead_text_color = ( 100 < Kirki_Color::get_brightness( $thead_bg_color ) ) ? '#ffffff' : '#222222';
 		}
 
-		if ( ! empty( $bgColor ) && isset( $bgColor['background-color'] ) && substr( $bgColor['background-color'], 0, 1 ) === '#' ) {
-			$oddRowBgColor    = ( Kirki_Color::brightness_difference( $bgColor['background-color'], '#ffffff' ) < 10 ) ? '#eeeeee' : '#ffffff';
-			$evenRowBgColor   = Kirki_Color::adjust_brightness( $oddRowBgColor, - 10 );
-			$footRowBgColor   = Kirki_Color::adjust_brightness( $evenRowBgColor, - 25 );
-			$footRowTextColor = ( 125 < Kirki_Color::get_brightness( $footRowTextColor ) ) ? '#eeeeee' : $footRowTextColor;
+		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
+			$odd_row_bg_color    = ( Kirki_Color::brightness_difference( $bg_color['background-color'], '#ffffff' ) < 10 ) ? '#eeeeee' : '#ffffff';
+			$even_row_bg_color   = Kirki_Color::adjust_brightness( $odd_row_bg_color, - 10 );
+			$foot_row_bg_color   = Kirki_Color::adjust_brightness( $even_row_bg_color, - 25 );
+			$foot_row_text_color = ( 125 < Kirki_Color::get_brightness( $foot_row_text_color ) ) ? '#eeeeee' : $foot_row_text_color;
 
-			if ( $oddRowBgColor === '#cccccc' ) {
-				$rowTextColor = '#ffffff';
+			if ( '#cccccc' === $odd_row_bg_color ) {
+				$row_text_color = '#ffffff';
 			}
 		}
 		?>
 		<style id="crdm_basic-css-vars-table">
 			:root {
-				--theadBgColor: <?php echo esc_html( $theadBgColor ); ?>;
-				--theadTextColor: <?php echo esc_html( $theadTextColor ); ?>;
-				--oddRowBgColor: <?php echo esc_html( $oddRowBgColor ); ?>;
-				--evenRowBgColor: <?php echo esc_html( $evenRowBgColor ); ?>;
-				--footRowBgColor: <?php echo esc_html( $footRowBgColor ); ?>;
-				--rowTextColor: <?php echo esc_html( $rowTextColor ); ?>;
-				--footRowTextColor: <?php echo esc_html( $footRowTextColor ); ?>;
+				--theadBgColor: <?php echo esc_html( $thead_bg_color ); ?>;
+				--theadTextColor: <?php echo esc_html( $thead_text_color ); ?>;
+				--oddRowBgColor: <?php echo esc_html( $odd_row_bg_color ); ?>;
+				--evenRowBgColor: <?php echo esc_html( $even_row_bg_color ); ?>;
+				--footRowBgColor: <?php echo esc_html( $foot_row_bg_color ); ?>;
+				--rowTextColor: <?php echo esc_html( $row_text_color ); ?>;
+				--footRowTextColor: <?php echo esc_html( $foot_row_text_color ); ?>;
 			}
 		</style>
 		<?php
 	}
 
-	public function resolveAndPrintSeparatorCssVariables() {
-		$h1Font         = get_theme_mod( 'contentH1Font' );
-		$contentHrColor = '#037b8c';
-		if ( ! empty( $h1Font ) && isset( $h1Font['color'] ) ) {
-			$contentHrColor = $h1Font['color'];
+	public function resolve_and_print_separator_css_variables() {
+		$h1_font          = get_theme_mod( 'contentH1Font' );
+		$content_hr_color = '#037b8c';
+		if ( ! empty( $h1_font ) && isset( $h1_font['color'] ) ) {
+			$content_hr_color = $h1_font['color'];
 		}
 		?>
 		<style id="crdm_basic-css-vars-separator">
 			:root {
-				--contentHrColor: <?php echo esc_html( $contentHrColor ); ?>;
+				--contentHrColor: <?php echo esc_html( $content_hr_color ); ?>;
 			}
 		</style>
 		<?php

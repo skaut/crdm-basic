@@ -13,7 +13,7 @@ define( 'CRDM_BASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_director
 class CrdmBasicTheme {
 
 	public function __construct() {
-		add_action( 'after_switch_theme', [ $this, 'switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp' ] );
+		add_action( 'after_switch_theme', [ $this, 'switch_to_previous_theme_if_incompatible_version_of_wp_or_php' ] );
 
 		// if incompatible version of WP / PHP => don´t init
 		if ( ! $this->is_compatible_version_of_wp() || ! $this->is_compatible_version_of_php() ) {
@@ -49,13 +49,13 @@ class CrdmBasicTheme {
 		return false;
 	}
 
-	public function switchToPreviousThemeIfIncompatibleVersionOfWpOrPhp() {
+	public function switch_to_previous_theme_if_incompatible_version_of_wp_or_php() {
 		if ( ! $this->is_compatible_version_of_php() || ! $this->is_compatible_version_of_wp() ) {
 			if ( ! $this->is_compatible_version_of_wp() ) {
 				add_action(
 					'admin_notices',
 					function () {
-						$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires WordPress 4.9.8 or newer!', 'crdm-basic' ), 'warning' );
+						$this->show_admin_notice( esc_html__( '"CRDM - Basic" theme requires WordPress 4.9.8 or newer!', 'crdm-basic' ), 'warning' );
 					}
 				);
 			}
@@ -64,7 +64,7 @@ class CrdmBasicTheme {
 				add_action(
 					'admin_notices',
 					function () {
-						$this->showAdminNotice( esc_html__( '"CRDM - Basic" theme requires PHP 7.0 or newer!', 'crdm-basic' ), 'warning' );
+						$this->show_admin_notice( esc_html__( '"CRDM - Basic" theme requires PHP 7.0 or newer!', 'crdm-basic' ), 'warning' );
 					}
 				);
 			}
@@ -78,7 +78,7 @@ class CrdmBasicTheme {
 		return true;
 	}
 
-	public function showAdminNotice( $message, $type = 'warning' ) {
+	public function show_admin_notice( $message, $type = 'warning' ) {
 		$class = 'notice notice-' . $type . ' is-dismissible';
 		printf(
 			'<div class="%1$s"><p>%2$s</p><button type="button" class="notice-dismiss">
@@ -91,5 +91,5 @@ class CrdmBasicTheme {
 
 }
 
-global $crdmBasicTheme;
-$crdmBasicTheme = new CrdmBasicTheme();
+global $crdm_basic_theme;
+$crdm_basic_theme = new CrdmBasicTheme();
