@@ -85,7 +85,7 @@ function show_admin_notice( $message, $type = 'warning' ) {
 	<span class="screen-reader-text">' . esc_html__( 'Close', 'crdm-basic' ) . '</span>
 </button></div>',
 		esc_attr( $class ),
-		$message
+		esc_html( $message )
 	);
 }
 
