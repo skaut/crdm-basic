@@ -1,10 +1,9 @@
 import '../../css/frontend/main.scss';
-import jQuery from 'jquery';
-import cssVars from './cssVars';
+import cssVars from 'css-vars-ponyfill';
 import {browserSupportCssVariables} from './utils';
 
 'use strict';
 
-/*if (!browserSupportCssVariables()) {
+if ( ! browserSupportCssVariables() ) {
     cssVars(); // css variables polyfill for IE9+
-}*/
+}
