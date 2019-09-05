@@ -25,6 +25,9 @@
 		"type": "git",
 		"url": "git+https://github.com/skaut/crdm-basic.git"
 	},
+	"dependencies": {
+		"css-vars-ponyfill": "^2.1.1"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
 		"@babel/preset-env": "^7.5.5",
