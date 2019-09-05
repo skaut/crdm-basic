@@ -8,7 +8,3 @@ import {browserSupportCssVariables} from './utils';
 /*if (!browserSupportCssVariables()) {
     cssVars(); // css variables polyfill for IE9+
 }*/
-
-(function ($) {
-
-})(jQuery);
