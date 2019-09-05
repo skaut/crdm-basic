@@ -1,4 +1,4 @@
-import '../../css/frontend/main.scss';
+import '../../scss/frontend/main.scss';
 import cssVars from 'css-vars-ponyfill';
 import {browserSupportCssVariables} from './utils';
 
