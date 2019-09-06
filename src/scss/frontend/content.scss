@@ -1,12 +1,13 @@
 body {
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	grid-column-gap: 50px;
 	grid-template-rows: 100px 1fr;
 }
 
 .site-main {
 
-	.inside-article, .comments-area {
+	.inside-article,
+	.comments-area {
 		background-color: transparent;
 	}
 
@@ -16,51 +17,53 @@ body {
 	}
 
 	.comment-content {
-		background-color: #ffffff;
+		background-color: #fff;
 	}
 
-	.entry-content, .entry-summary, .page-content {
+	.entry-content,
+	.entry-summary,
+	.page-content {
 		line-height: 1.4;
 	}
 
 	h1 {
 		font-size: 2.3em;
-		font-weight: bold;
+		font-weight: 700;
 		line-height: 1.15;
 		color: #037b8c;
 	}
 
 	h2 {
 		font-size: 2.2em;
-		font-weight: normal;
+		font-weight: 400;
 		line-height: 1.2;
 		color: #037b8c;
 	}
 
 	h3 {
 		font-size: 1.8em;
-		font-weight: bold;
+		font-weight: 700;
 		line-height: 1.25;
 		color: #00011f;
 	}
 
 	h4 {
 		font-size: 1.8em;
-		font-weight: normal;
+		font-weight: 400;
 		line-height: 1.25;
 		color: #037b8c;
 	}
 
 	h5 {
 		font-size: 1.5em;
-		font-weight: bold;
+		font-weight: 700;
 		line-height: 1.3;
 		color: #00011f;
 	}
 
 	h6 {
 		font-size: 1.5em;
-		font-weight: normal;
+		font-weight: 400;
 		line-height: 1.3;
 		color: #00011f;
 	}
@@ -90,39 +93,39 @@ body {
 	ul li {
 		list-style-type: none;
 
-		li:before {
-			color: var(--listSecondaryColor);
+		&::before {
+			content: "\2022";
+			padding-right: 0.4em;
+			color: var(--listPrimaryColor);
+			font-size: 1.3em;
 		}
-	}
-
-	ul li:before {
-		content: '\2022';
-		padding-right: 0.4em;
-		color: var(--listPrimaryColor);
-		font-size: 1.3em;
 	}
 
 	ol {
 		list-style: none;
 		counter-reset: item;
-	}
 
-	ol li {
-		counter-increment: item;
-		position: relative;
+		li {
+			counter-increment: item;
+			position: relative;
 
-		li:before {
-			font-weight: normal;
-			color: var(--listSecondaryColor);
+			&::before {
+				content: counter(item) ".";
+				padding-right: 0.4em;
+				font-size: inherit;
+				font-weight: 700;
+				color: var(--listPrimaryColor);
+			}
 		}
 	}
 
-	ol li:before {
-		content: counter(item) ".";
-		padding-right: 0.4em;
-		font-size: inherit;
-		font-weight: bold;
-		color: var(--listPrimaryColor);
+	ul li li::before {
+		color: var(--listSecondaryColor);
+	}
+
+	ol li li::before {
+		font-weight: 400;
+		color: var(--listSecondaryColor);
 	}
 
 	table {
@@ -132,16 +135,22 @@ body {
 			color: var(--theadTextColor);
 		}
 
-		tbody tr:nth-child(odd) {
-			background-color: var(--oddRowBgColor);
-		}
+		tbody {
 
-		tbody tr:nth-child(even) {
-			background-color: var(--evenRowBgColor);
-		}
+			tr {
 
-		tbody td {
-			color: var(--rowTextColor);
+				&:nth-child(odd) {
+					background-color: var(--oddRowBgColor);
+				}
+
+				&:nth-child(even) {
+					background-color: var(--evenRowBgColor);
+				}
+			}
+
+			td {
+				color: var(--rowTextColor);
+			}
 		}
 
 		tfoot {
