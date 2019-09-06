@@ -6,19 +6,19 @@ table.simcal-calendar-grid {
 
 		th {
 			border: 0;
+
+			&.simcal-current {
+				color: var(--listPrimaryColor) !important;
+			}
+
+			&.simcal-week-day {
+				color: var(--listPrimaryColor) !important;
+				font-weight: 400 !important;
+			}
 		}
 
 		tr:first-child th {
 			border-bottom: 1px solid var(--listPrimaryColor);
-		}
-
-		th.simcal-current {
-			color: var(--listPrimaryColor) !important;
-		}
-
-		th.simcal-week-day {
-			color: var(--listPrimaryColor) !important;
-			font-weight: 400 !important;
 		}
 	}
 
@@ -27,16 +27,16 @@ table.simcal-calendar-grid {
 		td {
 			border: 0;
 			border-left: 1px solid var(--listPrimaryColor);
-		}
 
-		td:first-child {
-			border-left: 0;
+			&:first-child {
+				border-left: 0;
+			}
 		}
 
 		.simcal-day-label.simcal-day-number {
 			background-color: transparent !important;
 			color: var(--listPrimaryColor) !important;
-			font-weight: bold;
+			font-weight: 700;
 		}
 
 		.simcal-day:hover:not(.simcal-day-void) {
@@ -70,7 +70,7 @@ table.simcal-calendar-grid {
 
 	.simcal-calendar-head h3 {
 		color: var(--listPrimaryColor);
-		font-weight: bold;
+		font-weight: 700;
 	}
 }
 
