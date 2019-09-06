@@ -1,0 +1,14 @@
+{
+	"env": {
+		"browser": true
+	},
+	"parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+	"plugins": ["compat"],
+	"extends": "wordpress",
+	"rules": {
+		"compat/compat": "warn"
+	}
+}
