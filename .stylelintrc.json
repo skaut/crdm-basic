@@ -1,12 +1,19 @@
 {
 	"extends": "stylelint-config-wordpress",
 	"plugins": [
-		"stylelint-no-unsupported-browser-features"
+		"stylelint-no-unsupported-browser-features",
+		"stylelint-scss"
 	],
 	"rules": {
 		"plugin/no-unsupported-browser-features": [true, {
 			"severity": "warning",
 			"ignore": "css-sel2"
-		}]
+		}],
+		"at-rule-no-unknown": null,
+		"scss/at-each-key-value-single-line": [true],
+		"scss/at-extend-no-missing-placeholder": [true],
+		"scss/at-if-no-null": [true],
+		"scss/at-import-no-partial-leading-underscore": [true],
+		"scss/at-rule-no-unknown": [true]
 	}
 }
