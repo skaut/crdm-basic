@@ -25,6 +25,9 @@
 		"type": "git",
 		"url": "git+https://github.com/skaut/crdm-basic.git"
 	},
+	"dependencies": {
+		"css-vars-ponyfill": "^2.1.1"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
 		"@babel/preset-env": "^7.5.5",
@@ -33,25 +36,38 @@
 		"copy-webpack-plugin": "^5.0.4",
 		"css-loader": "^3.2.0",
 		"cssnano": "^4.1.10",
+		"eslint": "^6.3.0",
+		"eslint-config-wordpress": "^2.0.0",
+		"eslint-plugin-compat": "^3.3.0",
 		"glob": "^7.1.4",
 		"imagemin-webpack-plugin": "^2.4.2",
 		"md5-file": "^4.0.0",
 		"mini-css-extract-plugin": "^0.8.0",
 		"node-sass": "^4.12.0",
-		"postcss": "^7.0.17",
+		"postcss": "^7.0.18",
 		"postcss-import": "^12.0.1",
 		"postcss-loader": "^3.0.0",
 		"postcss-preset-env": "^6.7.0",
 		"sass-loader": "^7.3.1",
+		"stylelint": "^10.1.0",
+		"stylelint-config-wordpress": "^14.0.0",
+		"stylelint-no-unsupported-browser-features": "^3.0.2",
+		"stylelint-scss": "^3.10.1",
 		"uglifyjs-webpack-plugin": "^2.2.0",
 		"webpack": "^4.39.3",
-		"webpack-cli": "^3.3.7",
+		"webpack-cli": "^3.3.8",
 		"webpack-livereload-plugin": "^2.2.0"
 	},
 	"scripts": {
 		"build": "npm run build:prod",
 		"build:dev": "webpack --mode \"development\" --watch",
-		"build:prod": "webpack --mode \"production\""
+		"build:prod": "webpack --mode \"production\"",
+		"lint": "npm run lint:phpcs; npm run lint:phpmd; npm run lint:phan; npm run lint:eslint; npm run lint:stylelint",
+		"lint:phpcs": "vendor/bin/phpcs",
+		"lint:phpmd": "vendor/bin/phpmd src text phpmd.xml",
+		"lint:phan": "export PHAN_DISABLE_XDEBUG_WARN=1; vendor/bin/phan",
+		"lint:eslint": "eslint src/**/*.js",
+		"lint:stylelint": "stylelint src/**/*.scss"
 	},
 	"browserslist": [
 		">1%",

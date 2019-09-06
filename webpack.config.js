@@ -117,8 +117,8 @@ module.exports = {
             from: './src/php/functions.php',
             to: './../'
         },{
-            from: './src/php/Crdm',
-            to: './../src/php/Crdm'
+            from: './src/php/CrdmBasic',
+            to: './../src/php/CrdmBasic'
         },{
             from: './src/assets',
             to: './../'
