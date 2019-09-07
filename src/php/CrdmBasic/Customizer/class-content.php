@@ -334,7 +334,7 @@ class Content {
 	 *
 	 * Gets the theme background color.
 	 *
-	 * @return array {
+	 * @return bool|array {
 	 *     All fields are mandatory.
 	 *
 	 *     @type string $background-color The theme background color.
@@ -353,7 +353,7 @@ class Content {
 	 *
 	 * Checks whether the background is overall dark.
 	 *
-	 * @param array $bg_color {
+	 * @param bool|array $bg_color {
 	 *     All fields are mandatory.
 	 *
 	 *     @type string $background-color The theme background color.
@@ -361,7 +361,7 @@ class Content {
 	 *
 	 * @return bool True if the web is dark.
 	 */
-	private static function is_web_dark( array $bg_color ) {
+	private static function is_web_dark( $bg_color ) {
 		if ( ! empty( $bg_color ) && isset( $bg_color['background-color'] ) && substr( $bg_color['background-color'], 0, 1 ) === '#' ) {
 			return 125 > Kirki_Color::get_brightness( $bg_color['background-color'] );
 		}
@@ -373,14 +373,14 @@ class Content {
 	 *
 	 * Computes the background color from the text color.
 	 *
-	 * @param array $h1_font {
+	 * @param bool|array $h1_font {
 	 *     All fields are mandatory.
 	 *
 	 *     @type string color Heading 1 text color.
 	 * }
-	 * @param bool  $web_is_dark Whether the web is overall dark.
+	 * @param bool       $web_is_dark Whether the web is overall dark.
 	 */
-	private static function get_thead_bg_color( array $h1_font, bool $web_is_dark ) {
+	private static function get_thead_bg_color( $h1_font, bool $web_is_dark ) {
 		if ( ! empty( $h1_font ) && isset( $h1_font['color'] ) ) {
 			return Kirki_Color::adjust_brightness( $h1_font['color'], $web_is_dark ? -70 : 70 );
 		}
