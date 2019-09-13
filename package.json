@@ -54,7 +54,7 @@
 		"stylelint-no-unsupported-browser-features": "^3.0.2",
 		"stylelint-scss": "^3.10.1",
 		"uglifyjs-webpack-plugin": "^2.2.0",
-		"webpack": "^4.40.0",
+		"webpack": "^4.40.1",
 		"webpack-cli": "^3.3.8",
 		"webpack-livereload-plugin": "^2.2.0"
 	},
