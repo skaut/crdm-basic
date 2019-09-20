@@ -26,7 +26,7 @@
 		"url": "git+https://github.com/skaut/crdm-basic.git"
 	},
 	"dependencies": {
-		"css-vars-ponyfill": "^2.1.1"
+		"css-vars-ponyfill": "^2.1.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.6.0",
@@ -36,7 +36,7 @@
 		"copy-webpack-plugin": "^5.0.4",
 		"css-loader": "^3.2.0",
 		"cssnano": "^4.1.10",
-		"eslint": "^6.3.0",
+		"eslint": "^6.4.0",
 		"eslint-config-wordpress": "^2.0.0",
 		"eslint-plugin-compat": "^3.3.0",
 		"glob": "^7.1.4",
@@ -52,10 +52,10 @@
 		"stylelint": "^10.1.0",
 		"stylelint-config-wordpress": "^14.0.0",
 		"stylelint-no-unsupported-browser-features": "^3.0.2",
-		"stylelint-scss": "^3.10.1",
+		"stylelint-scss": "^3.11.0",
 		"uglifyjs-webpack-plugin": "^2.2.0",
-		"webpack": "^4.39.3",
-		"webpack-cli": "^3.3.8",
+		"webpack": "^4.40.2",
+		"webpack-cli": "^3.3.9",
 		"webpack-livereload-plugin": "^2.2.0"
 	},
 	"scripts": {
