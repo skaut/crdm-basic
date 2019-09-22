@@ -37,6 +37,14 @@ class Background {
 	 */
 	protected $section_id = '';
 
+	private static $default = [
+		'body_image' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
+		'body_repeat' => 'no-repeat',
+		'body_size' => '376px auto',
+		'body_attachment' => 'scroll',
+		'body_position' => 'right top',
+	];
+
 	/**
 	 * Background class constructor
 	 *
@@ -52,6 +60,123 @@ class Background {
 
 		$this->init_section();
 		$this->init_controls();
+
+		add_action('customize_register', [$this, 'customize'], 1000);
+		add_action('wp_enqueue_scripts', [$this, 'add_inline_css']);
+	}
+
+	public function customize($wp_customize)
+	{
+		if ( ! Init::generatepress_module_enabled('generate_package_backgrounds') ) {
+			$wp_customize->add_panel( 'generate_backgrounds_panel', [
+				'capability'     => 'edit_theme_options',
+				'theme_supports' => '',
+				'title'          => __( 'Background Images', 'crdm-basic' ),
+				'priority'		 => 55
+			] );
+
+			$wp_customize->add_section(
+				'generate_backgrounds_body',
+				[
+					'title' => __( 'Body', 'crdm-basic' ),
+					'capability' => 'edit_theme_options',
+					'priority' => 5,
+					'panel' => 'generate_backgrounds_panel',
+				]
+			);
+
+			$wp_customize->add_setting(
+				'generate_background_settings[body_image]', [
+					'default' => self::$default['body_image'],
+					'type' => 'option',
+					'capability' => 'edit_theme_options',
+					'sanitize_callback' => 'esc_url_raw',
+				]
+			);
+
+			$wp_customize->add_control(
+				new \WP_Customize_Image_Control(
+					$wp_customize,
+					'generate_backgrounds-body-image',
+					[
+						'section'    => 'generate_backgrounds_body',
+						'settings'   => 'generate_background_settings[body_image]',
+						'label' => __( 'Body', 'crdm-basic' ),
+					]
+				)
+			);
+
+			$wp_customize->add_setting(
+				'generate_background_settings[body_repeat]',
+				[
+					'default' => self::$default['body_repeat'],
+					'type' => 'option',
+					'sanitize_callback' => 'sanitize_key',
+				]
+			);
+
+			$wp_customize->add_setting(
+				'generate_background_settings[body_size]',
+				[
+					'default' => self::$default['body_size'],
+					'type' => 'option',
+					'sanitize_callback' => 'sanitize_key',
+				]
+			);
+
+			$wp_customize->add_setting(
+				'generate_background_settings[body_attachment]',
+				[
+					'default' => self::$default['body_attachment'],
+					'type' => 'option',
+					'sanitize_callback' => 'sanitize_key',
+				]
+			);
+
+			$wp_customize->add_setting(
+				'generate_background_settings[body_position]', [
+					'default' => self::$default['body_position'],
+					'type' => 'option',
+					'capability' => 'edit_theme_options',
+					'sanitize_callback' => 'esc_html',
+				]
+			);
+
+			/*
+			$wp_customize->add_control(
+				new Background_Image_Customize_Control(
+					$wp_customize,
+					'body_backgrounds_control',
+					[
+						'section' => 'generate_backgrounds_body',
+						'settings' => [
+							'repeat' => 'generate_background_settings[body_repeat]',
+							'size' => 'generate_background_settings[body_size]',
+							'attachment' => 'generate_background_settings[body_attachment]',
+							'position' => 'generate_background_settings[body_position]',
+						],
+					]
+				)
+			);
+			 */
+		}
+	}
+
+	private function inline_css()
+	{
+		$generate_background_settings = wp_parse_args(get_option( 'generate_background_settings', [] ),	self::$default);
+		$background_image = esc_url( $generate_background_settings[ 'body_image' ] );
+		return <<<CSS
+body {
+	background-image: url('$background_image');
+}
+CSS;
+	}
+
+	public function add_inline_css() {
+		wp_register_style('crdm_customizer', false);
+		wp_enqueue_style('crdm_customizer');
+		wp_add_inline_style('crdm_customizer', $this->inline_css());
 	}
 
 	/**
@@ -75,6 +200,7 @@ class Background {
 	 * Adds all the controls to the section
 	 */
 	protected function init_controls() {
+		/*
 		Kirki::add_field(
 			$this->config_id,
 			[
@@ -98,6 +224,7 @@ class Background {
 				'transport' => 'auto',
 			]
 		);
+		 */
 
 		Kirki::add_field(
 			$this->config_id,

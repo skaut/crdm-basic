@@ -343,7 +343,7 @@ class Content {
 	private static function get_bg_color() {
 		$bg_color = get_theme_mod( 'contentBg' );
 		if ( empty( $bg_color ) || ! isset( $bg_color['background-color'] ) || substr( $bg_color['background-color'], 0, 1 ) !== '#' ) {
-			return get_theme_mod( 'webBg' );
+			return get_theme_mod( 'generate_settings[background_color]' );
 		}
 		return $bg_color;
 	}
