@@ -39,10 +39,10 @@ class Background {
 
 	private static $default = [
 		'body_image' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
-		'body_repeat' => 'no-repeat',
-		'body_size' => '376px auto',
+		'body_repeat' => 'repeat',
+		'body_size' => '300px auto',
 		'body_attachment' => 'scroll',
-		'body_position' => 'right top',
+		'body_position' => 'left top',
 	];
 
 	/**
