@@ -76,4 +76,19 @@ class Init {
 		( new Footer( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 	}
 
+	public static function generatepress_module_enabled($module)
+	{
+		if ( ! function_exists( 'generatepress_is_module_active' ) ) {
+			return false;
+		}
+		switch($module)
+		{
+		case 'generate_package_backgrounds':
+			$definition = 'GENERATE_BACKGROUNDS';
+			break;
+		default:
+			return false;
+		}
+		return generatepress_is_module_active($module, $definition);
+	}
 }
