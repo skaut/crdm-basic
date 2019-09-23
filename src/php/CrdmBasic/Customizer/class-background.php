@@ -115,6 +115,20 @@ class Background {
 				]
 			);
 
+			$wp_customize->add_control(
+				'generate_background_settings[body_repeat]',
+				[
+					'type' => 'select',
+					'section' => 'generate_backgrounds_body',
+					'choices' => [
+						'repeat' => esc_html__( 'Repeat', 'crdm-basic' ),
+						'repeat-x' => esc_html__( 'Repeat x', 'crdm-basic' ),
+						'repeat-y' => esc_html__( 'Repeat y', 'crdm-basic' ),
+						'no-repeat' => esc_html__( 'No Repeat', 'crdm-basic' )
+					]
+				],
+			);
+
 			$wp_customize->add_setting(
 				'generate_background_settings[body_size]',
 				[
@@ -165,10 +179,12 @@ class Background {
 	private function inline_css()
 	{
 		$generate_background_settings = wp_parse_args(get_option( 'generate_background_settings', [] ),	self::$default);
-		$background_image = esc_url( $generate_background_settings[ 'body_image' ] );
+		$body_image = esc_url( $generate_background_settings[ 'body_image' ] );
+		$body_repeat = esc_attr( $generate_background_settings[ 'body_repeat' ] );
 		return <<<CSS
 body {
-	background-image: url('$background_image');
+	background-image: url('$body_image');
+	background-repeat: $body_repeat;
 }
 CSS;
 	}
