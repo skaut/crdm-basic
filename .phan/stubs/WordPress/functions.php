@@ -5,6 +5,10 @@
  * @package skaut-google-drive-gallery
  */
 
+function __($a, $b) {
+	return '';
+}
+
 function add_action( $a, $b, $c = '' ) {
 }
 
@@ -31,6 +35,10 @@ function esc_html( $a ) {
 }
 
 function esc_html__( $a, $b ) {
+	return '';
+}
+
+function esc_url( $a ) {
 	return '';
 }
 
@@ -101,11 +109,21 @@ function trailingslashit( $a ) {
 	return '';
 }
 
+function wp_add_inline_style( $a, $b ) {
+}
+
 function wp_enqueue_script( $a, $b, $c, $d, $e ) {
 }
 
-function wp_enqueue_style( $a, $b, $c, $d ) {
+function wp_enqueue_style( $a, $b = '', $c = [], $d = false ) {
+}
+
+function wp_parse_args( $a, $b ) {
+	return [];
 }
 
 function wp_rand( $a, $b ) {
+}
+
+function wp_register_style( $a, $b, $c, $d ) {
 }
