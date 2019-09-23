@@ -42,7 +42,7 @@ class Background {
 		'body_repeat'     => '',
 		'body_size'       => '',
 		'body_attachment' => '',
-		'body_position'   => 'left top',
+		'body_position'   => '',
 	];
 
 	/**
@@ -195,23 +195,17 @@ class Background {
 				]
 			);
 
-			/*
 			$wp_customize->add_control(
-				new Background_Image_Customize_Control(
-					$wp_customize,
-					'body_backgrounds_control',
-					[
-						'section' => 'generate_backgrounds_body',
-						'settings' => [
-							'repeat' => 'generate_background_settings[body_repeat]',
-							'size' => 'generate_background_settings[body_size]',
-							'attachment' => 'generate_background_settings[body_attachment]',
-							'position' => 'generate_background_settings[body_position]',
-						],
-					]
-				)
+				'generate_background_settings[body_position]',
+				[
+					'type'        => 'text',
+					'section'     => 'generate_backgrounds_body',
+					'description' => __( 'left top, x% y%, xpos ypos (px)', 'crdm-basic' ),
+					'input_attrs' => [
+						'placeholder' => __( 'Position', 'crdm-basic' ),
+					],
+				]
 			);
-			 */
 		}
 	}
 
@@ -250,6 +244,7 @@ class Background {
 		$this->print_css_property( $settings, 'background-repeat', 'body_repeat' ) .
 		$this->print_css_property( $settings, 'background-size', 'body_size' ) .
 		$this->print_css_property( $settings, 'background-attachment', 'body_attachment' ) .
+		$this->print_css_property( $settings, 'background-position', 'body_position' ) .
 		'}';
 	}
 
@@ -285,32 +280,6 @@ class Background {
 	 * Adds all the controls to the section
 	 */
 	protected function init_controls() {
-		/*
-		Kirki::add_field(
-			$this->config_id,
-			[
-				'type'      => 'background',
-				'settings'  => 'webBg',
-				'label'     => esc_attr__( 'Webpage background', 'crdm-basic' ),
-				'section'   => $this->section_id,
-				'default'   => [
-					'background-color'      => '#f7f3e2',
-					'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
-					'background-repeat'     => 'repeat',
-					'background-position'   => 'left top',
-					'background-size'       => '300px auto',
-					'background-attachment' => 'scroll',
-				],
-				'output'    => [
-					[
-						'element' => 'body',
-					],
-				],
-				'transport' => 'auto',
-			]
-		);
-		 */
-
 		Kirki::add_field(
 			$this->config_id,
 			[
