@@ -37,12 +37,12 @@ class Background {
 	 */
 	protected $section_id = '';
 
-	private static $default = [
-		'body_image' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
-		'body_repeat' => '',
-		'body_size' => '',
+	const DEFAULT = [
+		'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
+		'body_repeat'     => '',
+		'body_size'       => '',
 		'body_attachment' => 'scroll',
-		'body_position' => 'left top',
+		'body_position'   => 'left top',
 	];
 
 	/**
@@ -61,35 +61,45 @@ class Background {
 		$this->init_section();
 		$this->init_controls();
 
-		add_action('customize_register', [$this, 'customize'], 1000);
-		add_action('wp_enqueue_scripts', [$this, 'add_inline_css']);
+		add_action( 'customize_register', [ $this, 'customize' ], 1000 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ] );
 	}
 
-	public function customize($wp_customize)
-	{
-		if ( ! Init::generatepress_module_enabled('generate_package_backgrounds') ) {
-			$wp_customize->add_panel( 'generate_backgrounds_panel', [
-				'capability'     => 'edit_theme_options',
-				'theme_supports' => '',
-				'title'          => __( 'Background Images', 'crdm-basic' ),
-				'priority'		 => 55
-			] );
+	/**
+	 * Initializes customizer options.
+	 *
+	 * Adds the panel, section, all the settings and controls to the WordPress customizer.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	public function customize( $wp_customize ) {
+		if ( ! Init::generatepress_module_enabled( 'generate_package_backgrounds' ) ) {
+			$wp_customize->add_panel(
+				'generate_backgrounds_panel',
+				[
+					'capability'     => 'edit_theme_options',
+					'theme_supports' => '',
+					'title'          => __( 'Background Images', 'crdm-basic' ),
+					'priority'       => 55,
+				]
+			);
 
 			$wp_customize->add_section(
 				'generate_backgrounds_body',
 				[
-					'title' => __( 'Body', 'crdm-basic' ),
+					'title'      => __( 'Body', 'crdm-basic' ),
 					'capability' => 'edit_theme_options',
-					'priority' => 5,
-					'panel' => 'generate_backgrounds_panel',
+					'priority'   => 5,
+					'panel'      => 'generate_backgrounds_panel',
 				]
 			);
 
 			$wp_customize->add_setting(
-				'generate_background_settings[body_image]', [
-					'default' => self::$default['body_image'],
-					'type' => 'option',
-					'capability' => 'edit_theme_options',
+				'generate_background_settings[body_image]',
+				[
+					'default'           => self::DEFAULT['body_image'],
+					'type'              => 'option',
+					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => 'esc_url_raw',
 				]
 			);
@@ -99,9 +109,9 @@ class Background {
 					$wp_customize,
 					'generate_backgrounds-body-image',
 					[
-						'section'    => 'generate_backgrounds_body',
-						'settings'   => 'generate_background_settings[body_image]',
-						'label' => __( 'Body', 'crdm-basic' ),
+						'section'  => 'generate_backgrounds_body',
+						'settings' => 'generate_background_settings[body_image]',
+						'label'    => __( 'Body', 'crdm-basic' ),
 					]
 				)
 			);
@@ -109,8 +119,8 @@ class Background {
 			$wp_customize->add_setting(
 				'generate_background_settings[body_repeat]',
 				[
-					'default' => self::$default['body_repeat'],
-					'type' => 'option',
+					'default'           => self::DEFAULT['body_repeat'],
+					'type'              => 'option',
 					'sanitize_callback' => 'sanitize_key',
 				]
 			);
@@ -118,22 +128,22 @@ class Background {
 			$wp_customize->add_control(
 				'generate_background_settings[body_repeat]',
 				[
-					'type' => 'select',
+					'type'    => 'select',
 					'section' => 'generate_backgrounds_body',
 					'choices' => [
-						'' => esc_html__( 'Repeat', 'crdm-basic' ),
-						'repeat-x' => esc_html__( 'Repeat x', 'crdm-basic' ),
-						'repeat-y' => esc_html__( 'Repeat y', 'crdm-basic' ),
-						'no-repeat' => esc_html__( 'No Repeat', 'crdm-basic' )
-					]
-				],
+						''          => esc_html__( 'Repeat', 'crdm-basic' ),
+						'repeat-x'  => esc_html__( 'Repeat x', 'crdm-basic' ),
+						'repeat-y'  => esc_html__( 'Repeat y', 'crdm-basic' ),
+						'no-repeat' => esc_html__( 'No Repeat', 'crdm-basic' ),
+					],
+				]
 			);
 
 			$wp_customize->add_setting(
 				'generate_background_settings[body_size]',
 				[
-					'default' => self::$default['body_size'],
-					'type' => 'option',
+					'default'           => self::DEFAULT['body_size'],
+					'type'              => 'option',
 					'sanitize_callback' => 'sanitize_key',
 				]
 			);
@@ -141,31 +151,32 @@ class Background {
 			$wp_customize->add_control(
 				'generate_background_settings[body_size]',
 				[
-					'type' => 'select',
+					'type'    => 'select',
 					'section' => 'generate_backgrounds_body',
 					'choices' => [
-						'' => esc_html__( 'Size (Auto)', 'gp-premium' ),
-						'100' => esc_html__( '100% Width', 'gp-premium' ),
-						'cover' => esc_html__( 'Cover', 'gp-premium' ),
-						'contain' => esc_html__( 'Contain', 'gp-premium' )
-					]
-				],
+						''        => esc_html__( 'Size (Auto)', 'crdm-basic' ),
+						'100'     => esc_html__( '100% Width', 'crdm-basic' ),
+						'cover'   => esc_html__( 'Cover', 'crdm-basic' ),
+						'contain' => esc_html__( 'Contain', 'crdm-basic' ),
+					],
+				]
 			);
 
 			$wp_customize->add_setting(
 				'generate_background_settings[body_attachment]',
 				[
-					'default' => self::$default['body_attachment'],
-					'type' => 'option',
+					'default'           => self::DEFAULT['body_attachment'],
+					'type'              => 'option',
 					'sanitize_callback' => 'sanitize_key',
 				]
 			);
 
 			$wp_customize->add_setting(
-				'generate_background_settings[body_position]', [
-					'default' => self::$default['body_position'],
-					'type' => 'option',
-					'capability' => 'edit_theme_options',
+				'generate_background_settings[body_position]',
+				[
+					'default'           => self::DEFAULT['body_position'],
+					'type'              => 'option',
+					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => 'esc_html',
 				]
 			);
@@ -190,31 +201,52 @@ class Background {
 		}
 	}
 
-	private function print_css_property($generate_background_settings, $cssName, $settingsName, $isUrl = false)
-	{
-		$value = $generate_background_settings[ $settingsName ];
-		if(empty($value))
-		{
+	/**
+	 * Prints a CSS property.
+	 *
+	 * Escapes, formats and returns a CSS property line.
+	 *
+	 * @param array  $settings Parsed background settings for GeneratePress.
+	 * @param string $css_name The name of the CSS property.
+	 * @param string $settings_name The name of the settings field in $generate_background_settings.
+	 * @param bool   $is_url Whether the property is an URL. Default false.
+	 *
+	 * @return string The CSS property line;
+	 */
+	private function print_css_property( $settings, $css_name, $settings_name, $is_url = false ) {
+		$value = $settings[ $settings_name ];
+		if ( empty( $value ) ) {
 			return '';
 		}
-		$value = $isUrl ? 'url(\'' .  esc_url($value) . '\')' : esc_attr($value);
-		return $cssName . ': ' . $value . ';';
+		$value = $is_url ? 'url(\'' . esc_url( $value ) . '\')' : esc_attr( $value );
+		return $css_name . ': ' . $value . ';';
 	}
 
-	private function inline_css()
-	{
-		$settings = wp_parse_args(get_option( 'generate_background_settings', [] ),	self::$default);
+	/**
+	 * Prints the CSS for the background settings.
+	 *
+	 * Return all the CSS properties for the background settings.
+	 *
+	 * @return string CSS string.
+	 */
+	private function inline_css() {
+		$settings = wp_parse_args( get_option( 'generate_background_settings', [] ), self::DEFAULT );
 		return "body {\n" .
-	$this->print_css_property($settings, 'background-image', 'body_image', true) .
-	$this->print_css_property($settings, 'background-repeat', 'body_repeat') .
-	$this->print_css_property($settings, 'background-size', 'body_size') .
-	'}';
+		$this->print_css_property( $settings, 'background-image', 'body_image', true ) .
+		$this->print_css_property( $settings, 'background-repeat', 'body_repeat' ) .
+		$this->print_css_property( $settings, 'background-size', 'body_size' ) .
+		'}';
 	}
 
+	/**
+	 * Adds the CSS to WordPress hooks.
+	 *
+	 * Cretes a new stylesheet and adds all the CSS to it.
+	 */
 	public function add_inline_css() {
-		wp_register_style('crdm_customizer', false);
-		wp_enqueue_style('crdm_customizer');
-		wp_add_inline_style('crdm_customizer', $this->inline_css());
+		wp_register_style( 'crdm_customizer', false, [], CRDMBASIC_APP_VERSION );
+		wp_enqueue_style( 'crdm_customizer' );
+		wp_add_inline_style( 'crdm_customizer', $this->inline_css() );
 	}
 
 	/**
