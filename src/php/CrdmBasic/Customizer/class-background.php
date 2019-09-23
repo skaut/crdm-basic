@@ -41,7 +41,7 @@ class Background {
 		'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
 		'body_repeat'     => '',
 		'body_size'       => '',
-		'body_attachment' => 'scroll',
+		'body_attachment' => '',
 		'body_position'   => 'left top',
 	];
 
@@ -171,6 +171,20 @@ class Background {
 				]
 			);
 
+			$wp_customize->add_control(
+				'generate_background_settings[body_attachment]',
+				[
+					'type'    => 'select',
+					'section' => 'generate_backgrounds_body',
+					'choices' => [
+						''        => esc_html__( 'Attachment', 'crdm-basic' ),
+						'fixed'   => esc_html__( 'Fixed', 'crdm-basic' ),
+						'local'   => esc_html__( 'Local', 'crdm-basic' ),
+						'inherit' => esc_html__( 'Inherit', 'crdm-basic' ),
+					],
+				]
+			);
+
 			$wp_customize->add_setting(
 				'generate_background_settings[body_position]',
 				[
@@ -235,6 +249,7 @@ class Background {
 		$this->print_css_property( $settings, 'background-image', 'body_image', true ) .
 		$this->print_css_property( $settings, 'background-repeat', 'body_repeat' ) .
 		$this->print_css_property( $settings, 'background-size', 'body_size' ) .
+		$this->print_css_property( $settings, 'background-attachment', 'body_attachment' ) .
 		'}';
 	}
 
