@@ -39,8 +39,8 @@ class Background {
 
 	private static $default = [
 		'body_image' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
-		'body_repeat' => 'repeat',
-		'body_size' => '300px auto',
+		'body_repeat' => '',
+		'body_size' => '',
 		'body_attachment' => 'scroll',
 		'body_position' => 'left top',
 	];
@@ -121,7 +121,7 @@ class Background {
 					'type' => 'select',
 					'section' => 'generate_backgrounds_body',
 					'choices' => [
-						'repeat' => esc_html__( 'Repeat', 'crdm-basic' ),
+						'' => esc_html__( 'Repeat', 'crdm-basic' ),
 						'repeat-x' => esc_html__( 'Repeat x', 'crdm-basic' ),
 						'repeat-y' => esc_html__( 'Repeat y', 'crdm-basic' ),
 						'no-repeat' => esc_html__( 'No Repeat', 'crdm-basic' )
@@ -136,6 +136,20 @@ class Background {
 					'type' => 'option',
 					'sanitize_callback' => 'sanitize_key',
 				]
+			);
+
+			$wp_customize->add_control(
+				'generate_background_settings[body_size]',
+				[
+					'type' => 'select',
+					'section' => 'generate_backgrounds_body',
+					'choices' => [
+						'' => esc_html__( 'Size (Auto)', 'gp-premium' ),
+						'100' => esc_html__( '100% Width', 'gp-premium' ),
+						'cover' => esc_html__( 'Cover', 'gp-premium' ),
+						'contain' => esc_html__( 'Contain', 'gp-premium' )
+					]
+				],
 			);
 
 			$wp_customize->add_setting(
@@ -176,17 +190,25 @@ class Background {
 		}
 	}
 
+	private function print_css_property($generate_background_settings, $cssName, $settingsName, $isUrl = false)
+	{
+		$value = $generate_background_settings[ $settingsName ];
+		if(empty($value))
+		{
+			return '';
+		}
+		$value = $isUrl ? 'url(\'' .  esc_url($value) . '\')' : esc_attr($value);
+		return $cssName . ': ' . $value . ';';
+	}
+
 	private function inline_css()
 	{
-		$generate_background_settings = wp_parse_args(get_option( 'generate_background_settings', [] ),	self::$default);
-		$body_image = esc_url( $generate_background_settings[ 'body_image' ] );
-		$body_repeat = esc_attr( $generate_background_settings[ 'body_repeat' ] );
-		return <<<CSS
-body {
-	background-image: url('$body_image');
-	background-repeat: $body_repeat;
-}
-CSS;
+		$settings = wp_parse_args(get_option( 'generate_background_settings', [] ),	self::$default);
+		return "body {\n" .
+	$this->print_css_property($settings, 'background-image', 'body_image', true) .
+	$this->print_css_property($settings, 'background-repeat', 'body_repeat') .
+	$this->print_css_property($settings, 'background-size', 'body_size') .
+	'}';
 	}
 
 	public function add_inline_css() {
