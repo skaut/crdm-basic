@@ -12,4 +12,7 @@ class WP_Customize_manager {
 
 	public function add_setting( $id, $args = [] ) {
 	}
+
+	public function register_control_type( $a ) {
+	}
 }

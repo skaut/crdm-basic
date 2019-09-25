@@ -74,6 +74,8 @@ class Background {
 	 */
 	public function customize( $wp_customize ) {
 		if ( ! Init::generatepress_module_enabled( 'generate_package_backgrounds' ) ) {
+			$wp_customize->register_control_type( 'CrdmBasic\Customizer\Controls\Background_Image_Customize_Control' );
+
 			$wp_customize->add_panel(
 				'generate_backgrounds_panel',
 				[
@@ -125,20 +127,6 @@ class Background {
 				]
 			);
 
-			$wp_customize->add_control(
-				'generate_background_settings[body_repeat]',
-				[
-					'type'    => 'select',
-					'section' => 'generate_backgrounds_body',
-					'choices' => [
-						''          => esc_html__( 'Repeat', 'crdm-basic' ),
-						'repeat-x'  => esc_html__( 'Repeat x', 'crdm-basic' ),
-						'repeat-y'  => esc_html__( 'Repeat y', 'crdm-basic' ),
-						'no-repeat' => esc_html__( 'No Repeat', 'crdm-basic' ),
-					],
-				]
-			);
-
 			$wp_customize->add_setting(
 				'generate_background_settings[body_size]',
 				[
@@ -148,40 +136,12 @@ class Background {
 				]
 			);
 
-			$wp_customize->add_control(
-				'generate_background_settings[body_size]',
-				[
-					'type'    => 'select',
-					'section' => 'generate_backgrounds_body',
-					'choices' => [
-						''        => esc_html__( 'Size (Auto)', 'crdm-basic' ),
-						'100'     => esc_html__( '100% Width', 'crdm-basic' ),
-						'cover'   => esc_html__( 'Cover', 'crdm-basic' ),
-						'contain' => esc_html__( 'Contain', 'crdm-basic' ),
-					],
-				]
-			);
-
 			$wp_customize->add_setting(
 				'generate_background_settings[body_attachment]',
 				[
 					'default'           => self::DEFAULT['body_attachment'],
 					'type'              => 'option',
 					'sanitize_callback' => 'sanitize_key',
-				]
-			);
-
-			$wp_customize->add_control(
-				'generate_background_settings[body_attachment]',
-				[
-					'type'    => 'select',
-					'section' => 'generate_backgrounds_body',
-					'choices' => [
-						''        => esc_html__( 'Attachment', 'crdm-basic' ),
-						'fixed'   => esc_html__( 'Fixed', 'crdm-basic' ),
-						'local'   => esc_html__( 'Local', 'crdm-basic' ),
-						'inherit' => esc_html__( 'Inherit', 'crdm-basic' ),
-					],
 				]
 			);
 
@@ -196,15 +156,19 @@ class Background {
 			);
 
 			$wp_customize->add_control(
-				'generate_background_settings[body_position]',
-				[
-					'type'        => 'text',
-					'section'     => 'generate_backgrounds_body',
-					'description' => __( 'left top, x% y%, xpos ypos (px)', 'crdm-basic' ),
-					'input_attrs' => [
-						'placeholder' => __( 'Position', 'crdm-basic' ),
-					],
-				]
+				new Controls\Background_Image_Customize_Control(
+					$wp_customize,
+					'body_backgrounds_control',
+					[
+						'section'  => 'generate_backgrounds_body',
+						'settings' => [
+							'repeat'     => 'generate_background_settings[body_repeat]',
+							'size'       => 'generate_background_settings[body_size]',
+							'attachment' => 'generate_background_settings[body_attachment]',
+							'position'   => 'generate_background_settings[body_position]',
+						],
+					]
+				)
 			);
 		}
 	}
