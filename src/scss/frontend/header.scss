@@ -35,6 +35,9 @@
 		width: 340px;
 		height: 205px;
 		z-index: 1;
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		background-position: right top;
 
 		@media (max-width: 768px) {
 			display: none;
