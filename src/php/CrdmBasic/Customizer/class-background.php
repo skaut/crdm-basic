@@ -39,7 +39,7 @@ class Background {
 
 	const DEFAULT = [
 		'generate_background_settings' => [
-			'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
+			'body_image'      => '',
 			'body_repeat'     => '',
 			'body_size'       => '',
 			'body_attachment' => '',
