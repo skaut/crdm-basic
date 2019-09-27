@@ -82,15 +82,7 @@ class Background {
 		if ( ! Init::generatepress_module_enabled( 'generate_package_backgrounds' ) ) {
 			$wp_customize->register_control_type( 'CrdmBasic\Customizer\Controls\Background_Image_Customize_Control' );
 
-			$wp_customize->add_panel(
-				'generate_backgrounds_panel',
-				[
-					'capability'     => 'edit_theme_options',
-					'theme_supports' => '',
-					'title'          => __( 'Background Images', 'crdm-basic' ),
-					'priority'       => 55,
-				]
-			);
+			$this->add_panel_sections();
 
 			$this->customize_body( $wp_customize );
 		}
@@ -98,13 +90,23 @@ class Background {
 	}
 
 	/**
-	 * Initializes customizer body options.
+	 * Adds the panel and sections
 	 *
-	 * Adds customizer options for controling the body background.
+	 * Adds the panel and sections that would otherwise be added by GeneratePress.
 	 *
 	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
 	 */
-	private function customize_body( $wp_customize ) {
+	private function add_panel_sections( $wp_customize ) {
+		$wp_customize->add_panel(
+			'generate_backgrounds_panel',
+			[
+				'capability'     => 'edit_theme_options',
+				'theme_supports' => '',
+				'title'          => __( 'Background Images', 'crdm-basic' ),
+				'priority'       => 55,
+			]
+		);
+
 		$wp_customize->add_section(
 			'generate_backgrounds_body',
 			[
@@ -115,6 +117,25 @@ class Background {
 			]
 		);
 
+		$wp_customize->add_section(
+			'generate_backgrounds_header',
+			[
+				'title'      => __( 'Header', 'crdm-basic' ),
+				'capability' => 'edit_theme_options',
+				'priority'   => 5,
+				'panel'      => 'generate_backgrounds_panel',
+			]
+		);
+	}
+
+	/**
+	 * Initializes customizer body options.
+	 *
+	 * Adds customizer options for controling the body background.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	private function customize_body( $wp_customize ) {
 		$wp_customize->add_setting(
 			'generate_background_settings[body_image]',
 			[
@@ -199,17 +220,6 @@ class Background {
 	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
 	 */
 	private function customize_header( $wp_customize ) {
-		// TODO: Gate.
-		$wp_customize->add_section(
-			'generate_backgrounds_Header',
-			[
-				'title'      => __( 'Header', 'crdm-basic' ),
-				'capability' => 'edit_theme_options',
-				'priority'   => 5,
-				'panel'      => 'generate_backgrounds_panel',
-			]
-		);
-
 		$wp_customize->add_setting(
 			'crdm_basic_header[background]',
 			[
@@ -227,7 +237,7 @@ class Background {
 				[
 					'section'  => 'generate_backgrounds_header',
 					'settings' => 'crdm_basic_header[background]',
-					'label'    => __( 'Header background image', 'crdm-basic' ),
+					'label'    => __( 'Featured background image', 'crdm-basic' ),
 				]
 			)
 		);
@@ -249,7 +259,7 @@ class Background {
 				[
 					'section'  => 'generate_backgrounds_header',
 					'settings' => 'crdm_basic_header[foreground]',
-					'label'    => __( 'Header foreground image', 'crdm-basic' ),
+					'label'    => __( 'Featured foreground image', 'crdm-basic' ),
 				]
 			)
 		);
