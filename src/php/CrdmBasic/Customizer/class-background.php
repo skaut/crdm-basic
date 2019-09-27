@@ -48,6 +48,7 @@ class Background {
 		'crdm_basic_header'            => [
 			'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
 			'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
+			'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
 		],
 	];
 
@@ -82,7 +83,7 @@ class Background {
 		if ( ! Init::generatepress_module_enabled( 'generate_package_backgrounds' ) ) {
 			$wp_customize->register_control_type( 'CrdmBasic\Customizer\Controls\Background_Image_Customize_Control' );
 
-			$this->add_panel_sections();
+			$this->add_panel_sections( $wp_customize );
 
 			$this->customize_body( $wp_customize );
 		}
@@ -263,6 +264,28 @@ class Background {
 				]
 			)
 		);
+
+		$wp_customize->add_setting(
+			'crdm_basic_header[under]',
+			[
+				'default'           => self::DEFAULT['crdm_basic_header']['under'],
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'esc_url_raw',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Image_Control(
+				$wp_customize,
+				'crdm_basic_header[under]',
+				[
+					'section'  => 'generate_backgrounds_header',
+					'settings' => 'crdm_basic_header[under]',
+					'label'    => __( 'Under menu image', 'crdm-basic' ),
+				]
+			)
+		);
 	}
 
 	/**
@@ -304,6 +327,8 @@ class Background {
 		$this->print_css_property( 'background-image', $crdm_settings['background'], true ) .
 		"}\n.crdm_header__bg_2-container-content {" .
 		$this->print_css_property( 'background-image', $crdm_settings['foreground'], true ) .
+		"}\n.crdm_header__bg_3 {" .
+		$this->print_css_property( 'background-image', $crdm_settings['under'], true ) .
 		'}';
 	}
 
