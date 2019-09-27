@@ -47,6 +47,7 @@ class Background {
 		],
 		'crdm_basic_header'            => [
 			'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
+			'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
 		],
 	];
 
@@ -230,6 +231,28 @@ class Background {
 				]
 			)
 		);
+
+		$wp_customize->add_setting(
+			'crdm_basic_header[foreground]',
+			[
+				'default'           => self::DEFAULT['crdm_basic_header']['foreground'],
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'esc_url_raw',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Image_Control(
+				$wp_customize,
+				'crdm_basic_header[foreground]',
+				[
+					'section'  => 'generate_backgrounds_header',
+					'settings' => 'crdm_basic_header[foreground]',
+					'label'    => __( 'Header foreground image', 'crdm-basic' ),
+				]
+			)
+		);
 	}
 
 	/**
@@ -269,6 +292,8 @@ class Background {
 		$this->print_css_property( 'background-position', $generate_settings['body_position'] ) .
 		"}\n.crdm_header__bg_1 {" .
 		$this->print_css_property( 'background-image', $crdm_settings['background'], true ) .
+		"}\n.crdm_header__bg_2-container-content {" .
+		$this->print_css_property( 'background-image', $crdm_settings['foreground'], true ) .
 		'}';
 	}
 
@@ -304,31 +329,6 @@ class Background {
 	 * Adds all the controls to the section
 	 */
 	protected function init_controls() {
-		Kirki::add_field(
-			$this->config_id,
-			[
-				'type'        => 'background',
-				'settings'    => 'headerBg2',
-				'label'       => esc_attr__( 'Header foreground image', 'crdm-basic' ),
-				'description' => esc_attr__( 'In front of the menu', 'crdm-basic' ),
-				'section'     => $this->section_id,
-				'default'     => [
-					'background-color'      => 'rgba(255, 255, 255, 0)',
-					'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
-					'background-repeat'     => 'no-repeat',
-					'background-position'   => 'right bottom',
-					'background-size'       => '100% auto',
-					'background-attachment' => 'scroll',
-				],
-				'output'      => [
-					[
-						'element' => '.crdm_header__bg_2-container-content',
-					],
-				],
-				'transport'   => 'auto',
-			]
-		);
-
 		Kirki::add_field(
 			$this->config_id,
 			[
