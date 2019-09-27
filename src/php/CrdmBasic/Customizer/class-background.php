@@ -9,34 +9,12 @@ declare( strict_types=1 );
 
 namespace CrdmBasic\Customizer;
 
-use Kirki;
-
 /**
  * Background configuration
  *
  * This class sets up all the customizer options for configuring the background of the webpage.
  */
 class Background {
-
-	/**
-	 * The ID of the configuration set ("crdm-basic").
-	 *
-	 * @var string $config_id
-	 */
-	protected $config_id = '';
-	/**
-	 * The ID of the panel in which this option is displayed.
-	 *
-	 * @var string $panel_id
-	 */
-	protected $panel_id = '';
-	/**
-	 * The ID of the section in which this option is displayed.
-	 *
-	 * @var string $section_id
-	 */
-	protected $section_id = '';
-
 	const DEFAULT = [
 		'generate_background_settings' => [
 			'body_image'      => '',
@@ -56,18 +34,8 @@ class Background {
 	 * Background class constructor
 	 *
 	 * Adds the section and its controls to the customizer.
-	 *
-	 * @param string $config_id The ID of the configuration set ("crdm-basic").
-	 * @param string $panel_id The ID of the panel in which this option is displayed.
 	 */
-	public function __construct( string $config_id, string $panel_id ) {
-		$this->config_id  = $config_id;
-		$this->panel_id   = $panel_id;
-		$this->section_id = $panel_id . '_background';
-
-		$this->init_section();
-		$this->init_controls();
-
+	public function __construct() {
 		add_action( 'customize_register', [ $this, 'customize' ], 1000 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ] );
 	}
@@ -342,52 +310,4 @@ class Background {
 		wp_enqueue_style( 'crdm_customizer' );
 		wp_add_inline_style( 'crdm_customizer', $this->inline_css() );
 	}
-
-	/**
-	 * Initializes the section
-	 *
-	 * Adds the section to the customizer.
-	 */
-	protected function init_section() {
-		Kirki::add_section(
-			$this->section_id,
-			[
-				'title' => esc_attr__( 'Background', 'crdm-basic' ),
-				'panel' => $this->panel_id,
-			]
-		);
-	}
-
-	/**
-	 * Initializes the controls
-	 *
-	 * Adds all the controls to the section
-	 */
-	protected function init_controls() {
-		Kirki::add_field(
-			$this->config_id,
-			[
-				'type'        => 'background',
-				'settings'    => 'headerBg3',
-				'label'       => esc_attr__( 'Header bottom image', 'crdm-basic' ),
-				'description' => esc_attr__( 'Under the menu', 'crdm-basic' ),
-				'section'     => $this->section_id,
-				'default'     => [
-					'background-color'      => 'rgba(255, 255, 255, 0)',
-					'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
-					'background-repeat'     => 'repeat-x',
-					'background-position'   => 'left bottom',
-					'background-size'       => 'auto 100%',
-					'background-attachment' => 'scroll',
-				],
-				'output'      => [
-					[
-						'element' => '.crdm_header__bg_3',
-					],
-				],
-				'transport'   => 'auto',
-			]
-		);
-	}
-
 }

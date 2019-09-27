@@ -67,7 +67,7 @@ class Init {
 	 */
 	protected function init_sections_and_controls() {
 		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
-		( new Background( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
+		( new Background() );
 		( new Border_Radius( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Menu( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Sidebar( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
