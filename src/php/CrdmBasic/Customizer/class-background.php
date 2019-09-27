@@ -38,11 +38,16 @@ class Background {
 	protected $section_id = '';
 
 	const DEFAULT = [
-		'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
-		'body_repeat'     => '',
-		'body_size'       => '',
-		'body_attachment' => '',
-		'body_position'   => '',
+		'generate_background_settings' => [
+			'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
+			'body_repeat'     => '',
+			'body_size'       => '',
+			'body_attachment' => '',
+			'body_position'   => '',
+		],
+		'crdm_basic_header'            => [
+			'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
+		],
 	];
 
 	/**
@@ -76,8 +81,19 @@ class Background {
 		if ( ! Init::generatepress_module_enabled( 'generate_package_backgrounds' ) ) {
 			$wp_customize->register_control_type( 'CrdmBasic\Customizer\Controls\Background_Image_Customize_Control' );
 
+			$wp_customize->add_panel(
+				'generate_backgrounds_panel',
+				[
+					'capability'     => 'edit_theme_options',
+					'theme_supports' => '',
+					'title'          => __( 'Background Images', 'crdm-basic' ),
+					'priority'       => 55,
+				]
+			);
+
 			$this->customize_body( $wp_customize );
 		}
+		$this->customize_header( $wp_customize );
 	}
 
 	/**
@@ -87,17 +103,7 @@ class Background {
 	 *
 	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
 	 */
-	public function customize_body( $wp_customize ) {
-		$wp_customize->add_panel(
-			'generate_backgrounds_panel',
-			[
-				'capability'     => 'edit_theme_options',
-				'theme_supports' => '',
-				'title'          => __( 'Background Images', 'crdm-basic' ),
-				'priority'       => 55,
-			]
-		);
-
+	private function customize_body( $wp_customize ) {
 		$wp_customize->add_section(
 			'generate_backgrounds_body',
 			[
@@ -111,7 +117,7 @@ class Background {
 		$wp_customize->add_setting(
 			'generate_background_settings[body_image]',
 			[
-				'default'           => self::DEFAULT['body_image'],
+				'default'           => self::DEFAULT['generate_background_settings']['body_image'],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'esc_url_raw',
@@ -133,7 +139,7 @@ class Background {
 		$wp_customize->add_setting(
 			'generate_background_settings[body_repeat]',
 			[
-				'default'           => self::DEFAULT['body_repeat'],
+				'default'           => self::DEFAULT['generate_background_settings']['body_repeat'],
 				'type'              => 'option',
 				'sanitize_callback' => 'sanitize_key',
 			]
@@ -142,7 +148,7 @@ class Background {
 		$wp_customize->add_setting(
 			'generate_background_settings[body_size]',
 			[
-				'default'           => self::DEFAULT['body_size'],
+				'default'           => self::DEFAULT['generate_background_settings']['body_size'],
 				'type'              => 'option',
 				'sanitize_callback' => 'sanitize_key',
 			]
@@ -151,7 +157,7 @@ class Background {
 		$wp_customize->add_setting(
 			'generate_background_settings[body_attachment]',
 			[
-				'default'           => self::DEFAULT['body_attachment'],
+				'default'           => self::DEFAULT['generate_background_settings']['body_attachment'],
 				'type'              => 'option',
 				'sanitize_callback' => 'sanitize_key',
 			]
@@ -160,7 +166,7 @@ class Background {
 		$wp_customize->add_setting(
 			'generate_background_settings[body_position]',
 			[
-				'default'           => self::DEFAULT['body_position'],
+				'default'           => self::DEFAULT['generate_background_settings']['body_position'],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'esc_html',
@@ -185,19 +191,59 @@ class Background {
 	}
 
 	/**
+	 * Initializes customizer header options.
+	 *
+	 * Adds customizer options for controling the header background and foreground images.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	private function customize_header( $wp_customize ) {
+		// TODO: Gate.
+		$wp_customize->add_section(
+			'generate_backgrounds_Header',
+			[
+				'title'      => __( 'Header', 'crdm-basic' ),
+				'capability' => 'edit_theme_options',
+				'priority'   => 5,
+				'panel'      => 'generate_backgrounds_panel',
+			]
+		);
+
+		$wp_customize->add_setting(
+			'crdm_basic_header[background]',
+			[
+				'default'           => self::DEFAULT['crdm_basic_header']['background'],
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'esc_url_raw',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Image_Control(
+				$wp_customize,
+				'crdm_basic_header[background]',
+				[
+					'section'  => 'generate_backgrounds_header',
+					'settings' => 'crdm_basic_header[background]',
+					'label'    => __( 'Header background image', 'crdm-basic' ),
+				]
+			)
+		);
+	}
+
+	/**
 	 * Prints a CSS property.
 	 *
 	 * Escapes, formats and returns a CSS property line.
 	 *
-	 * @param array  $settings Parsed background settings for GeneratePress.
 	 * @param string $css_name The name of the CSS property.
-	 * @param string $settings_name The name of the settings field in $generate_background_settings.
+	 * @param string $value The value of the property.
 	 * @param bool   $is_url Whether the property is an URL. Default false.
 	 *
 	 * @return string The CSS property line;
 	 */
-	private function print_css_property( $settings, $css_name, $settings_name, $is_url = false ) {
-		$value = $settings[ $settings_name ];
+	private function print_css_property( $css_name, $value, $is_url = false ) {
 		if ( empty( $value ) ) {
 			return '';
 		}
@@ -213,13 +259,16 @@ class Background {
 	 * @return string CSS string.
 	 */
 	private function inline_css() {
-		$settings = wp_parse_args( get_option( 'generate_background_settings', [] ), self::DEFAULT );
+		$generate_settings = wp_parse_args( get_option( 'generate_background_settings', [] ), self::DEFAULT['generate_background_settings'] );
+		$crdm_settings     = wp_parse_args( get_option( 'crdm_basic_header', [] ), self::DEFAULT['crdm_basic_header'] );
 		return "body {\n" .
-		$this->print_css_property( $settings, 'background-image', 'body_image', true ) .
-		$this->print_css_property( $settings, 'background-repeat', 'body_repeat' ) .
-		$this->print_css_property( $settings, 'background-size', 'body_size' ) .
-		$this->print_css_property( $settings, 'background-attachment', 'body_attachment' ) .
-		$this->print_css_property( $settings, 'background-position', 'body_position' ) .
+		$this->print_css_property( 'background-image', $generate_settings['body_image'], true ) .
+		$this->print_css_property( 'background-repeat', $generate_settings['body_repeat'] ) .
+		$this->print_css_property( 'background-size', $generate_settings['body_size'] ) .
+		$this->print_css_property( 'background-attachment', $generate_settings['body_attachment'] ) .
+		$this->print_css_property( 'background-position', $generate_settings['body_position'] ) .
+		"}\n.crdm_header__bg_1 {" .
+		$this->print_css_property( 'background-image', $crdm_settings['background'], true ) .
 		'}';
 	}
 
@@ -255,31 +304,6 @@ class Background {
 	 * Adds all the controls to the section
 	 */
 	protected function init_controls() {
-		Kirki::add_field(
-			$this->config_id,
-			[
-				'type'        => 'background',
-				'settings'    => 'headerBg1',
-				'label'       => esc_attr__( 'Header background image', 'crdm-basic' ),
-				'description' => esc_attr__( 'Behind the menu', 'crdm-basic' ),
-				'section'     => $this->section_id,
-				'default'     => [
-					'background-color'      => 'rgba(255, 255, 255, 0)',
-					'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
-					'background-repeat'     => 'no-repeat',
-					'background-position'   => 'right top',
-					'background-size'       => '376px auto',
-					'background-attachment' => 'scroll',
-				],
-				'output'      => [
-					[
-						'element' => '.crdm_header__bg_1',
-					],
-				],
-				'transport'   => 'auto',
-			]
-		);
-
 		Kirki::add_field(
 			$this->config_id,
 			[
