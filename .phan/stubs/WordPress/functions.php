@@ -118,6 +118,9 @@ function wp_enqueue_script( $a, $b, $c, $d, $e ) {
 function wp_enqueue_style( $a, $b = '', $c = [], $d = false ) {
 }
 
+function wp_localize_script( $a, $b, $c ) {
+}
+
 /**
  * @return array
  */

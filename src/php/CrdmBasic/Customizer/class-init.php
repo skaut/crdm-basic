@@ -66,6 +66,7 @@ class Init {
 	 * Adds all the sections and their controls to the panel.
 	 */
 	protected function init_sections_and_controls() {
+		( new Preset() );
 		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Background() );
 		( new Border_Radius( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
