@@ -76,11 +76,11 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 		parent::to_json();
 
 		$this->json['light_image'] = CRDMBASIC_TEMPLATE_URL . 'admin/light.png';
-		$this->json['dark_image'] = CRDMBASIC_TEMPLATE_URL . 'admin/dark.png';
-		$this->json['light'] = esc_html__( 'Light', 'crdm-basic' );
-		$this->json['dark'] = esc_html__( 'Dark', 'crdm-basic' );
-		$this->json['warning'] = esc_html__( 'Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer.', 'crdm-basic' );
-		$this->json['button'] = esc_html__( 'Apply', 'crdm-basic' );
+		$this->json['dark_image']  = CRDMBASIC_TEMPLATE_URL . 'admin/dark.png';
+		$this->json['light']       = esc_html__( 'Light', 'crdm-basic' );
+		$this->json['dark']        = esc_html__( 'Dark', 'crdm-basic' );
+		$this->json['warning']     = esc_html__( 'Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer.', 'crdm-basic' );
+		$this->json['button']      = esc_html__( 'Apply', 'crdm-basic' );
 	}
 
 	/**

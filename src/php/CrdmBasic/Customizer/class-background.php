@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the Background class
+ * Contains the Background class.
  *
  * @package crdm-basic
  */
@@ -14,7 +14,7 @@ namespace CrdmBasic\Customizer;
  *
  * This class sets up all the customizer options for configuring the background of the webpage.
  */
-class Background {
+class Background extends Customizer_Category {
 	const DEFAULT = [
 		'generate_background_settings' => [
 			'body_image'      => '',
@@ -29,16 +29,6 @@ class Background {
 			'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
 		],
 	];
-
-	/**
-	 * Background class constructor
-	 *
-	 * Adds the section and its controls to the customizer.
-	 */
-	public function __construct() {
-		add_action( 'customize_register', [ $this, 'customize' ], 1000 );
-		add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ] );
-	}
 
 	/**
 	 * Initializes customizer options.
@@ -257,57 +247,32 @@ class Background {
 	}
 
 	/**
-	 * Prints a CSS property.
+	 * Returns the CSS for the background settings.
 	 *
-	 * Escapes, formats and returns a CSS property line.
+	 * Returns all the CSS properties for the background settings.
 	 *
-	 * @param string $css_name The name of the CSS property.
-	 * @param string $value The value of the property.
-	 * @param bool   $is_url Whether the property is an URL. Default false.
-	 *
-	 * @return string The CSS property line;
+	 * @return array A list of properties in selectors.
 	 */
-	private function print_css_property( $css_name, $value, $is_url = false ) {
-		if ( empty( $value ) ) {
-			return '';
-		}
-		$value = $is_url ? 'url(\'' . esc_url( $value ) . '\')' : esc_attr( $value );
-		return $css_name . ': ' . $value . ';';
-	}
-
-	/**
-	 * Prints the CSS for the background settings.
-	 *
-	 * Return all the CSS properties for the background settings.
-	 *
-	 * @return string CSS string.
-	 */
-	private function inline_css() {
+	protected function inline_css() {
 		$generate_settings = wp_parse_args( get_option( 'generate_background_settings', [] ), self::DEFAULT['generate_background_settings'] );
 		$crdm_settings     = wp_parse_args( get_option( 'crdm_basic_header', [] ), self::DEFAULT['crdm_basic_header'] );
-		return "body {\n" .
-		$this->print_css_property( 'background-image', $generate_settings['body_image'], true ) .
-		$this->print_css_property( 'background-repeat', $generate_settings['body_repeat'] ) .
-		$this->print_css_property( 'background-size', $generate_settings['body_size'] ) .
-		$this->print_css_property( 'background-attachment', $generate_settings['body_attachment'] ) .
-		$this->print_css_property( 'background-position', $generate_settings['body_position'] ) .
-		"}\n.crdm_header__bg_1 {" .
-		$this->print_css_property( 'background-image', $crdm_settings['background'], true ) .
-		"}\n.crdm_header__bg_2-container-content {" .
-		$this->print_css_property( 'background-image', $crdm_settings['foreground'], true ) .
-		"}\n.crdm_header__bg_3 {" .
-		$this->print_css_property( 'background-image', $crdm_settings['under'], true ) .
-		'}';
-	}
-
-	/**
-	 * Adds the CSS to WordPress hooks.
-	 *
-	 * Cretes a new stylesheet and adds all the CSS to it.
-	 */
-	public function add_inline_css() {
-		wp_register_style( 'crdm_customizer', false, [], CRDMBASIC_APP_VERSION );
-		wp_enqueue_style( 'crdm_customizer' );
-		wp_add_inline_style( 'crdm_customizer', $this->inline_css() );
+		return [
+			'body'                                 => [
+				[ 'background-image', $generate_settings['body_image'], 'url' ],
+				[ 'background-repeat', $generate_settings['body_repeat'] ],
+				[ 'background-size', $generate_settings['body_size'] ],
+				[ 'background-attachment', $generate_settings['body_attachment'] ],
+				[ 'background-position', $generate_settings['body_position'] ],
+			],
+			'.crdm_header__bg_1'                   => [
+				[ 'background-image', $crdm_settings['background'], 'url' ],
+			],
+			'.crdm_header__bg_2-container-content' => [
+				[ 'background-image', $crdm_settings['foreground'], 'url' ],
+			],
+			'.crdm_header__bg_3'                   => [
+				[ 'background-image', $crdm_settings['under'], 'url' ],
+			],
+		];
 	}
 }
