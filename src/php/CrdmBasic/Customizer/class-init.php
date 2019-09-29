@@ -69,7 +69,7 @@ class Init {
 		( new Preset() );
 		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Background() );
-		( new Border_Radius( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
+		( new Border_Radius() );
 		( new Menu( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Sidebar( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Page_Header( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
