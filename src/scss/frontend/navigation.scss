@@ -1,5 +1,4 @@
 .main-navigation {
-	border-radius: var(--main-border-radius);
 
 	.main-nav {
 
@@ -50,19 +49,6 @@
 
 			ul li:first-child a {
 				border-top-color: transparent;
-			}
-
-			&.sub-menu li {
-
-				&:last-child a {
-					border-bottom-left-radius: var(--main-border-radius);
-					border-bottom-right-radius: var(--main-border-radius);
-				}
-
-				&:first-child a {
-					border-top-left-radius: var(--main-border-radius);
-					border-top-right-radius: var(--main-border-radius);
-				}
 			}
 		}
 	}
