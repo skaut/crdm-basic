@@ -24,20 +24,6 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	public $type = 'crdm-basic-preset';
 
 	/**
-	 * Preset_Customize_Control constructor.
-	 *
-	 * Adds the action to handle the AJAX from the control.
-	 *
-	 * @inheritDoc
-	 *
-	public function __construct( $manager, $id, $args = [] ) {
-		parent::__construct( $manager, $id, $args );
-
-		//add_action( 'wp_ajax_crdmbasic_choose_preset', [ $this, 'handle_ajax' ] );
-	}
-	 */
-
-	/**
 	 * Enqueues the JS.
 	 *
 	 * Enqueues the JavaScript file handling the Control.
@@ -53,16 +39,6 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 			]
 		);
 	}
-
-	/**
-	 * Handles AJAX requests
-	 *
-	 * Handles AJAX requests for choosing a preset.
-	 *
-	public function handle_ajax() {
-		wp_send_json_success( [ 'status' => 'ok' ] );
-	}
-	 */
 
 	/**
 	 * Exports control parameters for JS.

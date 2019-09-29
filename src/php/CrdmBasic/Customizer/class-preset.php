@@ -45,18 +45,6 @@ class Preset {
 			]
 		);
 
-		/*
-		$wp_customize->add_setting(
-			'crdm_basic_preset',
-			[
-				'default'           => self::DEFAULT,
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => [ $this, 'sanitize' ],
-			]
-		);
-		 */
-
 		$wp_customize->add_control(
 			new Controls\Preset_Customize_Control(
 				$wp_customize,
@@ -68,12 +56,6 @@ class Preset {
 			)
 		);
 	}
-
-	/*
-	public function sanitize( $value ) {
-		return 'dark' === $value ? 'dark' : 'light';
-	}
-	 */
 
 	/*
 	protected function init_section() {
