@@ -58,9 +58,10 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 * @inheritDoc
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'crdm_basic_preset_customize_control', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.js', [ 'jquery', 'customize-preview' ], CRDMBASIC_APP_VERSION, true );
+		wp_enqueue_style( 'crdm_basic_preset_customize_control_style', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.css', [], CRDMBASIC_APP_VERSION );
+		wp_enqueue_script( 'crdm_basic_preset_customize_control_script', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.js', [ 'jquery', 'customize-preview' ], CRDMBASIC_APP_VERSION, true );
 		wp_localize_script(
-			'crdm_basic_preset_customize_control',
+			'crdm_basic_preset_customize_control_script',
 			'crdmbasicPresetCustomizeControlLocalize',
 			$this->presets
 		);
@@ -70,14 +71,17 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 * Exports control parameters for JS.
 	 *
 	 * @inheritDoc
-	 *
+	 */
 	public function to_json() {
 		parent::to_json();
 
-		//vardump($this->settings);
-		//$this->json['settings'] = $this->value( $this->settings );
+		$this->json['light_image'] = CRDMBASIC_TEMPLATE_URL . 'admin/light.png';
+		$this->json['dark_image'] = CRDMBASIC_TEMPLATE_URL . 'admin/dark.png';
+		$this->json['light'] = esc_html__( 'Light', 'crdm-basic' );
+		$this->json['dark'] = esc_html__( 'Dark', 'crdm-basic' );
+		$this->json['warning'] = esc_html__( 'Applying the preset overrides a lot of the theme options. You can always go back by closing the customizer.', 'crdm-basic' );
+		$this->json['button'] = esc_html__( 'Apply', 'crdm-basic' );
 	}
-	 */
 
 	/**
 	 * Prints the Underscore.js template for the control.
@@ -87,12 +91,17 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	public function content_template() {
 		?>
 <label>
-	<input type="radio" name="crdm_basic_preset" value="light"> Light <br>
+	<input type="radio" name="crdm_basic_preset" value="light"> {{{ data.light }}}
+	<img class="crdmbasic_preset_customize_control_img" src="{{{ data.light_image }}}" alt="{{{ data.light }}}">
 </label>
 <label>
-	<input type="radio" name="crdm_basic_preset" value="dark"> Dark <br>
+	<input type="radio" name="crdm_basic_preset" value="dark"> {{{ data.dark }}}
+	<img class="crdmbasic_preset_customize_control_img" src="{{{ data.dark_image }}}" alt="{{{ data.dark }}}">
 </label>
-<button type="button" class="button button-primary">GO</button>
+<div>
+	{{{ data.warning }}}
+</div>
+<button type="button" class="crdmbasic_preset_customize_control_button button button-primary" disabled> {{{ data.button}}} </button>
 		<?php
 	}
 }

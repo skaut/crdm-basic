@@ -1,3 +1,4 @@
+import '../../scss/admin/preset_customize_control.scss';
 'use strict';
 
 jQuery( 'document' ).ready( function( $ ) {
@@ -21,6 +22,9 @@ jQuery( 'document' ).ready( function( $ ) {
             const presets = [];
             $.each( crdmbasicPresetCustomizeControlLocalize, function( key, value ) {
                 presets[key] = flatten( value );
+            });
+            control.container.find( 'input[name=crdm_basic_preset]' ).change( function() {
+                control.container.find( '.button' ).prop( 'disabled', false );
             });
             control.container.find( '.button' ).on( 'click', function() {
                 const chosen =  control.container.find( 'input[name=crdm_basic_preset]:checked' ).val();
