@@ -15,7 +15,38 @@ namespace CrdmBasic\Customizer;
  * This class sets up all the customizer options for choosing one of the built-in presets of the template
  */
 class Preset {
-	const DEFAULT = 'light';
+	const PRESETS = [
+		'light' => [
+			'generate_background_settings' => [
+				// TODO: Background colour.
+				'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
+				'body_repeat'     => '',
+				'body_size'       => '',
+				'body_attachment' => '',
+				'body_position'   => '',
+			],
+			'crdm_basic_header'            => [
+				'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
+				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
+				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
+			],
+		],
+		'dark'  => [
+			'generate_background_settings' => [
+				// TODO: Background colour.
+				'body_image'      => '',
+				'body_repeat'     => '',
+				'body_size'       => '',
+				'body_attachment' => '',
+				'body_position'   => '',
+			],
+			'crdm_basic_header'            => [
+				'background' => '',
+				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_header_foreground.png',
+				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_pavement.png',
+			],
+		],
+	];
 
 	/**
 	 * Preset class constructor
@@ -52,7 +83,8 @@ class Preset {
 				[
 					'section'  => 'crdm_basic_preset',
 					'settings' => [],
-				]
+				],
+				self::PRESETS
 			)
 		);
 	}

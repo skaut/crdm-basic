@@ -1,20 +1,40 @@
 'use strict';
 
 jQuery( 'document' ).ready( function( $ ) {
+    function flatten( input ) {
+        const ret = {};
+        $.each( input, function( key, value ) {
+            if ( 'object' === typeof ( value ) ) {
+                $.each( value, function( subKey, subValue ) {
+                    ret[key + '[' + subKey + ']'] = subValue;
+                });
+            } else {
+                ret[key] = value;
+            }
+        });
+        return ret;
+    }
+
     wp.customize.control(
         'crdm_basic_preset',
         function( control ) {
-            console.log( crdmbasicPresetCustomizeControlLocalize );
+            const presets = [];
+            $.each( crdmbasicPresetCustomizeControlLocalize, function( key, value ) {
+                presets[key] = flatten( value );
+            });
             control.container.find( '.button' ).on( 'click', function() {
-                console.log( 'CLICK' );
-                console.log( wp.customize( 'generate_background_settings[body_image]' ).get() );
-                console.log( wp.customize( 'generate_background_settings[body_repeat]' ).get() );
-                console.log( wp.customize( 'generate_background_settings[body_size]' ).get() );
-                console.log( wp.customize( 'generate_background_settings[body_attachment]' ).get() );
-                console.log( wp.customize( 'generate_background_settings[body_position]' ).get() );
-                console.log( wp.customize( 'crdm_basic_header[background]' ).get() );
-                console.log( wp.customize( 'crdm_basic_header[foreground]' ).get() );
-                console.log( wp.customize( 'crdm_basic_header[under]' ).get() );
+                const chosen =  control.container.find( 'input[name=crdm_basic_preset]:checked' ).val();
+                if ( ! chosen ) {
+                    console.log( 'FAIL' );
+                    return;
+                }
+                $.each( presets[chosen], function( key, value ) {
+                    const setting = wp.customize( key );
+                    if ( ! setting ) {
+                        return;
+                    }
+                    setting.set( value );
+                });
             });
         }
     );
