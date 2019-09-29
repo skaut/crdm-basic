@@ -91,34 +91,6 @@ class Color_Variant {
 				'preset'      => [
 					'light' => [
 						'settings' => [
-							'webBg'                 => [
-								'background-color' => 'rgba(255, 255, 255, 0)',
-								'background-image' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
-							],
-							'headerBg1'             => [
-								'background-color'      => 'rgba(255, 255, 255, 0)',
-								'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
-								'background-repeat'     => 'no-repeat',
-								'background-position'   => 'right top',
-								'background-size'       => '376px auto',
-								'background-attachment' => 'scroll',
-							],
-							'headerBg2'             => [
-								'background-color'      => 'rgba(255, 255, 255, 0)',
-								'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
-								'background-repeat'     => 'no-repeat',
-								'background-position'   => 'right bottom',
-								'background-size'       => '100% auto',
-								'background-attachment' => 'scroll',
-							],
-							'headerBg3'             => [
-								'background-color'      => 'rgba(255, 255, 255, 0)',
-								'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
-								'background-repeat'     => 'repeat-x',
-								'background-position'   => 'left bottom',
-								'background-size'       => 'auto 100%',
-								'background-attachment' => 'scroll',
-							],
 							'borderRadius'          => '0px',
 							'menuBg'                => [
 								'background-color' => '#037b8c',
@@ -173,30 +145,6 @@ class Color_Variant {
 					],
 					'dark'  => [
 						'settings' => [
-							'webBg'                 => [
-								'background-color' => '#0f2b4a',
-								'background-image' => '',
-							],
-							'headerBg1'             => [
-								'background-color' => 'rgba(255, 255, 255, 0)',
-								'background-image' => '',
-							],
-							'headerBg2'             => [
-								'background-color'      => 'rgba(255, 255, 255, 0)',
-								'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_header_foreground.png',
-								'background-repeat'     => 'no-repeat',
-								'background-position'   => 'right bottom',
-								'background-size'       => '87% auto',
-								'background-attachment' => 'scroll',
-							],
-							'headerBg3'             => [
-								'background-color'      => 'rgba(255, 255, 255, 0)',
-								'background-image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_pavement.png',
-								'background-repeat'     => 'repeat-x',
-								'background-position'   => 'left bottom',
-								'background-size'       => '24px 10px',
-								'background-attachment' => 'scroll',
-							],
 							'borderRadius'          => '0.5em',
 							'menuBg'                => [
 								'background-color' => '#122030',
