@@ -21,7 +21,7 @@ abstract class Customizer_Category {
 	 * Adds the customize function to the WordPress action.
 	 */
 	public function __construct() {
-		add_action( 'customize_register', [ $this, 'customize' ], 1000 );
+		add_action( 'customize_register', [ $this, 'customize' ], 9 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ], 11 );
 	}
 

@@ -21,7 +21,7 @@ class Background_Image_Customize_Control extends \WP_Customize_Control {
 	 *
 	 * @var string
 	 */
-	public $type = 'gp-background-images';
+	public $type = 'crdm-basic-background-image';
 
 	/**
 	 * Exports control parameters for JS.
