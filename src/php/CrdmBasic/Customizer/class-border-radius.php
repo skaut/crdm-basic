@@ -66,7 +66,7 @@ class Border_Radius extends Customizer_Category {
 	protected function inline_css() {
 		$setting = get_option( 'crdm_basic_border_radius', self::DEFAULT['crdm_basic_border_radius'] );
 		return [
-			'.widget-area .widget'        => [
+			'.widget-area .widget'       => [
 				[ 'border-radius', $setting ],
 			],
 			'.crdm_page-header_captions' => [
