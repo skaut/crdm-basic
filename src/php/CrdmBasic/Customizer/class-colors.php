@@ -30,7 +30,6 @@ class Colors extends Customizer_Category {
 	 */
 	public function customize( $wp_customize ) {
 		if ( ! Init::generatepress_module_enabled( 'generate_package_colors' ) ) {
-			$wp_customize->register_control_type( 'CrdmBasic\Customizer\Controls\Color_Customize_Control' );
 			$this->add_panel_sections( $wp_customize );
 
 			$this->customize_primary_navigation( $wp_customize );
@@ -84,10 +83,11 @@ class Colors extends Customizer_Category {
 		);
 
 		$wp_customize->add_control(
-			new Controls\Color_Customize_Control(
+			new \WP_Customize_Color_Control(
 				$wp_customize,
 				'navigation_background_color_control',
 				[
+					'label'    => __( 'Background', 'crdm-basic' ),
 					'section'  => 'navigation_color_section',
 					'settings' => 'generate_settings[navigation_background_color]',
 				]
