@@ -91,7 +91,6 @@ class Color_Variant {
 				'preset'      => [
 					'light' => [
 						'settings' => [
-							'borderRadius'          => '0px',
 							'menuBg'                => [
 								'background-color' => '#037b8c',
 								'background-image' => '',
@@ -145,7 +144,6 @@ class Color_Variant {
 					],
 					'dark'  => [
 						'settings' => [
-							'borderRadius'          => '0.5em',
 							'menuBg'                => [
 								'background-color' => '#122030',
 								'background-image' => '',

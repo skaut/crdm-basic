@@ -32,6 +32,7 @@ class Preset {
 				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
 				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
 			],
+			'crdm_basic_border_radius'     => '',
 		],
 		'dark'  => [
 			'generate_settings'            => [
@@ -49,6 +50,7 @@ class Preset {
 				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_header_foreground.png',
 				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_pavement.png',
 			],
+			'crdm_basic_border_radius'     => '0.5em',
 		],
 	];
 
