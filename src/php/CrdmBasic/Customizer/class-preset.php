@@ -19,6 +19,7 @@ class Preset {
 		'light' => [
 			'generate_settings'            => [
 				'background_color' => '#ffffff',
+				'navigation_background_color' => '#037b8c',
 			],
 			'generate_background_settings' => [
 				'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
@@ -26,6 +27,8 @@ class Preset {
 				'body_size'       => '',
 				'body_attachment' => '',
 				'body_position'   => '',
+				'nav_image'       => '',
+				'nav_repeat'      => '',
 			],
 			'crdm_basic_header'            => [
 				'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
@@ -37,6 +40,7 @@ class Preset {
 		'dark'  => [
 			'generate_settings'            => [
 				'background_color' => '#0f2b4a',
+				'navigation_background_color' => '#122030',
 			],
 			'generate_background_settings' => [
 				'body_image'      => '',
@@ -44,6 +48,8 @@ class Preset {
 				'body_size'       => '',
 				'body_attachment' => '',
 				'body_position'   => '',
+				'nav_image'       => '',
+				'nav_repeat'      => '',
 			],
 			'crdm_basic_header'            => [
 				'background' => '',

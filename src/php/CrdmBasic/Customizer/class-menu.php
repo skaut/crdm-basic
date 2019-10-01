@@ -78,30 +78,6 @@ class Menu {
 		Kirki::add_field(
 			$this->config_id,
 			[
-				'type'      => 'background',
-				'settings'  => 'menuBg',
-				'label'     => esc_attr__( 'Menu background', 'crdm-basic' ),
-				'section'   => $this->section_id,
-				'default'   => [
-					'background-color'      => '#037b8c',
-					'background-image'      => '',
-					'background-repeat'     => 'repeat',
-					'background-position'   => 'center center',
-					'background-size'       => 'cover',
-					'background-attachment' => 'scroll',
-				],
-				'output'    => [
-					[
-						'element' => '.main-navigation, .main-navigation .main-nav ul li[class*="current-menu-"] > a, .main-navigation .main-nav ul li[class*="current-menu-"] > a:hover, .main-navigation .main-nav ul li[class*="current-menu-"].sfHover > a',
-					],
-				],
-				'transport' => 'auto',
-			]
-		);
-
-		Kirki::add_field(
-			$this->config_id,
-			[
 				'type'      => 'typography',
 				'settings'  => 'menuFont',
 				'label'     => esc_attr__( 'Menu items', 'crdm-basic' ),

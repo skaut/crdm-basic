@@ -22,6 +22,8 @@ class Background extends Customizer_Category {
 			'body_size'       => '',
 			'body_attachment' => '',
 			'body_position'   => '',
+			'nav_image'      => '',
+			'nav_repeat'     => '',
 		],
 		'crdm_basic_header'            => [
 			'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
@@ -44,6 +46,7 @@ class Background extends Customizer_Category {
 			$this->add_panel_sections( $wp_customize );
 
 			$this->customize_body( $wp_customize );
+			$this->customize_navigation( $wp_customize );
 		}
 		$this->customize_header( $wp_customize );
 	}
@@ -81,7 +84,17 @@ class Background extends Customizer_Category {
 			[
 				'title'      => __( 'Header', 'crdm-basic' ),
 				'capability' => 'edit_theme_options',
-				'priority'   => 5,
+				'priority'   => 10,
+				'panel'      => 'generate_backgrounds_panel',
+			]
+		);
+
+		$wp_customize->add_section(
+			'generate_backgrounds_navigation',
+			[
+				'title'      => __( 'Primary Navigation', 'crdm-basic' ),
+				'capability' => 'edit_theme_options',
+				'priority'   => 15,
 				'panel'      => 'generate_backgrounds_panel',
 			]
 		);
@@ -168,6 +181,63 @@ class Background extends Customizer_Category {
 					],
 				]
 			)
+		);
+	}
+
+	/**
+	 * Initializes customizer navigation options.
+	 *
+	 * Adds customizer options for controling the background of the primary navigation.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	private function customize_navigation( $wp_customize ) {
+		$wp_customize->add_setting(
+			'generate_background_settings[nav_image]',
+			[
+				'default'           => self::DEFAULT['generate_background_settings']['nav_image'],
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'esc_url_raw',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Image_Control(
+				$wp_customize,
+				'generate_backgrounds_settings[nav_image]',
+				[
+					'section'  => 'generate_backgrounds_navigation',
+					'settings' => 'generate_background_settings[nav_image]',
+					'priority' => 750,
+					'label'    => __( 'Navigation', 'crdm-basic' ),
+				]
+			)
+		);
+
+		$wp_customize->add_setting(
+			'generate_background_settings[nav_repeat]',
+			[
+				'default'           => self::DEFAULT['generate_background_settings']['nav_repeat'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_key',
+			]
+		);
+
+		$wp_customize->add_control(
+			'generate_background_settings[nav_repeat]',
+			[
+				'type'     => 'select',
+				'section'  => 'generate_backgrounds_navigation',
+				'settings' => 'generate_background_settings[nav_repeat]',
+				'choices'  => [
+					''          => __( 'Repeat', 'crdm-basic' ),
+					'repeat-x'  => __( 'Repeat x', 'crdm-basic' ),
+					'repeat-y'  => __( 'Repeat y', 'crdm-basic' ),
+					'no-repeat' => __( 'No Repeat', 'crdm-basic' ),
+				],
+				'priority' => 800
+			]
 		);
 	}
 
@@ -272,6 +342,10 @@ class Background extends Customizer_Category {
 			],
 			'.crdm_header__bg_3'                   => [
 				[ 'background-image', $crdm_settings['under'], 'url' ],
+			],
+			'.main-navigation, .menu-toggle'       => [
+				[ 'background-image', $generate_settings['nav_image'], 'url' ],
+				[ 'background-repeat', $generate_settings['nav_repeat'] ],
 			],
 		];
 	}

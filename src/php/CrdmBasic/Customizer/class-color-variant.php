@@ -91,10 +91,6 @@ class Color_Variant {
 				'preset'      => [
 					'light' => [
 						'settings' => [
-							'menuBg'                => [
-								'background-color' => '#037b8c',
-								'background-image' => '',
-							],
 							'menuFont'              => [
 								'font-family' => 'Patrick Hand',
 								'color'       => '#efefe5',
@@ -144,10 +140,6 @@ class Color_Variant {
 					],
 					'dark'  => [
 						'settings' => [
-							'menuBg'                => [
-								'background-color' => '#122030',
-								'background-image' => '',
-							],
 							'menuFont'              => [
 								'font-family' => 'Patrick Hand',
 								'color'       => '#f2efde',
