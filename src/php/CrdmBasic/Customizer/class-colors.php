@@ -78,7 +78,7 @@ class Colors extends Customizer_Category {
 				'default'           => self::DEFAULT['generate_settings']['navigation_background_color'],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
-				'sanitize_callback' => [ $this, 'sanitize_rgba' ],
+				'sanitize_callback' => [ $this, 'sanitize_hex' ],
 			]
 		);
 
@@ -95,9 +95,11 @@ class Colors extends Customizer_Category {
 		);
 	}
 
-	public function sanitize_rgba( $value ) {
-		// TODO.
-		return $value;
+	public function sanitize_hex( $value ) {
+	    if ( mb_ereg_match( '^#([a-fA-F0-9]{3}){1,2}$', $value ) ) {
+	        return $value;
+		}
+	    return '';
 	}
 
 	/**
