@@ -25,7 +25,7 @@ define( 'CRDMBASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_directory
  * Handles switching the theme back if requirements aren't met and loads the theme files otherwise.
  */
 function init() {
-	add_action( 'after_switch_theme', [ '\\CrdmBasic', 'switch_to_previous_theme_if_incompatible_version_of_wp_or_php' ] );
+	add_action( 'after_switch_theme', '\\CrdmBasic\\switch_to_previous_theme_if_incompatible_version_of_wp_or_php' );
 
 	if ( ! is_compatible_version_of_wp() || ! is_compatible_version_of_php() ) {
 		return;
