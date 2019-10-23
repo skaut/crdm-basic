@@ -22,8 +22,8 @@ class Background extends Customizer_Category {
 			'body_size'       => '',
 			'body_attachment' => '',
 			'body_position'   => '',
-			'nav_image'      => '',
-			'nav_repeat'     => '',
+			'nav_image'       => '',
+			'nav_repeat'      => '',
 		],
 		'crdm_basic_header'            => [
 			'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
@@ -236,7 +236,7 @@ class Background extends Customizer_Category {
 					'repeat-y'  => __( 'Repeat y', 'crdm-basic' ),
 					'no-repeat' => __( 'No Repeat', 'crdm-basic' ),
 				],
-				'priority' => 800
+				'priority' => 800,
 			]
 		);
 	}
