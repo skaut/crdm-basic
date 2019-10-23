@@ -1,5 +1,4 @@
 body {
-	font-family: "PT Sans", sans-serif;
 	grid-column-gap: 50px;
 	grid-template-rows: 100px 1fr;
 }
@@ -18,12 +17,6 @@ body {
 
 	.comment-content {
 		background-color: #fff;
-	}
-
-	.entry-content,
-	.entry-summary,
-	.page-content {
-		line-height: 1.4;
 	}
 
 	h1 {
