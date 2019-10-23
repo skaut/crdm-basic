@@ -20,6 +20,13 @@ class Preset {
 			'generate_settings'            => [
 				'background_color'            => '#ffffff',
 				'navigation_background_color' => '#037b8c',
+				'font_body'                   => 'PT Sans',
+				'body_font_weight'            => 'normal',
+				'body_font_transform'         => 'none',
+				'body_font_size'              => '17',
+				'body_line_height'            => '1.4',
+				'paragraph_margin'            => '1.5',
+				'text_color'                  => '#3f3f3f',
 			],
 			'generate_background_settings' => [
 				'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
@@ -35,12 +42,21 @@ class Preset {
 				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
 				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
 			],
+			'font_body_variants'           => 'regular',
+			'font_body_category'           => '',
 			'crdm_basic_border_radius'     => '',
 		],
 		'dark'  => [
 			'generate_settings'            => [
 				'background_color'            => '#0f2b4a',
 				'navigation_background_color' => '#122030',
+				'font_body'                   => 'PT Sans',
+				'body_font_weight'            => 'normal',
+				'body_font_transform'         => 'none',
+				'body_font_size'              => '17',
+				'body_line_height'            => '1.4',
+				'paragraph_margin'            => '1.5',
+				'text_color'                  => '#ebebeb',
 			],
 			'generate_background_settings' => [
 				'body_image'      => '',
@@ -56,6 +72,8 @@ class Preset {
 				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_header_foreground.png',
 				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_pavement.png',
 			],
+			'font_body_variants'           => 'regular',
+			'font_body_category'           => '',
 			'crdm_basic_border_radius'     => '0.5em',
 		],
 	];

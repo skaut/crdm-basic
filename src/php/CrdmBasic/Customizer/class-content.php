@@ -115,30 +115,6 @@ class Content {
 		Kirki::add_field(
 			$this->config_id,
 			[
-				'type'      => 'typography',
-				'settings'  => 'contentFont',
-				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
-				'section'   => $this->section_id,
-				'default'   => [
-					'font-family'    => 'PT Sans',
-					'variant'        => 'regular',
-					'font-size'      => '17px',
-					'line-height'    => '1.4',
-					'letter-spacing' => 'inherit',
-					'color'          => '#3f3f3f',
-				],
-				'output'    => [
-					[
-						'element' => 'body .site-main',
-					],
-				],
-				'transport' => 'auto',
-			]
-		);
-
-		Kirki::add_field(
-			$this->config_id,
-			[
 				'type'      => 'color',
 				'settings'  => 'contentLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
