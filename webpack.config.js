@@ -119,6 +119,9 @@ module.exports = {
             from: './src/php/functions.php',
             to: './'
         },{
+            from: './src/php/disable-gp-functions.php',
+            to: './'
+        },{
             from: './src/php/CrdmBasic',
             to: './src/php/CrdmBasic'
         },{

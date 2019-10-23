@@ -19,6 +19,8 @@ define( 'CRDMBASIC_TEMPLATE_URL', trailingslashit( get_stylesheet_directory_uri(
 define( 'CRDMBASIC_PARENT_TEMPLATE_PATH', realpath( get_template_directory() ) . DIRECTORY_SEPARATOR );
 define( 'CRDMBASIC_PARENT_TEMPLATE_URL', trailingslashit( get_template_directory_uri() ) );
 
+require CRDMBASIC_APP_PATH . 'disable-gp-functions.php';
+
 /**
  * Initializes the theme
  *

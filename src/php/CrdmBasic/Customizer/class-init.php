@@ -69,6 +69,7 @@ class Init {
 		( new Preset() );
 		( new Border_Radius() );
 		( new Colors() );
+		( new Typography() );
 		( new Background() );
 		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Menu( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
