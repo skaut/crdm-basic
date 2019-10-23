@@ -18,7 +18,7 @@ class Preset {
 	const PRESETS = [
 		'light' => [
 			'generate_settings'            => [
-				'background_color' => '#ffffff',
+				'background_color'            => '#ffffff',
 				'navigation_background_color' => '#037b8c',
 			],
 			'generate_background_settings' => [
@@ -39,7 +39,7 @@ class Preset {
 		],
 		'dark'  => [
 			'generate_settings'            => [
-				'background_color' => '#0f2b4a',
+				'background_color'            => '#0f2b4a',
 				'navigation_background_color' => '#122030',
 			],
 			'generate_background_settings' => [

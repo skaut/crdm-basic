@@ -95,11 +95,20 @@ class Colors extends Customizer_Category {
 		);
 	}
 
+	/**
+	 * Sanitizes a color.
+	 *
+	 * Checks whether a color is a valid hex code.
+	 *
+	 * @param string $value The value to be checked.
+	 *
+	 * @return string Hex code or empty string.
+	 */
 	public function sanitize_hex( $value ) {
-	    if ( mb_ereg_match( '^#([a-fA-F0-9]{3}){1,2}$', $value ) ) {
-	        return $value;
+		if ( mb_ereg_match( '^#([a-fA-F0-9]{3}){1,2}$', $value ) ) {
+			return $value;
 		}
-	    return '';
+		return '';
 	}
 
 	/**
