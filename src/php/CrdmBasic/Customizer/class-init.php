@@ -67,10 +67,10 @@ class Init {
 	 */
 	protected function init_sections_and_controls() {
 		( new Preset() );
-		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
+		( new Border_Radius() );
 		( new Colors() );
 		( new Background() );
-		( new Border_Radius() );
+		( new Color_Variant( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Menu( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Sidebar( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
 		( new Page_Header( self::CONFIG_ID, self::CONFIG_ID . '_theme' ) );
@@ -79,7 +79,7 @@ class Init {
 	}
 
 	/**
-	 * Checks for GeneratePress module
+	 * Checks for a GeneratePress module
 	 *
 	 * Checks whether GeneratePress premium is installed and a module is enabled.
 	 *
@@ -94,6 +94,9 @@ class Init {
 		switch ( $module ) {
 			case 'generate_package_backgrounds':
 				$definition = 'GENERATE_BACKGROUNDS';
+				break;
+			case 'generate_package_colors':
+				$definition = 'GENERATE_COLORS';
 				break;
 			default:
 				return false;
