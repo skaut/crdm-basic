@@ -51,13 +51,15 @@ class Typography extends Customizer_Category {
 	 * Enqueues the live-preview JS handlers.
 	 */
 	public function enqueue_live_preview() {
-		wp_enqueue_script( 'crdm_typography_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/typography_live_preview.js', [ ], CRDMBASIC_APP_VERSION );
+		wp_enqueue_script( 'crdm_typography_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/typography_live_preview.js', [], CRDMBASIC_APP_VERSION, false );
 
 		wp_localize_script(
 			'crdm_typography_live_preview',
-			'crdm_typography_live_preview',
+			'crdmTypographyLivePreview',
 			[
-				'mobile' => apply_filters( 'generate_mobile_media_query', '(max-width:768px)' ),
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+				'mobile'  => apply_filters( 'generate_mobile_media_query', '(max-width:768px)' ),
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 				'desktop' => apply_filters( 'generate_desktop_media_query', '(min-width:1025px)' ),
 			]
 		);
@@ -452,7 +454,7 @@ class Typography extends Customizer_Category {
 	 *
 	 * @param string|array $value The value to be sanitized.
 	 *
-	 * @return float The variant string.
+	 * @return string The variant string.
 	 */
 	public static function sanitize_variants( $value ) {
 		if ( is_array( $value ) ) {
