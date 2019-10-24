@@ -134,31 +134,6 @@ class Content {
 			$this->config_id,
 			[
 				'type'      => 'typography',
-				'settings'  => 'contentH2Font',
-				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
-				'section'   => $this->section_id,
-				'default'   => [
-					'font-family'    => 'PT Sans',
-					'variant'        => 'regular',
-					'font-size'      => '2.2em',
-					'line-height'    => '1.2',
-					'letter-spacing' => 'inherit',
-					'color'          => '#037b8c',
-					'text-transform' => 'none',
-				],
-				'output'    => [
-					[
-						'element' => 'body .site-main h2',
-					],
-				],
-				'transport' => 'auto',
-			]
-		);
-
-		Kirki::add_field(
-			$this->config_id,
-			[
-				'type'      => 'typography',
 				'settings'  => 'contentH3Font',
 				'label'     => esc_attr__( 'Heading 3 (H3)', 'crdm-basic' ),
 				'section'   => $this->section_id,

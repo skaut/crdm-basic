@@ -12,4 +12,11 @@ jQuery( 'document' ).ready( function( $ ) {
     generatepress_typography_live_update( 'heading_1_transform', 'h1', 'text-transform' );
     generatepress_typography_live_update( 'heading_1_line_height', 'h1', 'line-height', 'em' );
     generatepress_typography_live_update( 'heading_1_margin_bottom', 'h1', 'margin-bottom', 'px' );
+
+    generatepress_typography_live_update( 'heading_2_font_size', 'h2', 'font-size', 'px', crdmTypographyLivePreview.desktop );
+    generatepress_typography_live_update( 'mobile_heading_2_font_size', 'h2', 'font-size', 'px', crdmTypographyLivePreview.mobile );
+    generatepress_typography_live_update( 'heading_2_weight', 'h2', 'font-weight' );
+    generatepress_typography_live_update( 'heading_2_transform', 'h2', 'text-transform' );
+    generatepress_typography_live_update( 'heading_2_line_height', 'h2', 'line-height', 'em' );
+    generatepress_typography_live_update( 'heading_2_margin_bottom', 'h2', 'margin-bottom', 'px' );
 });

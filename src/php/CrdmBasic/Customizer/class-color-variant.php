@@ -101,10 +101,6 @@ class Color_Variant {
 								'color'       => '#ffffff',
 							],
 							'submenuSeparatorColor' => '#ffffff',
-							'contentH2Font'         => [
-								'font-family' => 'PT Sans',
-								'color'       => '#037b8c',
-							],
 							'contentH3Font'         => [
 								'font-family' => 'PT Sans',
 								'color'       => '#00011f',
@@ -138,10 +134,6 @@ class Color_Variant {
 								'color'       => '#5aa4cc',
 							],
 							'submenuSeparatorColor' => '#0f2b4a',
-							'contentH2Font'         => [
-								'font-family' => 'PT Sans',
-								'color'       => '#7adff1',
-							],
 							'contentH3Font'         => [
 								'font-family' => 'PT Sans',
 								'color'       => '#ebebeb',
