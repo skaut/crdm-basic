@@ -38,6 +38,7 @@ module.exports = {
     entry: {
         'frontend/index': './src/js/frontend/index.js',
         'admin/preset_customize_control': './src/js/admin/preset_customize_control.js',
+        'admin/colors_live_preview': './src/js/admin/colors_live_preview.js',
         'admin/typography_live_preview': './src/js/admin/typography_live_preview.js'
     },
     output: {

@@ -23,7 +23,15 @@ abstract class Customizer_Category {
 	public function __construct() {
 		add_action( 'customize_register', [ $this, 'customize' ], 9 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ], 11 );
+		add_action( 'customize_preview_init', [ $this, 'enqueue_live_preview' ], 101 );
 	}
+
+	/**
+	 * Enqueues the JS.
+	 *
+	 * Enqueues the live-preview JS handlers.
+	 */
+	public function enqueue_live_preview() {}
 
 	/**
 	 * Initializes customizer options.

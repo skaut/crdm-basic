@@ -28,22 +28,21 @@ class Typography extends Customizer_Category {
 			'navigation_font_transform'   => 'none',
 			'navigation_font_size'        => '15',
 			'mobile_navigation_font_size' => '15',
+			'font_heading_1'              => 'inherit',
+			'heading_1_weight'            => '300',
+			'heading_1_transform'         => 'none',
+			'heading_1_font_size'         => '40',
+			'mobile_heading_1_font_size'  => '30',
+			'heading_1_line_height'       => '1.2',
+			'heading_1_margin_bottom'     => '20',
 		],
 		'font_body_variants'       => '',
 		'font_body_category'       => '',
 		'font_navigation_variants' => '',
 		'font_navigation_category' => '',
+		'font_heading_1_variants'  => '',
+		'font_heading_1_category'  => '',
 	];
-
-	/**
-	 * Typography class constructor
-	 *
-	 * Adds the customize function to the WordPress action and registers the JS.
-	 */
-	public function __construct() {
-		parent::__construct();
-		add_action( 'customize_preview_init', [ $this, 'enqueue_live_preview' ], 101 );
-	}
 
 	/**
 	 * Enqueues the JS.
@@ -52,7 +51,6 @@ class Typography extends Customizer_Category {
 	 */
 	public function enqueue_live_preview() {
 		wp_enqueue_script( 'crdm_typography_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/typography_live_preview.js', [], CRDMBASIC_APP_VERSION, false );
-
 		wp_localize_script(
 			'crdm_typography_live_preview',
 			'crdmTypographyLivePreview',
@@ -80,6 +78,7 @@ class Typography extends Customizer_Category {
 
 			$this->customize_body( $wp_customize );
 			$this->customize_primary_navigation( $wp_customize );
+			$this->customize_headings( $wp_customize );
 		}
 	}
 
@@ -117,6 +116,16 @@ class Typography extends Customizer_Category {
 				'title'      => __( 'Primary Navigation', 'crdm-basic' ),
 				'capability' => 'edit_theme_options',
 				'priority'   => 50,
+				'panel'      => 'generate_typography_panel',
+			]
+		);
+
+		$wp_customize->add_section(
+			'font_content_section',
+			[
+				'title'      => __( 'Headings', 'crdm-basic' ),
+				'capability' => 'edit_theme_options',
+				'priority'   => 60,
 				'panel'      => 'generate_typography_panel',
 			]
 		);
@@ -424,6 +433,203 @@ class Typography extends Customizer_Category {
 						'mobile'  => [
 							'min'  => 6,
 							'max'  => 30,
+							'step' => 1,
+							'edit' => true,
+							'unit' => 'px',
+						],
+					],
+				]
+			)
+		);
+	}
+
+	/**
+	 * Initializes customizer options for headings.
+	 *
+	 * Adds customizer options for controling heading typography.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	public function customize_headings( $wp_customize ) {
+		// Family.
+		$wp_customize->add_setting(
+			'generate_settings[font_heading_1]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['font_heading_1'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field',
+			]
+		);
+
+		// Variants.
+		$wp_customize->add_setting(
+			'font_heading_1_variants',
+			[
+				'default'           => self::DEFAULT['font_heading_1_variants'],
+				'sanitize_callback' => [ '\\CrdmBasic\\Customizer\\Typography', 'sanitize_variants' ],
+			]
+		);
+
+		// Category.
+		$wp_customize->add_setting(
+			'font_heading_1_category',
+			[
+				'default'           => self::DEFAULT['font_heading_1_category'],
+				'sanitize_callback' => 'sanitize_text_field',
+			]
+		);
+
+		// Weight.
+		$wp_customize->add_setting(
+			'generate_settings[heading_1_weight]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['heading_1_weight'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_key',
+				'transport'         => 'postMessage',
+			]
+		);
+
+		// Transform.
+		$wp_customize->add_setting(
+			'generate_settings[heading_1_transform]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['heading_1_transform'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_key',
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \Generate_Typography_Customize_Control(
+				$wp_customize,
+				'font_heading_1_control',
+				[
+					'label'    => __( 'Heading 1 (H1)', 'crdm-basic' ),
+					'section'  => 'font_content_section',
+					'settings' => [
+						'family'    => 'generate_settings[font_heading_1]',
+						'variant'   => 'font_heading_1_variants',
+						'category'  => 'font_heading_1_category',
+						'weight'    => 'generate_settings[heading_1_weight]',
+						'transform' => 'generate_settings[heading_1_transform]',
+					],
+				]
+			)
+		);
+
+		// Size.
+		$wp_customize->add_setting(
+			'generate_settings[heading_1_font_size]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['heading_1_font_size'],
+				'type'              => 'option',
+				'sanitize_callback' => 'absint',
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_setting(
+			'generate_settings[mobile_heading_1_font_size]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['mobile_heading_1_font_size'],
+				'type'              => 'option',
+				'sanitize_callback' => [ '\\CrdmBasic\\Customizer\\Typography', 'sanitize_empty_absint' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \Generate_Range_Slider_Control(
+				$wp_customize,
+				'h1_font_sizes',
+				[
+					'description' => __( 'Font size', 'crdm-basic' ),
+					'section'     => 'font_content_section',
+					'settings'    => [
+						'desktop' => 'generate_settings[heading_1_font_size]',
+						'mobile'  => 'generate_settings[mobile_heading_1_font_size]',
+					],
+					'choices'     => [
+						'desktop' => [
+							'min'  => 15,
+							'max'  => 100,
+							'step' => 1,
+							'edit' => true,
+							'unit' => 'px',
+						],
+						'mobile'  => [
+							'min'  => 15,
+							'max'  => 100,
+							'step' => 1,
+							'edit' => true,
+							'unit' => 'px',
+						],
+					],
+				]
+			)
+		);
+
+		// Line height.
+		$wp_customize->add_setting(
+			'generate_settings[heading_1_line_height]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['heading_1_line_height'],
+				'type'              => 'option',
+				'sanitize_callback' => [ '\\CrdmBasic\\Customizer\\Typography', 'sanitize_decimal_number' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \Generate_Range_Slider_Control(
+				$wp_customize,
+				'generate_settings[heading_1_line_height]',
+				[
+					'description' => __( 'Line height', 'crdm-basic' ),
+					'section'     => 'font_content_section',
+					'settings'    => [
+						'desktop' => 'generate_settings[heading_1_line_height]',
+					],
+					'choices'     => [
+						'desktop' => [
+							'min'  => 0,
+							'max'  => 5,
+							'step' => .1,
+							'edit' => true,
+							'unit' => 'em',
+						],
+					],
+				]
+			)
+		);
+
+		// Paragraph margin.
+		$wp_customize->add_setting(
+			'generate_settings[heading_1_margin_bottom]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['heading_1_margin_bottom'],
+				'type'              => 'option',
+				'sanitize_callback' => [ '\\CrdmBasic\\Customizer\\Typography', 'sanitize_decimal_number' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \Generate_Range_Slider_Control(
+				$wp_customize,
+				'generate_settings[heading_1_margin_bottom]',
+				[
+					'description' => __( 'Bottom margin', 'crdm-basic' ),
+					'section'     => 'font_content_section',
+					'settings'    => [
+						'desktop' => 'generate_settings[heading_1_margin_bottom]',
+					],
+					'choices'     => [
+						'desktop' => [
+							'min'  => 0,
+							'max'  => 100,
 							'step' => 1,
 							'edit' => true,
 							'unit' => 'px',
