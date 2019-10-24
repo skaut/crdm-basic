@@ -9,6 +9,10 @@ function __($a, $b) {
 	return '';
 }
 
+function absint( $a ) {
+	return 0;
+}
+
 function add_action( $a, $b, $c = '' ) {
 }
 
@@ -91,6 +95,10 @@ function is_rtl() {
 
 function remove_action( $a, $b, $c = '' ) {
 	return false;
+}
+
+function sanitize_text_field( $a ) {
+	return '';
 }
 
 function switch_theme( $a ) {
