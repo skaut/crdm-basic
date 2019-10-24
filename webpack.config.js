@@ -37,7 +37,8 @@ module.exports = {
     mode: 'production',
     entry: {
         'frontend/index': './src/js/frontend/index.js',
-        'admin/preset_customize_control': './src/js/admin/preset_customize_control.js'
+        'admin/preset_customize_control': './src/js/admin/preset_customize_control.js',
+        'admin/typography_live_preview': './src/js/admin/typography_live_preview.js'
     },
     output: {
         filename: '[name].js',

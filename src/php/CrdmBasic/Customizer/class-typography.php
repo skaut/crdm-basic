@@ -16,17 +16,52 @@ namespace CrdmBasic\Customizer;
  */
 class Typography extends Customizer_Category {
 	const DEFAULT = [
-		'generate_settings'  => [
-			'font_body'           => 'System Stack',
-			'body_font_weight'    => 'normal',
-			'body_font_transform' => 'none',
-			'body_font_size'      => '17',
-			'body_line_height'    => '1.5',
-			'paragraph_margin'    => '1.5',
+		'generate_settings'        => [
+			'font_body'                   => 'System Stack',
+			'body_font_weight'            => 'normal',
+			'body_font_transform'         => 'none',
+			'body_font_size'              => '17',
+			'body_line_height'            => '1.5',
+			'paragraph_margin'            => '1.5',
+			'font_navigation'             => 'inherit',
+			'navigation_font_weight'      => 'normal',
+			'navigation_font_transform'   => 'none',
+			'navigation_font_size'        => '15',
+			'mobile_navigation_font_size' => '15',
 		],
-		'font_body_variants' => '',
-		'font_body_category' => '',
+		'font_body_variants'       => '',
+		'font_body_category'       => '',
+		'font_navigation_variants' => '',
+		'font_navigation_category' => '',
 	];
+
+	/**
+	 * Typography class constructor
+	 *
+	 * Adds the customize function to the WordPress action and registers the JS.
+	 */
+	public function __construct() {
+		parent::__construct();
+		add_action( 'customize_preview_init', [ $this, 'enqueue_live_preview' ], 101 );
+	}
+
+	/**
+	 * Enqueues the JS.
+	 *
+	 * Enqueues the live-preview JS handlers.
+	 */
+	public function enqueue_live_preview() {
+		wp_enqueue_script( 'crdm_typography_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/typography_live_preview.js', [ ], CRDMBASIC_APP_VERSION );
+
+		wp_localize_script(
+			'crdm_typography_live_preview',
+			'crdm_typography_live_preview',
+			[
+				'mobile' => apply_filters( 'generate_mobile_media_query', '(max-width:768px)' ),
+				'desktop' => apply_filters( 'generate_desktop_media_query', '(min-width:1025px)' ),
+			]
+		);
+	}
 
 	/**
 	 * Initializes customizer options.
@@ -42,6 +77,7 @@ class Typography extends Customizer_Category {
 			$this->add_panel_sections( $wp_customize );
 
 			$this->customize_body( $wp_customize );
+			$this->customize_primary_navigation( $wp_customize );
 		}
 	}
 
@@ -69,6 +105,16 @@ class Typography extends Customizer_Category {
 				'title'      => __( 'Body', 'crdm-basic' ),
 				'capability' => 'edit_theme_options',
 				'priority'   => 30,
+				'panel'      => 'generate_typography_panel',
+			]
+		);
+
+		$wp_customize->add_section(
+			'font_navigation_section',
+			[
+				'title'      => __( 'Primary Navigation', 'crdm-basic' ),
+				'capability' => 'edit_theme_options',
+				'priority'   => 50,
 				'panel'      => 'generate_typography_panel',
 			]
 		);
@@ -257,6 +303,136 @@ class Typography extends Customizer_Category {
 	}
 
 	/**
+	 * Initializes customizer options for primary navigation.
+	 *
+	 * Adds customizer options for controling the primary navigation typography.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	private function customize_primary_navigation( $wp_customize ) {
+		// Family.
+		$wp_customize->add_setting(
+			'generate_settings[font_navigation]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['font_navigation'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_text_field',
+			]
+		);
+
+		// Variants.
+		$wp_customize->add_setting(
+			'font_navigation_variants',
+			[
+				'default'           => self::DEFAULT['font_navigation_variants'],
+				'sanitize_callback' => [ '\\CrdmBasic\\Customizer\\Typography', 'sanitize_variants' ],
+			]
+		);
+
+		// Category.
+		$wp_customize->add_setting(
+			'font_navigation_category',
+			[
+				'default'           => self::DEFAULT['font_navigation_category'],
+				'sanitize_callback' => 'sanitize_text_field',
+			]
+		);
+
+		// Weight.
+		$wp_customize->add_setting(
+			'generate_settings[navigation_font_weight]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['navigation_font_weight'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_key',
+				'transport'         => 'postMessage',
+			]
+		);
+
+		// Transform.
+		$wp_customize->add_setting(
+			'generate_settings[navigation_font_transform]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['navigation_font_transform'],
+				'type'              => 'option',
+				'sanitize_callback' => 'sanitize_key',
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \Generate_Typography_Customize_Control(
+				$wp_customize,
+				'google_font_site_navigation_control',
+				[
+					'section'  => 'font_navigation_section',
+					'priority' => 120,
+					'settings' => [
+						'family'    => 'generate_settings[font_navigation]',
+						'variant'   => 'font_navigation_variants',
+						'category'  => 'font_navigation_category',
+						'weight'    => 'generate_settings[navigation_font_weight]',
+						'transform' => 'generate_settings[navigation_font_transform]',
+					],
+				]
+			)
+		);
+
+		// Size.
+		$wp_customize->add_setting(
+			'generate_settings[navigation_font_size]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['navigation_font_size'],
+				'type'              => 'option',
+				'sanitize_callback' => 'absint',
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_setting(
+			'generate_settings[mobile_navigation_font_size]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['mobile_navigation_font_size'],
+				'type'              => 'option',
+				'sanitize_callback' => [ '\\CrdmBasic\\Customizer\\Typography', 'sanitize_empty_absint' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \Generate_Range_Slider_Control(
+				$wp_customize,
+				'generate_settings[navigation_font_size]',
+				[
+					'description' => __( 'Font size', 'crdm-basic' ),
+					'section'     => 'font_navigation_section',
+					'priority'    => 165,
+					'settings'    => [
+						'desktop' => 'generate_settings[navigation_font_size]',
+						'mobile'  => 'generate_settings[mobile_navigation_font_size]',
+					],
+					'choices'     => [
+						'desktop' => [
+							'min'  => 6,
+							'max'  => 30,
+							'step' => 1,
+							'edit' => true,
+							'unit' => 'px',
+						],
+						'mobile'  => [
+							'min'  => 6,
+							'max'  => 30,
+							'step' => 1,
+							'edit' => true,
+							'unit' => 'px',
+						],
+					],
+				]
+			)
+		);
+	}
+
+	/**
 	 * Sanitizes a decimal number.
 	 *
 	 * Converts a string representation of a number into a non-negative float.
@@ -284,6 +460,23 @@ class Typography extends Customizer_Category {
 		}
 		return sanitize_text_field( $value );
 	}
+
+	/**
+	 * Sanitizes a non-negative integer.
+	 *
+	 * Converts a string representation of a number into a non-negative integer. Optionally keeps empty string as an empty string
+	 *
+	 * @param string $value The value to be sanitized.
+	 *
+	 * @return string|int The integer value.
+	 */
+	public static function sanitize_empty_absint( $value ) {
+		if ( '' === $value ) {
+			return '';
+		}
+		return absint( $value );
+	}
+
 
 	/**
 	 * Returns the CSS for the background settings.

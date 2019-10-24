@@ -20,6 +20,7 @@ class Preset {
 			'generate_settings'            => [
 				'background_color'            => '#ffffff',
 				'navigation_background_color' => '#037b8c',
+				'navigation_text_color'       => '#efefe5',
 				'font_body'                   => 'PT Sans',
 				'body_font_weight'            => 'normal',
 				'body_font_transform'         => 'none',
@@ -27,6 +28,11 @@ class Preset {
 				'body_line_height'            => '1.4',
 				'paragraph_margin'            => '1.5',
 				'text_color'                  => '#3f3f3f',
+				'font_navigation'             => 'Patrick Hand',
+				'navigation_font_weight'      => 'normal',
+				'navigation_font_transform'   => 'none',
+				'navigation_font_size'        => '16',
+				'mobile_navigation_font_size' => '',
 			],
 			'generate_background_settings' => [
 				'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
@@ -44,12 +50,15 @@ class Preset {
 			],
 			'font_body_variants'           => 'regular',
 			'font_body_category'           => '',
+			'font_navigation_variants'     => 'regular',
+			'font_navigation_category'     => '',
 			'crdm_basic_border_radius'     => '',
 		],
 		'dark'  => [
 			'generate_settings'            => [
 				'background_color'            => '#0f2b4a',
 				'navigation_background_color' => '#122030',
+				'navigation_text_color'       => '#f2efde',
 				'font_body'                   => 'PT Sans',
 				'body_font_weight'            => 'normal',
 				'body_font_transform'         => 'none',
@@ -57,6 +66,11 @@ class Preset {
 				'body_line_height'            => '1.4',
 				'paragraph_margin'            => '1.5',
 				'text_color'                  => '#ebebeb',
+				'font_navigation'             => 'Patrick Hand',
+				'navigation_font_weight'      => 'normal',
+				'navigation_font_transform'   => 'none',
+				'navigation_font_size'        => '16',
+				'mobile_navigation_font_size' => '',
 			],
 			'generate_background_settings' => [
 				'body_image'      => '',
@@ -74,6 +88,8 @@ class Preset {
 			],
 			'font_body_variants'           => 'regular',
 			'font_body_category'           => '',
+			'font_navigation_variants'     => 'regular',
+			'font_navigation_category'     => '',
 			'crdm_basic_border_radius'     => '0.5em',
 		],
 	];
