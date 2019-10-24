@@ -9,9 +9,11 @@
 
 declare(strict_types = 1);
 
-/**
- * Turns off GP Typography
- *
- * The presence of this function disables the Typography section from GeneratePress basic.
- */
-function generate_fonts_customize_register() {}
+if ( ! function_exists( 'generate_fonts_customize_register' ) ) {
+	/**
+	 * Turns off GP Typography
+	 *
+	 * The presence of this function disables the Typography section from GeneratePress basic.
+	 */
+	function generate_fonts_customize_register() {}
+}
