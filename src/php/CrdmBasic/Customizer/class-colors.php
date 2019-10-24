@@ -18,6 +18,7 @@ class Colors extends Customizer_Category {
 	const DEFAULT = [
 		'generate_settings' => [
 			'navigation_background_color' => '#222222',
+			'navigation_text_color'       => '#ffffff',
 		],
 	];
 
@@ -90,6 +91,30 @@ class Colors extends Customizer_Category {
 					'label'    => __( 'Background', 'crdm-basic' ),
 					'section'  => 'navigation_color_section',
 					'settings' => 'generate_settings[navigation_background_color]',
+					'priority' => '1',
+				]
+			)
+		);
+
+		$wp_customize->add_setting(
+			'generate_settings[navigation_text_color]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['navigation_text_color'],
+				'type'              => 'option',
+				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				'navigation_text_color',
+				[
+					'label'    => __( 'Text', 'crdm-basic' ),
+					'section'  => 'navigation_color_section',
+					'settings' => 'generate_settings[navigation_text_color]',
+					'priority' => '2',
 				]
 			)
 		);

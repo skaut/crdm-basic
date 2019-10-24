@@ -78,36 +78,6 @@ class Menu {
 		Kirki::add_field(
 			$this->config_id,
 			[
-				'type'      => 'typography',
-				'settings'  => 'menuFont',
-				'label'     => esc_attr__( 'Menu items', 'crdm-basic' ),
-				'section'   => $this->section_id,
-				'default'   => [
-					'font-family'    => 'Patrick Hand',
-					'variant'        => 'regular',
-					'font-size'      => '16px',
-					'line-height'    => '37px',
-					'letter-spacing' => 'inherit',
-					'color'          => '#efefe5',
-					'text-transform' => 'none',
-				],
-				'output'    => [
-					[
-						'element' => '.main-navigation .main-nav > ul > li > a, .main-navigation .main-nav ul li[class*="current-menu-"] > a, .main-navigation .main-nav ul li[class*="current-menu-"] > a:hover, .main-navigation .main-nav ul li[class*="current-menu-"].sfHover > a',
-					],
-					[
-						'choice'   => 'color',
-						'element'  => '.dropdown-menu-toggle:before',
-						'property' => 'color',
-					],
-				],
-				'transport' => 'auto',
-			]
-		);
-
-		Kirki::add_field(
-			$this->config_id,
-			[
 				'type'      => 'color',
 				'settings'  => 'menuSeparatorColor',
 				'label'     => esc_attr__( 'Menu item separator color', 'crdm-basic' ),
