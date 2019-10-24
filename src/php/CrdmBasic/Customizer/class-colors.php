@@ -20,6 +20,7 @@ class Colors extends Customizer_Category {
 			'navigation_background_color' => '#222222',
 			'navigation_text_color'       => '#ffffff',
 			'h1_color'                    => '',
+			'h2_color'                    => '',
 		],
 	];
 
@@ -167,6 +168,29 @@ class Colors extends Customizer_Category {
 					'section'  => 'content_color_section',
 					'settings' => 'generate_settings[h1_color]',
 					'priority' => '11',
+				]
+			)
+		);
+
+		$wp_customize->add_setting(
+			'generate_settings[h2_color]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['h2_color'],
+				'type'              => 'option',
+				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				'h2_color',
+				[
+					'label'    => __( 'Heading 2 (H2) Color', 'crdm-basic' ),
+					'section'  => 'content_color_section',
+					'settings' => 'generate_settings[h2_color]',
+					'priority' => '12',
 				]
 			)
 		);
