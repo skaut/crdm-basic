@@ -133,32 +133,6 @@ class Content {
 		Kirki::add_field(
 			$this->config_id,
 			[
-				'type'        => 'typography',
-				'settings'    => 'contentH1Font',
-				'label'       => esc_attr__( 'Heading 1 (H1)', 'crdm-basic' ),
-				'description' => esc_attr__( 'The color will be used for other elements (lists, tables etc.) as well.', 'crdm-basic' ),
-				'section'     => $this->section_id,
-				'default'     => [
-					'font-family'    => 'PT Sans',
-					'variant'        => '700',
-					'font-size'      => '2.3em',
-					'line-height'    => '1.15',
-					'letter-spacing' => 'inherit',
-					'color'          => '#037b8c',
-					'text-transform' => 'none',
-				],
-				'output'      => [
-					[
-						'element' => 'body .site-main h1',
-					],
-				],
-				'transport'   => 'auto',
-			]
-		);
-
-		Kirki::add_field(
-			$this->config_id,
-			[
 				'type'      => 'typography',
 				'settings'  => 'contentH2Font',
 				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),

@@ -19,8 +19,18 @@ class Colors extends Customizer_Category {
 		'generate_settings' => [
 			'navigation_background_color' => '#222222',
 			'navigation_text_color'       => '#ffffff',
+			'h1_color'                    => '',
 		],
 	];
+
+	/**
+	 * Enqueues the JS.
+	 *
+	 * Enqueues the live-preview JS handlers.
+	 */
+	public function enqueue_live_preview() {
+		wp_enqueue_script( 'crdm_colors_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/colors_live_preview.js', [], CRDMBASIC_APP_VERSION, false );
+	}
 
 	/**
 	 * Initializes customizer options.
@@ -34,6 +44,7 @@ class Colors extends Customizer_Category {
 			$this->add_panel_sections( $wp_customize );
 
 			$this->customize_primary_navigation( $wp_customize );
+			$this->customize_content( $wp_customize );
 		}
 	}
 
@@ -63,6 +74,15 @@ class Colors extends Customizer_Category {
 				'panel'    => 'generate_colors_panel',
 			]
 		);
+
+		$wp_customize->add_section(
+			'content_color_section',
+			[
+				'title'    => __( 'Content', 'crdm-basic' ),
+				'priority' => 80,
+				'panel'    => 'generate_colors_panel',
+			]
+		);
 	}
 
 	/**
@@ -78,8 +98,8 @@ class Colors extends Customizer_Category {
 			[
 				'default'           => self::DEFAULT['generate_settings']['navigation_background_color'],
 				'type'              => 'option',
-				'transport'         => 'postMessage',
 				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'transport'         => 'postMessage',
 			]
 		);
 
@@ -115,6 +135,38 @@ class Colors extends Customizer_Category {
 					'section'  => 'navigation_color_section',
 					'settings' => 'generate_settings[navigation_text_color]',
 					'priority' => '2',
+				]
+			)
+		);
+	}
+
+	/**
+	 * Initializes customizer options for heading.
+	 *
+	 * Adds customizer options for controling heading text color.
+	 *
+	 * @param \WP_Customize_Manager $wp_customize The WordPress customizer manager.
+	 */
+	private function customize_content( $wp_customize ) {
+		$wp_customize->add_setting(
+			'generate_settings[h1_color]',
+			[
+				'default'           => self::DEFAULT['generate_settings']['h1_color'],
+				'type'              => 'option',
+				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'transport'         => 'postMessage',
+			]
+		);
+
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				'h1_color',
+				[
+					'label'    => __( 'Heading 1 (H1) Color', 'crdm-basic' ),
+					'section'  => 'content_color_section',
+					'settings' => 'generate_settings[h1_color]',
+					'priority' => '11',
 				]
 			)
 		);
