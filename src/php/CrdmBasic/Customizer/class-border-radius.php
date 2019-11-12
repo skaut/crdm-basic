@@ -62,10 +62,10 @@ class Border_Radius {
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
-			[
+			array(
 				'title' => esc_attr__( 'Border radius', 'crdm-basic' ),
 				'panel' => $this->panel_id,
-			]
+			)
 		);
 	}
 
@@ -77,18 +77,18 @@ class Border_Radius {
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'        => 'dimension',
 				'settings'    => 'borderRadius',
 				'label'       => esc_attr__( 'Border radius', 'crdm-basic' ),
 				'description' => esc_attr__( 'Including units, e. g. "10px"', 'crdm-basic' ),
 				'section'     => $this->section_id,
 				'default'     => '0px',
-				'css_vars'    => [
-					[ '--main-border-radius' ],
-				],
+				'css_vars'    => array(
+					array( '--main-border-radius' ),
+				),
 				'transport'   => 'auto',
-			]
+			)
 		);
 	}
 

@@ -62,10 +62,10 @@ class Footer {
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
-			[
+			array(
 				'title' => esc_attr__( 'Footer', 'crdm-basic' ),
 				'panel' => $this->panel_id,
-			]
+			)
 		);
 	}
 
@@ -77,36 +77,36 @@ class Footer {
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'background',
 				'settings'  => 'footerBg',
 				'label'     => esc_attr__( 'Background', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'background-color'      => '#ffffff',
 					'background-image'      => '',
 					'background-repeat'     => 'repeat',
 					'background-position'   => 'left top',
 					'background-size'       => 'auto',
 					'background-attachment' => 'scroll',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.footer-widgets',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'typography',
 				'settings'  => 'footerTitlesFont',
 				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
 					'font-size'      => '20px',
@@ -114,56 +114,56 @@ class Footer {
 					'letter-spacing' => 'inherit',
 					'color'          => '#4e4e4d',
 					'text-transform' => 'none',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.footer-widgets .widget-title',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'typography',
 				'settings'  => 'footerFont',
 				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
 					'font-size'      => '17px',
 					'line-height'    => '1.5',
 					'letter-spacing' => 'inherit',
 					'color'          => '#9e9d9b',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.footer-widgets',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'color',
 				'settings'  => 'footerLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => '#037b8c',
-				'output'    => [
-					[
+				'output'    => array(
+					array(
 						'element'  => '.footer-widgets a, .footer-widgets a:visited, .footer-widgets a:hover',
 						'property' => 'color',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 	}
 

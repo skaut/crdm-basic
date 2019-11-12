@@ -21,11 +21,11 @@ final class Init {
 	 * Enqueues all the scripts and styles, adds all the header and footer styles.
 	 */
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'load_all_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'load_all_scripts' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_all_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_all_scripts' ) );
 
-		add_action( 'generate_before_header', [ $this, 'before_header' ] );
-		add_action( 'generate_after_header', [ $this, 'after_header' ] );
+		add_action( 'generate_before_header', array( $this, 'before_header' ) );
+		add_action( 'generate_after_header', array( $this, 'after_header' ) );
 
 		add_action(
 			'generate_after_header',
@@ -35,7 +35,7 @@ final class Init {
 			},
 			1
 		);
-		add_action( 'generate_after_header', [ $this, 'custom_page_header_image' ], 25 );
+		add_action( 'generate_after_header', array( $this, 'custom_page_header_image' ), 25 );
 
 		add_filter(
 			'generate_show_title',
@@ -67,13 +67,13 @@ final class Init {
 	 */
 	public function load_all_styles() {
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'generatepress-rtl', CRDMBASIC_PARENT_TEMPLATE_URL . 'rtl.css', [], CRDMBASIC_APP_VERSION );
+			wp_enqueue_style( 'generatepress-rtl', CRDMBASIC_PARENT_TEMPLATE_URL . 'rtl.css', array(), CRDMBASIC_APP_VERSION );
 		}
 
 		wp_enqueue_style(
 			'crdm-main',
 			CRDMBASIC_TEMPLATE_URL . 'frontend/index.css',
-			[ 'generate-style' ],
+			array( 'generate-style' ),
 			CRDMBASIC_APP_VERSION
 		);
 	}
@@ -87,7 +87,7 @@ final class Init {
 		wp_enqueue_script(
 			'crdm-main',
 			CRDMBASIC_TEMPLATE_URL . 'frontend/index.js',
-			[ 'jquery' ],
+			array( 'jquery' ),
 			CRDMBASIC_APP_VERSION,
 			true
 		);
@@ -144,10 +144,10 @@ final class Init {
 			the_post_thumbnail(
 				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 				apply_filters( 'generate_page_header_default_size', 'full' ),
-				[
+				array(
 					'itemprop' => 'image',
 					'alt'      => the_title_attribute( 'echo=0' ),
-				]
+				)
 			);
 			?>
 			<div class="crdm_page-header_captions">
