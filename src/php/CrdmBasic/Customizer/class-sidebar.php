@@ -62,10 +62,10 @@ class Sidebar {
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
-			[
+			array(
 				'title' => esc_attr__( 'Sidebars', 'crdm-basic' ),
 				'panel' => $this->panel_id,
-			]
+			)
 		);
 	}
 
@@ -77,55 +77,55 @@ class Sidebar {
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'background',
 				'settings'  => 'sidebarBg',
 				'label'     => esc_attr__( 'Background', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'background-color'      => '#ffffff',
 					'background-image'      => '',
 					'background-repeat'     => 'repeat',
 					'background-position'   => 'left top',
 					'background-size'       => 'auto',
 					'background-attachment' => 'scroll',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.sidebar .widget',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'color',
 				'settings'  => 'sidebarBoxshadowColor',
 				'label'     => esc_attr__( 'Box shadow color', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => 'rgba(240, 240, 240, 0.75)',
-				'output'    => [
-					[
+				'output'    => array(
+					array(
 						'element'       => '.sidebar .widget',
 						'property'      => 'box-shadow',
 						'value_pattern' => '0 -5px 0 0 $, 0 5px 0 0 $',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'typography',
 				'settings'  => 'sidebarTitlesFont',
 				'label'     => esc_attr__( 'Heading 2 (H2)', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
 					'font-size'      => '20px',
@@ -133,60 +133,60 @@ class Sidebar {
 					'letter-spacing' => 'inherit',
 					'color'          => '#000000',
 					'text-transform' => 'none',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.sidebar .widget .widget-title',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'typography',
 				'settings'  => 'sidebarFont',
 				'label'     => esc_attr__( 'Body', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'font-family'    => 'PT Sans',
 					'variant'        => 'regular',
 					'font-size'      => '17px',
 					'line-height'    => '1.5',
 					'letter-spacing' => 'inherit',
 					'color'          => '#3a3a3a',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.sidebar .widget',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'color',
 				'settings'  => 'sidebarLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => '#037b8c',
-				'output'    => [
-					[
+				'output'    => array(
+					array(
 						'element'  => '.sidebar .widget a, .sidebar .widget a:visited, .sidebar .widget a:hover',
 						'property' => 'color',
-					],
-					[
+					),
+					array(
 						'element'  => '.simcal-calendar-head .simcal-nav .simcal-nav-button',
 						'property' => 'color',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 	}
 
