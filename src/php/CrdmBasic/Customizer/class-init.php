@@ -39,10 +39,10 @@ class Init {
 	protected function init_kirki() {
 		Kirki::add_config(
 			self::CONFIG_ID,
-			[
+			array(
 				'capability'  => 'edit_theme_options',
 				'option_type' => 'theme_mod',
-			]
+			)
 		);
 	}
 
@@ -54,9 +54,9 @@ class Init {
 	protected function init_panel() {
 		Kirki::add_panel(
 			self::CONFIG_ID . '_theme',
-			[
+			array(
 				'title' => esc_attr__( 'Child theme options', 'crdm-basic' ),
-			]
+			)
 		);
 	}
 
