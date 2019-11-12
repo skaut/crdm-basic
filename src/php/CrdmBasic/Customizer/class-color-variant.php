@@ -62,10 +62,10 @@ class Color_Variant {
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
-			[
+			array(
 				'title' => esc_attr__( 'Preset', 'crdm-basic' ),
 				'panel' => $this->panel_id,
-			]
+			)
 		);
 	}
 
@@ -77,46 +77,46 @@ class Color_Variant {
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'        => 'radio-image',
 				'settings'    => 'radio_image_setting',
 				'label'       => esc_attr__( 'Choose a preset', 'crdm-basic' ),
 				'description' => esc_attr__( 'CAUTION! Current theme settings will be overriden upon saving.', 'crdm-basic' ),
 				'section'     => $this->section_id,
 				'default'     => 'light',
-				'choices'     => [
+				'choices'     => array(
 					'light' => CRDMBASIC_TEMPLATE_URL . 'admin/light.png',
 					'dark'  => CRDMBASIC_TEMPLATE_URL . 'admin/dark.png',
-				],
+				),
 				'preset'      => [
 					'light' => [
 						'settings' => [
 							'menuSeparatorColor'    => '#3b969f',
-							'submenuBg'             => [
+							'submenuBg'             => array(
 								'background-color' => '#65c3d4',
 								'background-image' => '',
-							],
-							'submenuFont'           => [
+							),
+							'submenuFont'           => array(
 								'font-family' => 'Patrick Hand',
 								'color'       => '#ffffff',
-							],
+							),
 							'submenuSeparatorColor' => '#ffffff',
 							'contentH3Font'         => [
 								'font-family' => 'PT Sans',
 								'color'       => '#00011f',
 							],
-							'contentH4Font'         => [
+							'contentH4Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#037b8c',
-							],
-							'contentH5Font'         => [
+							),
+							'contentH5Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#00011f',
-							],
-							'contentH6Font'         => [
+							),
+							'contentH6Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#00011f',
-							],
+							),
 							'contentLinksColor'     => '#037b8c',
 							'sidebarLinksColor'     => '#037b8c',
 							'footerLinksColor'      => '#037b8c',
@@ -125,38 +125,38 @@ class Color_Variant {
 					'dark'  => [
 						'settings' => [
 							'menuSeparatorColor'    => '#465058',
-							'submenuBg'             => [
+							'submenuBg'             => array(
 								'background-color' => '#122030',
 								'background-image' => '',
-							],
-							'submenuFont'           => [
+							),
+							'submenuFont'           => array(
 								'font-family' => 'Patrick Hand',
 								'color'       => '#5aa4cc',
-							],
+							),
 							'submenuSeparatorColor' => '#0f2b4a',
 							'contentH3Font'         => [
 								'font-family' => 'PT Sans',
 								'color'       => '#ebebeb',
 							],
-							'contentH4Font'         => [
+							'contentH4Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#7adff1',
-							],
-							'contentH5Font'         => [
+							),
+							'contentH5Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#ebebeb',
-							],
-							'contentH6Font'         => [
+							),
+							'contentH6Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#ebebeb',
-							],
+							),
 							'contentLinksColor'     => '#7adff1',
 							'sidebarLinksColor'     => '#5aa5c8',
 							'footerLinksColor'      => '#5aa5c8',
 						],
 					],
 				],
-			]
+			)
 		);
 	}
 
