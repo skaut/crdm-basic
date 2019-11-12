@@ -77,7 +77,7 @@ class Menu {
 	protected function init_controls() {
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'color',
 				'settings'  => 'menuSeparatorColor',
 				'label'     => esc_attr__( 'Menu item separator color', 'crdm-basic' ),
@@ -90,7 +90,7 @@ class Menu {
 					),
 				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(

@@ -15,9 +15,9 @@ namespace CrdmBasic\Customizer;
  * This class sets up all the customizer options for choosing one of the built-in presets of the template
  */
 class Preset {
-	const PRESETS = [
-		'light' => [
-			'generate_settings'            => [
+	const PRESETS = array(
+		'light' => array(
+			'generate_settings'            => array(
 				'background_color'            => '#ffffff',
 				'navigation_background_color' => '#037b8c',
 				'navigation_text_color'       => '#efefe5',
@@ -49,8 +49,8 @@ class Preset {
 				'heading_2_line_height'       => '1.2',
 				'heading_2_margin_bottom'     => '20',
 				'h2_color'                    => '#037b8c',
-			],
-			'generate_background_settings' => [
+			),
+			'generate_background_settings' => array(
 				'body_image'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_background.png',
 				'body_repeat'     => '',
 				'body_size'       => '',
@@ -58,12 +58,12 @@ class Preset {
 				'body_position'   => '',
 				'nav_image'       => '',
 				'nav_repeat'      => '',
-			],
-			'crdm_basic_header'            => [
+			),
+			'crdm_basic_header'            => array(
 				'background' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_background.png',
 				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/light_header_foreground.png',
 				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/light_grass.png',
-			],
+			),
 			'font_body_variants'           => 'regular',
 			'font_body_category'           => '',
 			'font_navigation_variants'     => 'regular',
@@ -73,9 +73,9 @@ class Preset {
 			'font_heading_2_variants'      => 'regular',
 			'font_heading_2_category'      => '',
 			'crdm_basic_border_radius'     => '',
-		],
-		'dark'  => [
-			'generate_settings'            => [
+		),
+		'dark'  => array(
+			'generate_settings'            => array(
 				'background_color'            => '#0f2b4a',
 				'navigation_background_color' => '#122030',
 				'navigation_text_color'       => '#f2efde',
@@ -107,8 +107,8 @@ class Preset {
 				'heading_2_line_height'       => '1.2',
 				'heading_2_margin_bottom'     => '20',
 				'h2_color'                    => '#7adff1',
-			],
-			'generate_background_settings' => [
+			),
+			'generate_background_settings' => array(
 				'body_image'      => '',
 				'body_repeat'     => '',
 				'body_size'       => '',
@@ -116,12 +116,12 @@ class Preset {
 				'body_position'   => '',
 				'nav_image'       => '',
 				'nav_repeat'      => '',
-			],
-			'crdm_basic_header'            => [
+			),
+			'crdm_basic_header'            => array(
 				'background' => '',
 				'foreground' => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_header_foreground.png',
 				'under'      => CRDMBASIC_TEMPLATE_URL . 'frontend/dark_pavement.png',
-			],
+			),
 			'font_body_variants'           => 'regular',
 			'font_body_category'           => '',
 			'font_navigation_variants'     => 'regular',
@@ -131,8 +131,8 @@ class Preset {
 			'font_heading_2_variants'      => 'regular',
 			'font_heading_2_category'      => '',
 			'crdm_basic_border_radius'     => '0.5em',
-		],
-	];
+		),
+	);
 
 	/**
 	 * Preset class constructor
@@ -140,7 +140,7 @@ class Preset {
 	 * Adds settings for the 2 presets for the page.
 	 */
 	public function __construct() {
-		add_action( 'customize_register', [ $this, 'customize' ], 1000 );
+		add_action( 'customize_register', array( $this, 'customize' ), 1000 );
 	}
 
 	/**
@@ -155,21 +155,21 @@ class Preset {
 
 		$wp_customize->add_section(
 			'crdm_basic_preset',
-			[
+			array(
 				'title'      => __( 'Preset', 'crdm-basic' ),
 				'capability' => 'edit_theme_options',
 				'priority'   => 21,
-			]
+			)
 		);
 
 		$wp_customize->add_control(
 			new Controls\Preset_Customize_Control(
 				$wp_customize,
 				'crdm_basic_preset',
-				[
+				array(
 					'section'  => 'crdm_basic_preset',
-					'settings' => [],
-				],
+					'settings' => array(),
+				),
 				self::PRESETS
 			)
 		);

@@ -88,9 +88,9 @@ class Color_Variant {
 					'light' => CRDMBASIC_TEMPLATE_URL . 'admin/light.png',
 					'dark'  => CRDMBASIC_TEMPLATE_URL . 'admin/dark.png',
 				),
-				'preset'      => [
-					'light' => [
-						'settings' => [
+				'preset'      => array(
+					'light' => array(
+						'settings' => array(
 							'menuSeparatorColor'    => '#3b969f',
 							'submenuBg'             => array(
 								'background-color' => '#65c3d4',
@@ -101,10 +101,10 @@ class Color_Variant {
 								'color'       => '#ffffff',
 							),
 							'submenuSeparatorColor' => '#ffffff',
-							'contentH3Font'         => [
+							'contentH3Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#00011f',
-							],
+							),
 							'contentH4Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#037b8c',
@@ -120,10 +120,10 @@ class Color_Variant {
 							'contentLinksColor'     => '#037b8c',
 							'sidebarLinksColor'     => '#037b8c',
 							'footerLinksColor'      => '#037b8c',
-						],
-					],
-					'dark'  => [
-						'settings' => [
+						),
+					),
+					'dark'  => array(
+						'settings' => array(
 							'menuSeparatorColor'    => '#465058',
 							'submenuBg'             => array(
 								'background-color' => '#122030',
@@ -134,10 +134,10 @@ class Color_Variant {
 								'color'       => '#5aa4cc',
 							),
 							'submenuSeparatorColor' => '#0f2b4a',
-							'contentH3Font'         => [
+							'contentH3Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#ebebeb',
-							],
+							),
 							'contentH4Font'         => array(
 								'font-family' => 'PT Sans',
 								'color'       => '#7adff1',
@@ -153,9 +153,9 @@ class Color_Variant {
 							'contentLinksColor'     => '#7adff1',
 							'sidebarLinksColor'     => '#5aa5c8',
 							'footerLinksColor'      => '#5aa5c8',
-						],
-					],
-				],
+						),
+					),
+				),
 			)
 		);
 	}

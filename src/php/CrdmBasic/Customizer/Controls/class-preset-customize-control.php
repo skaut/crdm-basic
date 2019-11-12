@@ -44,7 +44,7 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 *
 	 * @SuppressWarnings(PHPMD.ShortVariable)
 	 */
-	public function __construct( $manager, $id, $args, $presets = [] ) {
+	public function __construct( $manager, $id, $args, $presets = array() ) {
 		parent::__construct( $manager, $id, $args );
 
 		$this->presets = $presets;
@@ -58,8 +58,8 @@ class Preset_Customize_Control extends \WP_Customize_Control {
 	 * @inheritDoc
 	 */
 	public function enqueue() {
-		wp_enqueue_style( 'crdm_basic_preset_customize_control_style', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.css', [], CRDMBASIC_APP_VERSION );
-		wp_enqueue_script( 'crdm_basic_preset_customize_control_script', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.js', [ 'jquery', 'customize-preview' ], CRDMBASIC_APP_VERSION, true );
+		wp_enqueue_style( 'crdm_basic_preset_customize_control_style', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.css', array(), CRDMBASIC_APP_VERSION );
+		wp_enqueue_script( 'crdm_basic_preset_customize_control_script', CRDMBASIC_TEMPLATE_URL . 'admin/preset_customize_control.js', array( 'jquery', 'customize-preview' ), CRDMBASIC_APP_VERSION, true );
 		wp_localize_script(
 			'crdm_basic_preset_customize_control_script',
 			'crdmbasicPresetCustomizeControlLocalize',

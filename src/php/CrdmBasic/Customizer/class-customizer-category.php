@@ -21,9 +21,9 @@ abstract class Customizer_Category {
 	 * Adds the customize function to the WordPress action.
 	 */
 	public function __construct() {
-		add_action( 'customize_register', [ $this, 'customize' ], 9 );
-		add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ], 11 );
-		add_action( 'customize_preview_init', [ $this, 'enqueue_live_preview' ], 101 );
+		add_action( 'customize_register', array( $this, 'customize' ), 9 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_inline_css' ), 11 );
+		add_action( 'customize_preview_init', array( $this, 'enqueue_live_preview' ), 101 );
 	}
 
 	/**
@@ -57,7 +57,7 @@ abstract class Customizer_Category {
 	 * Registers and enqueues an empty stylesheet to be used for the customizer-defined settings.
 	 */
 	public static function register_inline_css() {
-		wp_register_style( 'crdm_customizer', false, [], CRDMBASIC_APP_VERSION );
+		wp_register_style( 'crdm_customizer', false, array(), CRDMBASIC_APP_VERSION );
 		wp_enqueue_style( 'crdm_customizer' );
 	}
 
@@ -95,4 +95,4 @@ abstract class Customizer_Category {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', [ '\\CrdmBasic\\Customizer\\Customizer_Category', 'register_inline_css' ], 10 );
+add_action( 'wp_enqueue_scripts', array( '\\CrdmBasic\\Customizer\\Customizer_Category', 'register_inline_css' ), 10 );
