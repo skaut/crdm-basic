@@ -15,9 +15,9 @@ namespace CrdmBasic\Customizer;
  * This class sets up all the customizer options for configuring the radius of corners of the webpage elements.
  */
 class Border_Radius extends Customizer_Category {
-	const DEFAULT = [
+	const DEFAULT = array(
 		'crdm_basic_border_radius' => '',
-	];
+	);
 
 	/**
 	 * Initializes customizer options.
@@ -29,30 +29,30 @@ class Border_Radius extends Customizer_Category {
 	public function customize( $wp_customize ) {
 		$wp_customize->add_section(
 			'crdm_basic_border_radius',
-			[
+			array(
 				'capability' => 'edit_theme_options',
 				'title'      => __( 'Border radius', 'crdm-basic' ),
 				'priority'   => 25,
-			]
+			)
 		);
 
 		$wp_customize->add_setting(
 			'crdm_basic_border_radius',
-			[
+			array(
 				'default'    => self::DEFAULT['crdm_basic_border_radius'],
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
-			]
+			)
 		);
 
 		$wp_customize->add_control(
 			'crdm_basic_border_radius',
-			[
+			array(
 				'type'        => 'text',
 				'section'     => 'crdm_basic_border_radius',
 				'label'       => __( 'Border radius', 'crdm-basic' ),
 				'description' => __( 'Including units, e. g. "10px"', 'crdm-basic' ),
-			]
+			)
 		);
 	}
 
@@ -65,24 +65,24 @@ class Border_Radius extends Customizer_Category {
 	 */
 	protected function inline_css() {
 		$setting = get_option( 'crdm_basic_border_radius', self::DEFAULT['crdm_basic_border_radius'] );
-		return [
-			'.widget-area .widget'       => [
-				[ 'border-radius', $setting ],
-			],
-			'.crdm_page-header_captions' => [
-				[ 'border-radius', $setting ],
-			],
-			'.main-navigation'           => [
-				[ 'border-radius', $setting ],
-			],
-			'.main-navigation .main-nav ul.sub-menu li:first-child a' => [
-				[ 'border-top-left-radius', $setting ],
-				[ 'border-top-right-radius', $setting ],
-			],
-			'.main-navigation .main-nav ul.sub-menu li:last-child a' => [
-				[ 'border-bottom-left-radius', $setting ],
-				[ 'border-bottom-right-radius', $setting ],
-			],
-		];
+		return array(
+			'.widget-area .widget'       => array(
+				array( 'border-radius', $setting ),
+			),
+			'.crdm_page-header_captions' => array(
+				array( 'border-radius', $setting ),
+			),
+			'.main-navigation'           => array(
+				array( 'border-radius', $setting ),
+			),
+			'.main-navigation .main-nav ul.sub-menu li:first-child a' => array(
+				array( 'border-top-left-radius', $setting ),
+				array( 'border-top-right-radius', $setting ),
+			),
+			'.main-navigation .main-nav ul.sub-menu li:last-child a' => array(
+				array( 'border-bottom-left-radius', $setting ),
+				array( 'border-bottom-right-radius', $setting ),
+			),
+		);
 	}
 }

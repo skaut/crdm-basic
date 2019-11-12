@@ -114,7 +114,7 @@ class Content {
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'color',
 				'settings'  => 'contentLinksColor',
 				'label'     => esc_attr__( 'Link color', 'crdm-basic' ),
@@ -127,12 +127,12 @@ class Content {
 					),
 				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'typography',
 				'settings'  => 'contentH3Font',
 				'label'     => esc_attr__( 'Heading 3 (H3)', 'crdm-basic' ),
@@ -152,7 +152,7 @@ class Content {
 					),
 				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(

@@ -35,31 +35,31 @@ class Background_Image_Customize_Control extends \WP_Customize_Control {
 		$this->json['position_placeholder'] = esc_html__( 'Position', 'crdm-basic' );
 
 		foreach ( $this->settings as $key => $id ) {
-			$this->json['settings'][ $key ] = [
+			$this->json['settings'][ $key ] = array(
 				'link'  => $this->get_link( $key ),
 				'value' => $this->value( $key ),
 				'id'    => $id->id ?? '',
-			];
+			);
 		}
 
-		$this->json['repeat_choices']     = [
+		$this->json['repeat_choices']     = array(
 			''          => esc_html__( 'Repeat', 'crdm-basic' ),
 			'repeat-x'  => esc_html__( 'Repeat x', 'crdm-basic' ),
 			'repeat-y'  => esc_html__( 'Repeat y', 'crdm-basic' ),
 			'no-repeat' => esc_html__( 'No Repeat', 'crdm-basic' ),
-		];
-		$this->json['size_choices']       = [
+		);
+		$this->json['size_choices']       = array(
 			''        => esc_html__( 'Size (Auto)', 'crdm-basic' ),
 			'100'     => esc_html__( '100% Width', 'crdm-basic' ),
 			'cover'   => esc_html__( 'Cover', 'crdm-basic' ),
 			'contain' => esc_html__( 'Contain', 'crdm-basic' ),
-		];
-		$this->json['attachment_choices'] = [
+		);
+		$this->json['attachment_choices'] = array(
 			''        => esc_html__( 'Attachment', 'crdm-basic' ),
 			'fixed'   => esc_html__( 'Fixed', 'crdm-basic' ),
 			'local'   => esc_html__( 'Local', 'crdm-basic' ),
 			'inherit' => esc_html__( 'Inherit', 'crdm-basic' ),
-		];
+		);
 	}
 
 	/**

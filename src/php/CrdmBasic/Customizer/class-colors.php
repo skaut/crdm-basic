@@ -15,14 +15,14 @@ namespace CrdmBasic\Customizer;
  * This class sets up all the customizer options for configuring the various colors of the webpage.
  */
 class Colors extends Customizer_Category {
-	const DEFAULT = [
-		'generate_settings' => [
+	const DEFAULT = array(
+		'generate_settings' => array(
 			'navigation_background_color' => '#222222',
 			'navigation_text_color'       => '#ffffff',
 			'h1_color'                    => '',
 			'h2_color'                    => '',
-		],
-	];
+		),
+	);
 
 	/**
 	 * Enqueues the JS.
@@ -30,7 +30,7 @@ class Colors extends Customizer_Category {
 	 * Enqueues the live-preview JS handlers.
 	 */
 	public function enqueue_live_preview() {
-		wp_enqueue_script( 'crdm_colors_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/colors_live_preview.js', [], CRDMBASIC_APP_VERSION, false );
+		wp_enqueue_script( 'crdm_colors_live_preview', CRDMBASIC_TEMPLATE_URL . 'admin/colors_live_preview.js', array(), CRDMBASIC_APP_VERSION, false );
 	}
 
 	/**
@@ -59,30 +59,30 @@ class Colors extends Customizer_Category {
 	private function add_panel_sections( $wp_customize ) {
 		$wp_customize->add_panel(
 			'generate_colors_panel',
-			[
+			array(
 				'priority'       => 30,
 				'theme_supports' => '',
 				'title'          => __( 'Colors', 'crdm-basic' ),
 				'description'    => '',
-			]
+			)
 		);
 
 		$wp_customize->add_section(
 			'navigation_color_section',
-			[
+			array(
 				'title'    => __( 'Primary Navigation', 'crdm-basic' ),
 				'priority' => 60,
 				'panel'    => 'generate_colors_panel',
-			]
+			)
 		);
 
 		$wp_customize->add_section(
 			'content_color_section',
-			[
+			array(
 				'title'    => __( 'Content', 'crdm-basic' ),
 				'priority' => 80,
 				'panel'    => 'generate_colors_panel',
-			]
+			)
 		);
 	}
 
@@ -96,47 +96,47 @@ class Colors extends Customizer_Category {
 	private function customize_primary_navigation( $wp_customize ) {
 		$wp_customize->add_setting(
 			'generate_settings[navigation_background_color]',
-			[
+			array(
 				'default'           => self::DEFAULT['generate_settings']['navigation_background_color'],
 				'type'              => 'option',
-				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'sanitize_callback' => array( $this, 'sanitize_hex' ),
 				'transport'         => 'postMessage',
-			]
+			)
 		);
 
 		$wp_customize->add_control(
 			new \WP_Customize_Color_Control(
 				$wp_customize,
 				'navigation_background_color_control',
-				[
+				array(
 					'label'    => __( 'Background', 'crdm-basic' ),
 					'section'  => 'navigation_color_section',
 					'settings' => 'generate_settings[navigation_background_color]',
 					'priority' => '1',
-				]
+				)
 			)
 		);
 
 		$wp_customize->add_setting(
 			'generate_settings[navigation_text_color]',
-			[
+			array(
 				'default'           => self::DEFAULT['generate_settings']['navigation_text_color'],
 				'type'              => 'option',
-				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'sanitize_callback' => array( $this, 'sanitize_hex' ),
 				'transport'         => 'postMessage',
-			]
+			)
 		);
 
 		$wp_customize->add_control(
 			new \WP_Customize_Color_Control(
 				$wp_customize,
 				'navigation_text_color',
-				[
+				array(
 					'label'    => __( 'Text', 'crdm-basic' ),
 					'section'  => 'navigation_color_section',
 					'settings' => 'generate_settings[navigation_text_color]',
 					'priority' => '2',
-				]
+				)
 			)
 		);
 	}
@@ -151,47 +151,47 @@ class Colors extends Customizer_Category {
 	private function customize_content( $wp_customize ) {
 		$wp_customize->add_setting(
 			'generate_settings[h1_color]',
-			[
+			array(
 				'default'           => self::DEFAULT['generate_settings']['h1_color'],
 				'type'              => 'option',
-				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'sanitize_callback' => array( $this, 'sanitize_hex' ),
 				'transport'         => 'postMessage',
-			]
+			)
 		);
 
 		$wp_customize->add_control(
 			new \WP_Customize_Color_Control(
 				$wp_customize,
 				'h1_color',
-				[
+				array(
 					'label'    => __( 'Heading 1 (H1) Color', 'crdm-basic' ),
 					'section'  => 'content_color_section',
 					'settings' => 'generate_settings[h1_color]',
 					'priority' => '11',
-				]
+				)
 			)
 		);
 
 		$wp_customize->add_setting(
 			'generate_settings[h2_color]',
-			[
+			array(
 				'default'           => self::DEFAULT['generate_settings']['h2_color'],
 				'type'              => 'option',
-				'sanitize_callback' => [ $this, 'sanitize_hex' ],
+				'sanitize_callback' => array( $this, 'sanitize_hex' ),
 				'transport'         => 'postMessage',
-			]
+			)
 		);
 
 		$wp_customize->add_control(
 			new \WP_Customize_Color_Control(
 				$wp_customize,
 				'h2_color',
-				[
+				array(
 					'label'    => __( 'Heading 2 (H2) Color', 'crdm-basic' ),
 					'section'  => 'content_color_section',
 					'settings' => 'generate_settings[h2_color]',
 					'priority' => '12',
-				]
+				)
 			)
 		);
 	}
@@ -220,6 +220,6 @@ class Colors extends Customizer_Category {
 	 * @return array A list of properties in selectors.
 	 */
 	protected function inline_css() {
-		return [];
+		return array();
 	}
 }
