@@ -62,10 +62,10 @@ class Menu {
 	protected function init_section() {
 		Kirki::add_section(
 			$this->section_id,
-			[
+			array(
 				'title' => esc_attr__( 'Menu', 'crdm-basic' ),
 				'panel' => $this->panel_id,
-			]
+			)
 		);
 	}
 
@@ -83,48 +83,48 @@ class Menu {
 				'label'     => esc_attr__( 'Menu item separator color', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => '#3b969f',
-				'output'    => [
-					[
+				'output'    => array(
+					array(
 						'element'  => '.main-nav > ul > li > a:after',
 						'property' => 'background-color',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
 			]
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'background',
 				'settings'  => 'submenuBg',
 				'label'     => esc_attr__( 'Dropdown menu background', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'background-color'      => '#65c3d4',
 					'background-image'      => '',
 					'background-repeat'     => 'repeat',
 					'background-position'   => 'center center',
 					'background-size'       => 'cover',
 					'background-attachment' => 'scroll',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.main-navigation .main-nav .sub-menu li a, .main-navigation .main-nav ul ul li:hover > a, .main-navigation .main-nav ul ul li:focus > a',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'typography',
 				'settings'  => 'submenuFont',
 				'label'     => esc_attr__( 'Dropdown menu items', 'crdm-basic' ),
 				'section'   => $this->section_id,
-				'default'   => [
+				'default'   => array(
 					'font-family'    => 'Patrick Hand',
 					'variant'        => 'regular',
 					'font-size'      => '14px',
@@ -132,32 +132,32 @@ class Menu {
 					'letter-spacing' => 'inherit',
 					'color'          => '#ffffff',
 					'text-transform' => 'none',
-				],
-				'output'    => [
-					[
+				),
+				'output'    => array(
+					array(
 						'element' => '.main-navigation .main-nav .sub-menu li a, .main-navigation .main-nav ul ul li:hover > a, .main-navigation .main-nav ul ul li:focus > a, .main-navigation .main-nav ul ul li.sfHover > a',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 
 		Kirki::add_field(
 			$this->config_id,
-			[
+			array(
 				'type'      => 'color',
 				'settings'  => 'submenuSeparatorColor',
 				'label'     => esc_attr__( 'Dropdown menu item separator color', 'crdm-basic' ),
 				'section'   => $this->section_id,
 				'default'   => '#ffffff',
-				'output'    => [
-					[
+				'output'    => array(
+					array(
 						'element'  => '.main-navigation .main-nav ul ul li a',
 						'property' => 'border-top-color',
-					],
-				],
+					),
+				),
 				'transport' => 'auto',
-			]
+			)
 		);
 	}
 
